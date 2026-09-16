@@ -62,6 +62,7 @@ import { DecisionMeetingsPage } from "@/components/meeting/decision-meeting-page
 import { ToolAdminPage } from "@/components/tools/tool-admin-page";
 import { SkillStudioPage } from "@/components/tools/skill-studio-page";
 import { AIRuntimePage } from "@/components/operations/ai-runtime-page";
+import { SystemSettingsPage } from "@/components/settings/system-settings-page";
 import { WorkspaceHomePage } from "@/components/workspace/workspace-home-page";
 import type { WorkspaceKey } from "@/lib/workspace-types";
 import { UnifiedAuditPage } from "@/components/operations/unified-audit-page";
@@ -142,8 +143,9 @@ export function ConsolePage({ path }: { path: string[] }) {
   else if (pageKey === "data/entities" || pageKey === "data/foundation/entities") content = <DataCenterOperationsPage view="entities" />;
   else if (pageKey === "data/metrics" || pageKey === "data/foundation/metrics") content = <DataCenterOperationsPage view="metrics" />;
   else if (pageKey === "data/quality" || pageKey === "data/foundation/quality") content = <DataCenterOperationsPage view="quality" />;
-  else if (pageKey === "data/reconciliation" || pageKey === "data/foundation/reconciliation") content = <DataReconciliationPage />;
+  else if (pageKey === "reconciliation" || pageKey === "data/reconciliation" || pageKey === "data/foundation/reconciliation") content = <DataReconciliationPage />;
   else if (pageKey === "assistant" || pageKey === "analysis/ask") content = <TwinAssistantPage />;
+  else if (pageKey === "settings" || pageKey.startsWith("settings/")) content = <SystemSettingsPage />;
   else if (pageKey === "knowledge/documents") content = <KnowledgeCenterPage view="documents" />;
   else if (pageKey === "knowledge/policies") content = <KnowledgeCenterPage view="policies" />;
   else if (pageKey === "knowledge/ingestion") content = <KnowledgeCenterPage view="ingestion" />;

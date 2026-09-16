@@ -40,4 +40,5 @@ outputs/
 .tmp/
 services/api/.tmp/
 *.pdf
+*.tsbuildinfo
 

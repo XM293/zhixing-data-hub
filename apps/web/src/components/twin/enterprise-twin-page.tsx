@@ -655,7 +655,8 @@ function ScopedEnterpriseTwinPage() {
           <article className="metric-placeholder"><strong>暂无经营指标</strong></article>
         )}
         <div className="twin-source-control">
-          <Link href="/console/data/foundation/sources">管理数据源</Link>
+          <Link href="/console/reconciliation">经营对账</Link>
+          <Link href="/console/assistant">高管分身</Link>
           <button onClick={() => void loadOverview().catch((reason: unknown) => setError(reason instanceof Error ? reason.message : "刷新失败"))} type="button">
             <RefreshCw aria-hidden="true" size={14} />刷新
           </button>

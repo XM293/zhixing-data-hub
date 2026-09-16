@@ -191,7 +191,9 @@ export function sectionForPath(pathname: string): NavigationSection {
     pathname.startsWith("/console/inbox") ||
     pathname.startsWith("/console/assistant") ||
     pathname === "/console/workspaces" ||
-    pathname.startsWith("/console/workspaces/")
+    pathname.startsWith("/console/workspaces/") ||
+    pathname.startsWith("/console/reconciliation") ||
+    pathname.startsWith("/console/settings")
   ) {
     return NAVIGATION[0];
   }
