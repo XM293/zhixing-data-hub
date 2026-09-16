@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/observability/trace-context-v1.schema.json",
+  "title": "TraceContext v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "request_id", "run_id"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "request_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{7,95}$" },
+    "run_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{7,95}$" }
+  }
+}

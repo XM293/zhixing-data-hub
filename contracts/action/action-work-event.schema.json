@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/action/action-work-event.schema.json",
+  "title": "Action Work Event Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["action", "comment", "evidence_refs", "expected_version", "idempotency_key"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["claim", "start", "block", "complete", "release", "reopen"]
+    },
+    "comment": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "evidence_refs": {
+      "type": "array",
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 160 }
+    },
+    "expected_version": { "type": "integer", "minimum": 1 },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 200,
+      "pattern": "^[a-zA-Z0-9:_-]+$"
+    }
+  }
+}

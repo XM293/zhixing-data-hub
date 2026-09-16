@@ -1,0 +1,164 @@
+{
+  "$defs": {
+    "OrderSummaryLineage": {
+      "properties": {
+        "enterprise_id": {
+          "title": "Enterprise Id",
+          "type": "string"
+        },
+        "business_unit_id": {
+          "title": "Business Unit Id",
+          "type": "string"
+        },
+        "external_system_id": {
+          "title": "External System Id",
+          "type": "string"
+        },
+        "resource_key": {
+          "title": "Resource Key",
+          "type": "string"
+        },
+        "schema_version": {
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "mapping_version": {
+          "title": "Mapping Version",
+          "type": "string"
+        },
+        "order_count": {
+          "title": "Order Count",
+          "type": "integer"
+        },
+        "data_as_of": {
+          "format": "date-time",
+          "title": "Data As Of",
+          "type": "string"
+        }
+      },
+      "required": [
+        "enterprise_id",
+        "business_unit_id",
+        "external_system_id",
+        "resource_key",
+        "schema_version",
+        "mapping_version",
+        "order_count",
+        "data_as_of"
+      ],
+      "title": "OrderSummaryLineage",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "definition_version": {
+      "const": "canonical-orders-v1",
+      "default": "canonical-orders-v1",
+      "title": "Definition Version",
+      "type": "string"
+    },
+    "authority_applied": {
+      "const": true,
+      "default": true,
+      "title": "Authority Applied",
+      "type": "boolean"
+    },
+    "scope_snapshot": {
+      "additionalProperties": true,
+      "title": "Scope Snapshot",
+      "type": "object"
+    },
+    "date_from": {
+      "format": "date",
+      "title": "Date From",
+      "type": "string"
+    },
+    "date_to_exclusive": {
+      "format": "date",
+      "title": "Date To Exclusive",
+      "type": "string"
+    },
+    "order_count": {
+      "title": "Order Count",
+      "type": "integer"
+    },
+    "status_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Status Counts",
+      "type": "object"
+    },
+    "currency_totals": {
+      "additionalProperties": {
+        "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+        "type": "string"
+      },
+      "title": "Currency Totals",
+      "type": "object"
+    },
+    "missing_amount_count": {
+      "title": "Missing Amount Count",
+      "type": "integer"
+    },
+    "base_amount": {
+      "anyOf": [
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Base Amount"
+    },
+    "data_as_of": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Data As Of"
+    },
+    "quality_flags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Quality Flags",
+      "type": "array"
+    },
+    "lineage": {
+      "items": {
+        "$ref": "#/$defs/OrderSummaryLineage"
+      },
+      "title": "Lineage",
+      "type": "array"
+    }
+  },
+  "required": [
+    "scope_snapshot",
+    "date_from",
+    "date_to_exclusive",
+    "order_count",
+    "status_counts",
+    "currency_totals",
+    "missing_amount_count",
+    "data_as_of",
+    "quality_flags",
+    "lineage"
+  ],
+  "title": "OrderSummary",
+  "type": "object"
+}

@@ -1,0 +1,1020 @@
+schema_version: 1
+project: zhixing-data-hub
+updated_at: "2026-09-08"
+task_defaults:
+  completion_requires:
+    - implementation
+    - automated_tests
+    - documentation_update
+    - reproducible_verification
+
+tasks:
+  - id: FND-001
+    milestone: M0
+    epic: foundation
+    title: 确认产品领域边界和模块命名
+    status: done
+    depends_on: []
+    outputs: [docs/architecture/adr/ADR-001-domain-boundaries.md]
+    acceptance: [领域边界覆盖数据知识记忆运行和行动, 与产品导航一致]
+  - id: FND-002
+    milestone: M0
+    epic: foundation
+    title: 确认首期技术栈和本地开发方式
+    status: done
+    depends_on: []
+    outputs: [docs/architecture/adr/ADR-002-initial-stack.md]
+    acceptance: [前后端任务队列数据库对象存储均有选择和替代条件]
+  - id: FND-003
+    milestone: M0
+    epic: foundation
+    title: 创建Monorepo工作区和统一命令
+    status: done
+    depends_on: [FND-002]
+    outputs: [apps, services, packages, Makefile, .env.example]
+    acceptance: [一条命令启动开发依赖, 一条命令运行全部基础检查]
+  - id: FND-004
+    milestone: M0
+    epic: foundation
+    title: 创建Web管理台和API模块化单体脚手架
+    status: done
+    depends_on: [FND-001, FND-002, FND-003]
+    outputs: [apps/web, services/api]
+    acceptance: [Web和API可启动, 健康检查通过, 模块边界可见]
+  - id: FND-005
+    milestone: M0
+    epic: foundation
+    title: 建立本地PostgreSQL MinIO和可选Redis编排
+    status: done
+    depends_on: [FND-003]
+    outputs: [deploy/local, tools/infra-verify.mjs, docs/reports/fnd-005-infrastructure-verification.md]
+    acceptance: [全新环境可重复启动, 数据卷和配置有说明]
+  - id: FND-006
+    milestone: M0
+    epic: foundation
+    title: 建立数据库迁移和种子数据框架
+    status: done
+    depends_on: [FND-004, FND-005]
+    outputs: [services/api/migrations, services/api/seeds]
+    acceptance: [空库升级成功, 重复运行安全, 测试库可重建]
+  - id: FND-007
+    milestone: M0
+    epic: foundation
+    title: 建立企业用户组织岗位和任职基础模型
+    status: blocked
+    depends_on: [FND-006, IAM-001]
+    outputs: [services/api/modules/identity]
+    acceptance: [可创建企业主体用户组织岗位和任职, 状态与有效期可追溯, 不把岗位或RoleTwin当作访问角色]
+  - id: FND-008
+    milestone: M0
+    epic: foundation
+    title: 建立统一日志运行ID和错误Envelope
+    status: done
+    depends_on: [FND-004]
+    outputs: [packages/observability, packages/contracts, apps/web/src/lib/api-client.ts]
+    acceptance: [Web API Worker共享request_id和run_id, 401与403错误返回结构一致]
+  - id: FND-009
+    milestone: M0
+    epic: foundation
+    title: 配置CI基础检查和Codex非交互任务入口
+    status: done
+    depends_on: [FND-003, FND-004]
+    outputs: [.github/workflows, scripts/codex]
+    acceptance: [格式类型单测可在CI运行, Codex任务有只读默认模式]
+  - id: FND-010
+    milestone: M0
+    epic: foundation
+    title: 建立通用Worker和PostgreSQL后台任务框架
+    status: done
+    depends_on: [FND-006, FND-008]
+    outputs: [services/worker, packages/jobs]
+    acceptance: [Worker可独立启动和停止, 任务状态重试超时与幂等可测试, 保存企业发起主体和run_id]
+
+  - id: PLT-001
+    milestone: M0
+    epic: platform-administration
+    title: 建立平台管理控制面纵向切片
+    status: review
+    depends_on: [FND-006, FND-008, FND-010]
+    outputs: [contracts/platform, services/api/src/zhixing_api/routers/platform.py, apps/web/src/components/operations, apps/web/src/components/identity/access-delegation-page.tsx]
+    acceptance: [任务Attempt与受控重试可追溯, 参数字典通知文件和通用批量交换真实读写数据库, 临时委托只允许委托人当前权限和范围子集, 组织子树动态包含新子节点且排除旁系组织, 平台操作进入统一审计, 不存在PigX专用导入器或运行时依赖]
+
+  - id: UIA-001
+    milestone: M0
+    epic: experience-blueprint
+    title: 确认角色视角信息架构页面地图和演示故事
+    status: done
+    depends_on: [FND-001, FND-004]
+    outputs: [docs/product/03-interface-inventory.md, docs/product/04-demo-scenarios.md]
+    acceptance: [覆盖CEO经理员工管理员和客服视角, 全部中心有代表性页面, 四个跨模块故事字段和状态明确]
+  - id: UIA-002
+    milestone: M0
+    epic: experience-blueprint
+    title: 建立管理台应用壳视觉规范和全局状态
+    status: review
+    depends_on: [UIA-001]
+    outputs: [apps/web/src/app/(console), packages/ui]
+    acceptance: [实际工作台作为首屏, 侧栏顶栏筛选详情和反馈一致, 桌面移动端无溢出遮挡, 原型状态持续可见]
+  - id: UIA-003
+    milestone: M0
+    epic: experience-blueprint
+    title: 建立UI Read Model稳定Fixture和模拟数据源
+    status: review
+    depends_on: [UIA-001]
+    outputs: [contracts/ui, apps/web/src/demo]
+    acceptance: [页面不直接导入散落Fixture, 跨页面对象使用稳定ID和固定业务时间, Demo数据源可被API适配器替换]
+  - id: UIA-004
+    milestone: M0
+    epic: experience-blueprint
+    title: 完成全部核心中心代表性页面
+    status: blocked
+    depends_on: [UIA-002, UIA-003]
+    outputs: [apps/web/src/modules]
+    acceptance: [数据知识分身会议分析行动和平台管理均可操作, 覆盖正常空数据加载失败延迟无权限状态, prototype与implemented明确区分]
+  - id: UIA-005
+    milestone: M0
+    epic: experience-blueprint
+    title: 完成客服预览和跨模块产品故事
+    status: blocked
+    depends_on: [UIA-004]
+    outputs: [apps/web/src/modules/customer-service, apps/web/src/demo/scenarios]
+    acceptance: [制度问答经营会议行动审批客服草稿四个故事可复现, 不调用真实外部写操作, Playwright桌面移动端通过]
+  - id: UIA-006
+    milestone: M0
+    epic: experience-blueprint
+    title: 完成产品负责人全景验收和范围冻结
+    status: blocked
+    depends_on: [UIA-005]
+    outputs: [docs/reports/m0-product-experience-review.md]
+    acceptance: [产品负责人确认导航角色首页页面地图关键故事和术语, 报告记录保留修改删除和优先级, 明确同意解锁DOM-001]
+
+  - id: UIA-007
+    milestone: M0
+    epic: experience-blueprint
+    title: 建立企业经营数字孪生纵向验收链
+    status: review
+    depends_on: [FND-004, UIA-001]
+    outputs: [services/api/migrations/versions/0002_operational_twin_scene.py, services/api/migrations/versions/0003_spatial_drilldown.py, services/api/migrations/versions/0004_meeting_orchestration.py, services/api/migrations/versions/0005_twin_interactions_and_seating.py, apps/web/src/components/twin, docs/architecture/adr/ADR-007-operational-digital-twin-experience.md]
+    acceptance: [场景空间分身路线会议状态对象动作和12席会议布局来自数据库, 园区经营仓储会议四类镜头可切换, 仓储和数字会议子场景热点与图层来自数据库且按交互配置双击进入, 镜头支持旋转和平移分段模式以及受约束缩放复位, 所有业务对象具有悬停选中反馈和上下文功能, 三位分身使用稳定席位到场研判并形成持久化决策包, 二维工作台与三维对象使用稳定业务键, Playwright桌面移动端和Canvas像素检查通过]
+
+  - id: UIA-008
+    milestone: M0
+    epic: experience-blueprint
+    title: 建立数据库驱动的企业经营驾驶舱与超宽屏工作站布局
+    status: review
+    depends_on: [FND-004, UIA-007]
+    outputs: [apps/web/src/components/cockpit, apps/web/src/lib/cockpit-model.ts, docs/product/03-interface-inventory.md]
+    acceptance: [驾驶舱位于工作台下方独立一级入口且支持纯大屏全屏模式, 指标资产节点事件会议均读取数据中心概览接口, 不使用随机数伪造历史趋势, 显示当前验证数据与首期接入验收基线的差距且不把该基线表述为生产容量上限, 普通数据页充分使用桌面宽度和可用高度并在固定视口内滚动明细, 数字孪生标题右侧面板3D标签和底部指标在2515x1199无重叠且可读]
+
+  - id: UIA-009
+    milestone: M0
+    epic: experience-blueprint
+    title: 建立岗位工作空间与角色化信息架构
+    status: review
+    depends_on: [UIA-001, UIA-002, IAM-003]
+    outputs: [docs/development/07-role-oriented-workspace-modification-guide.md, contracts/ui/workspace-profile.schema.json, contracts/ui/workspace-catalog.schema.json, contracts/ui/workspace-read-model.schema.json, contracts/meeting/meeting-create.schema.json, contracts/mcp/gateway-session.schema.json, services/api/src/zhixing_api/workspace_service.py, services/api/src/zhixing_api/routers/workspaces.py, services/api/src/zhixing_api/mcp_session_service.py, apps/web/src/components/workspace, apps/web/src/lib/workspace-context.ts]
+    acceptance: [Position AccessRole ScopeGrant WorkspaceProfile RoleTwin边界清晰, 至少CEO经理运营平台运维四个工作空间由服务端授权和Read Model驱动, 工作空间切换不能改变主体权限或数据范围, 首页下钻复用现有中心对象和指标口径, Web飞书Agent与MCP使用一致工作空间上下文, 3D作为可降级视图且核心流程可用二维页面完成, 桌面移动端无溢出和说明性旁白]
+  - id: UIA-010
+    milestone: M0
+    epic: experience-blueprint
+    title: 重构企业中心域、导航边界与多企业上下文
+    status: blocked
+    depends_on: [UIA-006, UIA-009]
+    outputs: [docs/development/08-enterprise-center-domain-and-workspace-boundary-guide.md, contracts/ui/center-catalog.schema.json, contracts/identity/scope-context.schema.json, services/api/migrations/versions/0048_enterprise_scope_foundation.py, services/api/src/zhixing_api/center_service.py, services/api/src/zhixing_api/scope_context.py, services/api/src/zhixing_api/routers/centers.py, apps/web/src/components/navigation/center-navigation.tsx]
+    acceptance: [数字孪生作为默认首页且岗位工作台独立, 数据基础与数据产品/经营洞察分层, 业务中心按领域责任和事实边界归位, 知识中心不承载业务执行, 单企业迁移到默认集团后行为保持兼容, 多子公司切换重新生成菜单工作空间和数据范围, 集团汇总声明合并口径币种汇率和数据截至时间, AI会议分析MCP和数字孪生使用同一范围快照, 页面无解释性旁白且桌面移动端无溢出]
+
+  - id: DOM-001
+    milestone: M0
+    epic: domain-contracts
+    title: 定义统一ID时间版本和来源Envelope
+    status: blocked
+    depends_on: [FND-001, UIA-006]
+    outputs: [contracts/common]
+    acceptance: [JSON Schema可验证, 包含enterprise_id与ActorRef, 有向后兼容规则]
+  - id: DOM-002
+    milestone: M0
+    epic: domain-contracts
+    title: 定义SourceSystem和SyncJob契约
+    status: blocked
+    depends_on: [DOM-001]
+    outputs: [contracts/source]
+    acceptance: [覆盖API文件数据库和IM来源, 支持游标与重跑]
+  - id: DOM-003
+    milestone: M0
+    epic: domain-contracts
+    title: 定义EnterpriseEntity和外部ID映射
+    status: blocked
+    depends_on: [DOM-001]
+    outputs: [contracts/entity]
+    acceptance: [覆盖店铺商品SKU客户供应商和组织引用, 不复制用户部门岗位, 有冲突处理]
+  - id: DOM-004
+    milestone: M0
+    epic: domain-contracts
+    title: 定义KnowledgeDocument和PolicyVersion契约
+    status: blocked
+    depends_on: [DOM-001]
+    outputs: [contracts/knowledge]
+    acceptance: [原件解析版本状态生效区间和引用定位完整]
+  - id: DOM-005
+    milestone: M0
+    epic: domain-contracts
+    title: 定义MemoryCandidate和ApprovedMemory契约
+    status: blocked
+    depends_on: [DOM-001]
+    outputs: [contracts/memory]
+    acceptance: [候选审核启停版本和证据字段完整]
+  - id: DOM-006
+    milestone: M0
+    epic: domain-contracts
+    title: 定义RoleTemplate RoleTwin和RoleVersion契约
+    status: blocked
+    depends_on: [DOM-001, DOM-005]
+    outputs: [contracts/role]
+    acceptance: [岗位资产与个人资产分离, RoleTwin不包含AccessRole, 角色版本不可变]
+  - id: DOM-007
+    milestone: M0
+    epic: domain-contracts
+    title: 定义MetricDefinition和MetricQuery契约
+    status: blocked
+    depends_on: [DOM-001, DOM-003]
+    outputs: [contracts/metric]
+    acceptance: [公式维度粒度版本负责人和as_of查询完整]
+  - id: DOM-008
+    milestone: M0
+    epic: domain-contracts
+    title: 定义EvidenceSnapshot AgentRun和Action契约
+    status: blocked
+    depends_on: [DOM-004, DOM-005, DOM-006, DOM-007, IAM-001]
+    outputs: [contracts/evidence, contracts/agent, contracts/action]
+    acceptance: [一次回答所用证据版本ActorContext和授权摘要可复现]
+
+  - id: IAM-001
+    milestone: M0
+    epic: identity-access
+    title: 定义身份访问角色数据范围和ActorContext契约
+    status: blocked
+    depends_on: [DOM-001]
+    outputs: [contracts/identity, contracts/access]
+    acceptance: [Enterprise Principal ChannelIdentity AccessRole Permission ScopeGrant契约可验证, RoleTwin与访问角色明确分离]
+  - id: IAM-002
+    milestone: M0
+    epic: identity-access
+    title: 建立本地认证会话和认证提供者接口
+    status: blocked
+    depends_on: [FND-007, FND-008]
+    outputs: [services/api/modules/auth, packages/auth]
+    acceptance: [本地管理员可登录登出和失效会话, 认证提供者可替换, 外部身份不泄漏到领域层]
+  - id: IAM-003
+    milestone: M0
+    epic: identity-access
+    title: 实现AccessRole数据范围和统一授权服务
+    status: blocked
+    depends_on: [FND-007, FND-008, IAM-001]
+    outputs: [services/api/modules/access]
+    acceptance: [默认拒绝且显式拒绝优先, 支持企业组织子树店铺知识空间对象和本人范围, 授权结果确定可测试]
+  - id: IAM-004
+    milestone: M0
+    epic: identity-access
+    title: 建立API Agent MCP和Worker统一授权守卫
+    status: blocked
+    depends_on: [FND-010, IAM-002, IAM-003, IAM-007]
+    outputs: [packages/access-control, services/api/dependencies/actor]
+    acceptance: [所有入口使用可信ActorContext, 客户端不能伪造主体和范围, 写任务执行前重新授权]
+  - id: IAM-005
+    milestone: M0
+    epic: identity-access
+    title: 建立管理台应用壳授权菜单和路由状态
+    status: blocked
+    depends_on: [FND-004, IAM-002, IAM-003]
+    outputs: [apps/web/src/app/(console), apps/web/src/modules/navigation]
+    acceptance: [后端能力生成菜单和按钮, 登录401403404状态完整, 直接访问路由仍由服务端授权]
+  - id: IAM-006
+    milestone: M1
+    epic: identity-access
+    title: 建立渠道身份映射账号绑定和生命周期
+    status: blocked
+    depends_on: [IAM-002, CHN-001]
+    outputs: [services/api/modules/identity/channel, apps/web/modules/channel-identity]
+    acceptance: [飞书身份显式绑定内部Principal, 未知身份不返回内部资料, 解绑重绑和停用可追溯]
+  - id: IAM-007
+    milestone: M0
+    epic: identity-access
+    title: 建立授权决策和关键管理操作审计
+    status: blocked
+    depends_on: [FND-006, FND-008, IAM-003]
+    outputs: [services/api/modules/audit, contracts/audit]
+    acceptance: [允许拒绝权限变更渠道绑定和关键审批可按主体资源策略版本run_id查询]
+
+  - id: KNO-001
+    milestone: M1
+    epic: knowledge
+    title: 建立知识提供者抽象和本地Mock
+    status: in_progress
+    depends_on: [DOM-004, FND-004, IAM-001]
+    outputs: [services/api/modules/knowledge]
+    acceptance: [search read_version ingest接口有契约测试, 查询契约显式接收有效知识范围]
+  - id: KNO-002
+    milestone: M1
+    epic: knowledge
+    title: 建立文档原件存储和内容哈希
+    status: in_progress
+    depends_on: [FND-005, KNO-001]
+    outputs: [services/api/modules/knowledge/storage]
+    acceptance: [重复文件可识别, 原件可按版本读取]
+  - id: KNO-003
+    milestone: M1
+    epic: knowledge
+    title: 实现制度版本生效废止和审批状态
+    status: in_progress
+    depends_on: [KNO-002, FND-007, IAM-004]
+    outputs: [services/api/modules/policy]
+    acceptance: [同一时间只返回正确生效版本, 发布废止经过授权, 历史版本可追溯]
+  - id: KNO-004
+    milestone: M1
+    epic: knowledge
+    title: 完成WeKnora适配器POC
+    status: blocked
+    depends_on: [KNO-001, KNO-002]
+    outputs: [services/adapters/weknora, docs/poc/weknora.md]
+    acceptance: [可导入查询和定位来源, 不泄漏内部ID到应用层]
+  - id: KNO-005
+    milestone: M1
+    epic: knowledge
+    title: 完成RAGFlow对照POC
+    status: blocked
+    depends_on: [KNO-001, KNO-002]
+    outputs: [services/adapters/ragflow, docs/poc/ragflow.md]
+    acceptance: [使用相同语料和问题输出可比较结果]
+  - id: KNO-006
+    milestone: M1
+    epic: knowledge
+    title: 建立制度导入管理页面
+    status: in_progress
+    depends_on: [KNO-003, IAM-005]
+    outputs: [apps/web/modules/knowledge]
+    acceptance: [按权限显示上传查看发布废止操作, 可定位解析错误, 直接调用仍由API授权]
+  - id: KNO-007
+    milestone: M1
+    epic: knowledge
+    title: 建立引用标准化和冲突检测
+    status: in_progress
+    depends_on: [KNO-003, KNO-004]
+    outputs: [services/api/modules/evidence/citation]
+    acceptance: [引用包含文档版本生效时间和原文位置]
+  - id: KNO-008
+    milestone: M1
+    epic: knowledge
+    title: 根据评测选择首期知识后端
+    status: blocked
+    depends_on: [KNO-004, KNO-005, EVA-002]
+    outputs: [docs/architecture/adr/ADR-knowledge-provider.md]
+    acceptance: [选择依据包含质量延迟维护和扩展成本]
+
+  - id: MEM-001
+    milestone: M1
+    epic: memory
+    title: 实现记忆候选状态机
+    status: in_progress
+    depends_on: [DOM-005, FND-006, IAM-001]
+    outputs: [services/api/modules/memory]
+    acceptance: [candidate approved rejected active retired流程有测试]
+  - id: MEM-002
+    milestone: M1
+    epic: memory
+    title: 实现聊天导入和基础结构化
+    status: in_progress
+    depends_on: [MEM-001, KNO-002, FND-010]
+    outputs: [services/workers/chat-ingestion]
+    acceptance: [保留原始消息引用, 支持时间参与者话题切分]
+  - id: MEM-003
+    milestone: M1
+    epic: memory
+    title: 实现记忆候选抽取去重和冲突标记
+    status: in_progress
+    depends_on: [MEM-002]
+    outputs: [services/workers/memory-extraction]
+    acceptance: [同义记忆可合并, 与现行制度冲突时不自动生效]
+  - id: MEM-004
+    milestone: M1
+    epic: memory
+    title: 建立记忆审核管理页面
+    status: in_progress
+    depends_on: [MEM-001, IAM-004, IAM-005]
+    outputs: [apps/web/modules/memory]
+    acceptance: [角色本人或获授权人员可批准拒绝编辑停用并查看依据, 操作可审计]
+  - id: MEM-005
+    milestone: M1
+    epic: memory
+    title: 完成TencentDB-Agent-Memory和Mem0双跑适配
+    status: blocked
+    depends_on: [MEM-001, MEM-003]
+    outputs: [services/adapters/memory]
+    acceptance: [同一评测集可对比召回准确性延迟和维护复杂度]
+  - id: MEM-006
+    milestone: M1
+    epic: memory
+    title: 实现角色记忆检索与事实优先级合并
+    status: in_progress
+    depends_on: [MEM-003, KNO-007, IAM-003]
+    outputs: [services/api/modules/context]
+    acceptance: [正式制度和经营事实优先, 仅检索调用者与分身交集范围, 返回记忆来源和状态]
+
+  - id: AGT-001
+    milestone: M0
+    epic: agent-runtime
+    title: 定义AgentRuntime和AgentRunEvent接口
+    status: review
+    depends_on: [DOM-008]
+    outputs: [packages/agent-runtime]
+    acceptance: [start resume stream cancel和工具事件可测试]
+  - id: AGT-002
+    milestone: M1
+    epic: agent-runtime
+    title: 实现本地FakeRuntime用于确定性测试
+    status: review
+    depends_on: [AGT-001]
+    outputs: [packages/agent-runtime/fake]
+    acceptance: [无需模型即可测试应用流程和失败分支]
+  - id: AGT-003
+    milestone: M1
+    epic: agent-runtime
+    title: 实现CodexRuntimeAdapter最小版本
+    status: review
+    depends_on: [AGT-001, FND-008, IAM-004]
+    outputs: [services/adapters/codex-runtime]
+    acceptance: [服务端可携带ActorContext启动继续取消线程并转换事件, 运行时不能提升权限]
+  - id: AGT-004
+    milestone: M1
+    epic: agent-runtime
+    title: 建立Prompt和Role配置版本库
+    status: blocked
+    depends_on: [DOM-006, FND-006]
+    outputs: [services/api/modules/prompt]
+    acceptance: [发布后不可变, run记录实际版本]
+  - id: AGT-005
+    milestone: M1
+    epic: agent-runtime
+    title: 实现上下文组装和Token预算策略
+    status: blocked
+    depends_on: [AGT-003, MEM-006, KNO-007]
+    outputs: [services/api/modules/context-builder]
+    acceptance: [制度指标记忆顺序固定, 超预算降级可解释]
+  - id: AGT-006
+    milestone: M1
+    epic: agent-runtime
+    title: 建立企业ToolGateway和工具注册表
+    status: review
+    depends_on: [AGT-001, DOM-008, IAM-004]
+    outputs: [services/api/modules/tools]
+    acceptance: [工具有Schema风险级别权限键范围解析版本超时和失败语义]
+  - id: AGT-007
+    milestone: M1
+    epic: agent-runtime
+    title: 建立MCP网关最小服务器
+    status: review
+    depends_on: [AGT-006, IAM-004]
+    outputs: [mcp/enterprise-gateway]
+    acceptance: [至少暴露read_policy search_knowledge和get_metric Mock, 不接受客户端伪造Principal和数据范围]
+  - id: AGT-008
+    milestone: M1
+    epic: agent-runtime
+    title: 建立Agent运行追踪页面
+    status: review
+    depends_on: [AGT-003, FND-008, IAM-005]
+    outputs: [apps/web/modules/agent-runs]
+    acceptance: [可查看角色版本证据工具事件延迟和错误]
+  - id: AGT-009
+    milestone: M1
+    epic: agent-runtime
+    title: 建立企业 Skill 注册与版本治理
+    status: review
+    depends_on: [AGT-006, IAM-004, IAM-005]
+    outputs: [contracts/agent-runtime/skill-registry.schema.json, services/api/migrations/versions/0049_skill_registry.py, services/api/src/zhixing_api/skill_service.py, apps/web/src/components/tools/skill-studio-page.tsx, docs/reports/agt-009-skill-registry-verification.md]
+    acceptance: [Skill按企业隔离并支持草稿版本发布和旧版本退役, 发布前只能引用有效Tool Registry工具, 配置事件保存主体请求ID和run_id, Web管理台支持创建版本发布和审计台账, Skill不复制权限]
+  - id: AGT-010
+    milestone: M1
+    epic: agent-runtime
+    title: 将企业 Skill 注入 Codex Runtime 运行规格
+    status: review
+    depends_on: [AGT-003, AGT-006, AGT-009, IAM-004]
+    outputs: [services/api/src/zhixing_api/runtime_skill_service.py, services/api/tests/test_runtime_skill_service.py, docs/reports/agt-010-skill-runtime-injection.md]
+    acceptance: [运行前固定已发布Skill版本, Skill工具与当前ActorContext授权工具取交集, 停用工具和未发布版本在子进程启动前拒绝, AgentRun metadata保存Skill键和版本, Skill不授予权限]
+  - id: AGT-011
+    milestone: M1
+    epic: agent-runtime
+    title: 实现 Runtime 审批暂停与恢复
+    status: review
+    depends_on: [AGT-003, AGT-008, IAM-004]
+    outputs: [packages/agent-runtime/src/zhixing_agent_runtime/contracts.py, services/adapters/codex-runtime/src/zhixing_codex_runtime/adapter.py, services/api/src/zhixing_api/ai_operations_service.py, services/api/src/zhixing_api/routers/ai_operations.py, docs/reports/agt-011-runtime-approval-pause-resume.md]
+    acceptance: [服务端审批请求进入waiting_approval, approve/decline可恢复或拒绝当前Runtime, 审批复用当前主体权限和企业边界, 审批事件持久化并可审计, Runtime进程不存在时返回可解释冲突]
+  - id: AGT-012
+    milestone: M1
+    epic: agent-runtime
+    title: 建立 Runtime 审批台账与重启边界
+    status: review
+    depends_on: [AGT-011, FND-006]
+    outputs: [services/api/migrations/versions/0050_runtime_approvals.py, services/api/src/zhixing_api/data_models.py, services/api/src/zhixing_api/agent_runtime_service.py, docs/reports/agt-012-runtime-approval-ledger.md]
+    acceptance: [审批请求持久化Skill工具和范围相关快照, approve/decline更新审批台账, API重启后不伪造恢复成功, 过期和无Runtime进程状态可解释]
+  - id: AGT-013
+    milestone: M1
+    epic: agent-runtime
+    title: 接入 Runtime 审批控制台
+    status: review
+    depends_on: [AGT-012, IAM-005]
+    outputs: [services/api/src/zhixing_api/ai_operations_schemas.py, services/api/src/zhixing_api/ai_operations_service.py, apps/web/src/components/operations/ai-runtime-page.tsx, apps/web/src/lib/ai-operations-types.ts, docs/reports/agt-013-runtime-approval-console.md]
+    acceptance: [控制台展示待审批Skill工具和运行上下文, 管理员可以批准或拒绝, 前端状态与审批台账一致, 无权限账号不显示操作按钮]
+  - id: AGT-014
+    milestone: M2
+    epic: agent-runtime
+    title: 将数字会议独立分析迁移到统一 Runtime
+    status: review
+    depends_on: [AGT-010, AGT-012, MTG-003]
+    outputs: [services/api/migrations/versions/0051_meeting_runtime_runs.py, services/api/migrations/versions/0052_meeting_runtime_run_history.py, services/api/src/zhixing_api/meeting_runtime_service.py, services/api/src/zhixing_api/decision_service.py, services/api/tests/test_decisions.py, docs/reports/agt-014-meeting-runtime-independent-analysis.md]
+    acceptance: [会议角色AgentRun在Runtime启动前预登记, 角色分析使用已发布Skill和当前授权工具交集, Runtime Session Turn Event和证据快照形成可追溯映射, 重跑保留每次运行历史, 独立分析两轮质询反方审查和主持汇总均可使用Runtime, Runtime失败仍回退证据模式, 长运行预算通知故障恢复和API重启后的Thread恢复保留为后续边界]
+
+  - id: AGT-015
+    milestone: M2
+    epic: agent-runtime
+    title: 实现 Runtime 重启孤儿运行回收边界
+    status: review
+    depends_on: [AGT-011, AGT-013]
+    outputs: [services/api/src/zhixing_api/agent_runtime_service.py, services/api/src/zhixing_api/main.py, docs/reports/agt-015-runtime-orphan-reconciliation.md]
+    acceptance: [API启动回收遗留运行和审批, 失败原因可审计, 审批不会在重启后伪装为待处理, 不自动重放外部动作]
+
+  - id: TWI-001
+    milestone: M1
+    epic: role-twin
+    title: 实现RoleTemplate和RoleTwin领域服务
+    status: in_progress
+    depends_on: [DOM-006, FND-007, IAM-003]
+    outputs: [services/api/modules/role-twin]
+    acceptance: [可创建岗位模板和个人实例, 可发布新版本, RoleTwin不保存AccessRole]
+  - id: TWI-002
+    milestone: M1
+    epic: role-twin
+    title: 建立分身中心管理页面
+    status: blocked
+    depends_on: [TWI-001, IAM-005]
+    outputs: [apps/web/modules/twin-studio]
+    acceptance: [可配置职责边界风格记忆和Prompt版本]
+  - id: TWI-003
+    milestone: M1
+    epic: role-twin
+    title: 实现带证据的分身问答流程
+    status: in_progress
+    depends_on: [TWI-001, AGT-005, AGT-006, IAM-004]
+    outputs: [services/api/usecases/ask-role-twin]
+    acceptance: [回答区分事实判断未知和无权限并返回证据, 有效能力取调用者分身渠道工具规则交集]
+  - id: TWI-004
+    milestone: M1
+    epic: role-twin
+    title: 配置CEO首个角色实例
+    status: in_progress
+    depends_on: [TWI-002, MEM-004, KNO-006]
+    outputs: [config/roles/ceo]
+    acceptance: [CEO本人可审核角色说明记忆和样例回答]
+  - id: TWI-005
+    milestone: M1
+    epic: role-twin
+    title: 配置运营和财务负责人角色实例
+    status: blocked
+    depends_on: [TWI-004]
+    outputs: [config/roles/operations, config/roles/finance]
+    acceptance: [岗位规则与个人资产分开, 三角色回答边界不同]
+  - id: TWI-006
+    milestone: M1
+    epic: role-twin
+    title: 实现用户反馈纠错和人工接管
+    status: blocked
+    depends_on: [TWI-003]
+    outputs: [services/api/modules/feedback, apps/web/modules/feedback]
+    acceptance: [点赞纠错转人工形成可追踪记录]
+  - id: TWI-007
+    milestone: M1
+    epic: role-twin
+    title: 完成分身试点验收和版本冻结
+    status: blocked
+    depends_on: [TWI-004, CHN-003, EVA-004]
+    outputs: [docs/reports/m1-role-twin-pilot.md]
+    acceptance: [真实员工试点数据完整, 结论含继续暂停或修正]
+
+  - id: CHN-001
+    milestone: M1
+    epic: channels
+    title: 定义渠道消息和会话适配接口
+    status: blocked
+    depends_on: [DOM-001, AGT-001, IAM-001]
+    outputs: [packages/channel-adapter]
+    acceptance: [Web和飞书可共享同一问答用例, 渠道只传受信身份声明不拥有持久用户映射]
+  - id: CHN-002
+    milestone: M1
+    epic: channels
+    title: 实现内部Web聊天页面
+    status: blocked
+    depends_on: [CHN-001, TWI-003, IAM-005]
+    outputs: [apps/web/modules/chat]
+    acceptance: [支持选择角色流式回答证据展开和反馈]
+  - id: CHN-003
+    milestone: M1
+    epic: channels
+    title: 实现飞书机器人问答接入
+    status: blocked
+    depends_on: [CHN-001, TWI-003, IAM-006]
+    outputs: [apps/feishu-bot]
+    acceptance: [已绑定身份的私聊和群聊at可用, 未知身份不返回内部资料, 支持证据卡片和转人工]
+  - id: CHN-004
+    milestone: M4
+    epic: channels
+    title: 评估企业微信和微信渠道适配
+    status: deferred
+    depends_on: [TWI-007]
+    outputs: [docs/poc/wecom-wechat-channel.md]
+    acceptance: [明确官方接口限制接入方式和维护成本]
+
+  - id: DAT-001
+    milestone: M2
+    epic: data-center
+    title: 建立Source Registry和同步任务框架
+    status: blocked
+    depends_on: [DOM-002, FND-008, FND-010, IAM-003]
+    outputs: [contracts/data/source-connector.schema.json, services/api/src/zhixing_api/connectors/contracts.py, services/api/tests/test_connector_contract.py, docs/reports/dat-connector-contract-verification.md, services/api/modules/source, services/workers/sync]
+    acceptance: [注册运行重跑游标错误和统计完整, 任务保存企业与发起主体]
+  - id: DAT-002
+    milestone: M2
+    epic: data-center
+    title: 建立Raw Staging Core Mart分层约定
+    status: blocked
+    depends_on: [FND-002, DAT-001]
+    outputs: [docs/architecture/adr/ADR-data-modeling.md, services/data]
+    acceptance: [每层职责重跑和历史规则明确]
+  - id: DAT-003
+    milestone: M2
+    epic: data-center
+    title: 建立企业实体和外部ID映射服务
+    status: blocked
+    depends_on: [DOM-003, DAT-001]
+    outputs: [services/api/modules/entity]
+    acceptance: [店铺商品SKU映射可维护并检测冲突]
+  - id: DAT-004
+    milestone: M2
+    epic: data-center
+    title: 创建首个吉客云或导出文件连接器
+    status: blocked
+    depends_on: [DAT-001, DAT-002]
+    outputs: [services/connectors/gik-cloud]
+    acceptance: [真实样例可同步, 支持增量游标重跑和契约测试]
+  - id: DAT-005
+    milestone: M2
+    epic: data-center
+    title: 建立销售退款广告库存规范事实表
+    status: blocked
+    depends_on: [DAT-003, DAT-004]
+    outputs: [services/data/models/core, services/data/models/marts]
+    acceptance: [源数据行数金额和日期可对账]
+  - id: DAT-006
+    milestone: M2
+    epic: data-center
+    title: 建立最小指标注册和查询服务
+    status: blocked
+    depends_on: [DOM-007, DAT-005, IAM-004]
+    outputs: [services/api/modules/metrics]
+    acceptance: [GMV退款率广告ROI库存周转毛利可按有效数据范围查询解释]
+  - id: DAT-007
+    milestone: M2
+    epic: data-center
+    title: 实现EvidenceSnapshot服务
+    status: blocked
+    depends_on: [DOM-008, DAT-006, KNO-007]
+    outputs: [services/api/modules/evidence]
+    acceptance: [固定指标查询结果和知识版本并可重放]
+  - id: DAT-008
+    milestone: M2
+    epic: data-center
+    title: 建立数据源和指标管理页面
+    status: blocked
+    depends_on: [DAT-001, DAT-006, IAM-005]
+    outputs: [apps/web/modules/data-center]
+    acceptance: [可查看同步状态映射指标定义和对账]
+  - id: DAT-009
+    milestone: M2
+    epic: data-center
+    title: 实现角色分身经营问数
+    status: blocked
+    depends_on: [TWI-003, DAT-006, DAT-007, IAM-004]
+    outputs: [services/api/usecases/ask-business-data]
+    acceptance: [回答包含口径时间维度数值来源和授权数据范围, 分身不能扩大调用者范围]
+  - id: DAT-010
+    milestone: M3
+    epic: data-center
+    title: 评估OpenMetadata和MetricFlow正式引入
+    status: deferred
+    depends_on: [DAT-008, EVA-005]
+    outputs: [docs/architecture/adr/ADR-metadata-metrics-platform.md]
+    acceptance: [基于实际资产和指标数量作出引入或延后决定]
+
+  - id: DAT-011
+    milestone: M2
+    epic: data-center
+    title: 完成领星ERP与集团范围的本地生产化闭环
+    status: in_progress
+    depends_on: [FND-003, FND-006, FND-008, FND-010]
+    outputs:
+      - docs/development/11-lingxing-local-one-pass-implementation-plan.md
+      - docs/architecture/adr/ADR-023-lingxing-mirror-and-projection.md
+      - docs/development/12-lingxing-mirror-controlled-rollout.md
+      - contracts/data/source-mirror-pages.schema.json
+      - services/api/migrations/versions/0067_source_mirror_pages.py
+      - services/worker/scripts/verify_lingxing_connectivity.py
+      - packages/connectors
+      - services/api/src/zhixing_api/connectors/lingxing
+      - services/api/src/zhixing_api/ingestion
+      - services/api/src/zhixing_api/bootstrap.py
+      - services/api/src/zhixing_api/governance_service.py
+      - services/api/src/zhixing_api/data_selection.py
+      - services/api/src/zhixing_api/tool_templates.py
+      - contracts/metric/authoritative-order-summary.schema.json
+      - contracts/data/source-operations.schema.json
+      - contracts/ui/scope-twin-projection.schema.json
+      - contracts/data/canonical-fulfillment.schema.json
+      - contracts/data/source-configuration.schema.json
+      - contracts/data/source-update.schema.json
+      - services/api/src/zhixing_api/ingestion/operations.py
+      - packages/agent-runtime
+      - services/api/migrations/versions/0054_lingxing_ingestion_foundation.py
+      - services/api/migrations/versions/0055_lingxing_scope_and_run_metadata.py
+      - services/api/migrations/versions/0056_currency_and_source_time.py
+      - services/api/migrations/versions/0057_source_scope_and_manifest_identity.py
+      - services/api/migrations/versions/0058_canonical_source_facts.py
+      - services/api/migrations/versions/0059_trusted_scope_selection.py
+      - services/api/migrations/versions/0060_source_request_budgets.py
+      - services/api/migrations/versions/0061_source_sync_schedules.py
+      - services/api/migrations/versions/0062_canonical_after_sales.py
+      - services/api/migrations/versions/0063_source_authority_assignments.py
+      - services/api/migrations/versions/0064_job_continuations.py
+      - services/api/migrations/versions/0065_canonical_fulfillments.py
+      - services/api/migrations/versions/0066_source_configuration_versions.py
+      - services/api/migrations/versions/0067_source_mirror_pages.py
+      - services/api/migrations/versions/0068_source_schedule_parameters.py
+      - services/api/migrations/versions/0069_raw_request_context.py
+      - services/api/migrations/versions/0070_canonical_operational_facts.py
+      - services/api/migrations/versions/0071_source_binding_suggestions.py
+      - services/api/migrations/versions/0072_source_backfill_coverage.py
+      - services/api/migrations/versions/0073_source_resource_validation.py
+      - services/api/migrations/versions/0074_backfill_window_contract.py
+      - services/api/migrations/versions/0075_source_dependency_values.py
+      - services/api/migrations/versions/0076_source_dependency_tuples.py
+      - services/api/migrations/versions/0077_schedule_parameter_fanout.py
+      - services/api/migrations/versions/0078_backfill_parameter_fanout.py
+      - services/api/scripts/verify_source_configuration.py
+      - services/worker/src/zhixing_worker
+      - apps/web/src/components/data-center
+      - docs/reports/dat-011-lingxing-local-verification.md
+      - docs/reports/dat-011-lingxing-manual-review-and-access-gaps.md
+    acceptance: [生产运行路径不再依赖演示企业常量且双企业隔离通过, 集团企业业务单元和来源归属可治理并形成受信ScopeContext, 领星W0到W8只读资源可进入分页Raw链路且W0到W3完成规范映射, API只入队且Worker支持checkpoint幂等重试和失败恢复, 数据源资源运行映射冲突和集团范围页面使用真实API, 不使用真实凭据客户数据或远程生产环境完成全部本地自动化验证]
+
+  - id: MTG-001
+    milestone: M2
+    epic: digital-meeting
+    title: 定义Topic Claim Evidence Rebuttal和DecisionPackage契约
+    status: blocked
+    depends_on: [DOM-008]
+    outputs: [contracts/meeting]
+    acceptance: [可表达共识分歧未知行动和复盘]
+  - id: MTG-002
+    milestone: M2
+    epic: digital-meeting
+    title: 实现固定数字会议状态机
+    status: blocked
+    depends_on: [MTG-001, AGT-002, IAM-004]
+    outputs: [services/api/modules/meeting]
+    acceptance: [八个状态可恢复, 失败可重试, 步骤有事件记录]
+  - id: MTG-003
+    milestone: M2
+    epic: digital-meeting
+    title: 实现三角色独立分析
+    status: blocked
+    depends_on: [MTG-002, TWI-005, DAT-007]
+    outputs: [services/api/usecases/meeting-analysis]
+    acceptance: [各角色先独立输出且共享同一证据快照]
+  - id: MTG-004
+    milestone: M2
+    epic: digital-meeting
+    title: 实现两轮质询反方审查和主持汇总
+    status: blocked
+    depends_on: [MTG-003]
+    outputs: [services/api/usecases/meeting-deliberation]
+    acceptance: [主张绑定证据, 重复发言受限, 保留分歧]
+  - id: MTG-005
+    milestone: M2
+    epic: digital-meeting
+    title: 建立数字会议管理页面
+    status: blocked
+    depends_on: [MTG-002, IAM-005]
+    outputs: [apps/web/modules/meeting]
+    acceptance: [可发起查看过程确认结论和导出决策包]
+  - id: MTG-006
+    milestone: M2
+    epic: digital-meeting
+    title: 实现三个首批议题模板
+    status: blocked
+    depends_on: [MTG-004, DAT-009]
+    outputs: [config/meetings/templates]
+    acceptance: [覆盖加广告预算降价清库存和KPI错误激励]
+  - id: MTG-007
+    milestone: M2
+    epic: digital-meeting
+    title: 数字会议业务评测和人工对照
+    status: blocked
+    depends_on: [MTG-005, MTG-006, EVA-006]
+    outputs: [docs/reports/m2-digital-meeting.md]
+    acceptance: [与人工会议比较证据覆盖分歧质量和决策耗时]
+
+  - id: ACT-001
+    milestone: M3
+    epic: action-center
+    title: 实现ActionProposal和ActionLedger
+    status: blocked
+    depends_on: [DOM-008, AGT-006, IAM-004, IAM-007]
+    outputs: [services/api/modules/action]
+    acceptance: [提议审批执行结果幂等键和ActorContext完整, 发起审批执行主体可分别审计]
+  - id: ACT-002
+    milestone: M3
+    epic: action-center
+    title: 建立行动中心管理页面
+    status: blocked
+    depends_on: [ACT-001, IAM-005]
+    outputs: [apps/web/modules/action-center]
+    acceptance: [可查看批准拒绝重试和执行证据]
+  - id: ACT-003
+    milestone: M3
+    epic: action-center
+    title: 实现每日巡店只读工作流
+    status: blocked
+    depends_on: [DAT-009, ACT-001, FND-010]
+    outputs: [services/workflows/daily-store-review]
+    acceptance: [定时读取销售退款广告库存并生成飞书早报]
+  - id: ACT-004
+    milestone: M3
+    epic: action-center
+    title: 实现任务和回复草拟工具
+    status: blocked
+    depends_on: [ACT-001, CHN-003]
+    outputs: [mcp/enterprise-gateway/tools/draft]
+    acceptance: [只生成草稿或内部任务提议, 不自动对客发送]
+  - id: ACT-005
+    milestone: M3
+    epic: action-center
+    title: 实现首个审批后低风险写操作
+    status: blocked
+    depends_on: [ACT-002, ACT-004, IAM-004]
+    outputs: [services/actions/first-write-action]
+    acceptance: [审批前零外部变化, 执行前按当前范围重新授权, 重复执行幂等, 失败可人工恢复]
+  - id: ACT-006
+    milestone: M3
+    epic: action-center
+    title: 评估Temporal可靠工作流
+    status: deferred
+    depends_on: [ACT-003, ACT-005]
+    outputs: [docs/architecture/adr/ADR-reliable-workflow.md]
+    acceptance: [根据实际任务时长重试和补偿需求决策]
+  - id: ACT-007
+    milestone: M3
+    epic: action-center
+    title: 建立Computer Use执行节点POC
+    status: deferred
+    depends_on: [ACT-005]
+    outputs: [services/actions/computer-use-poc]
+    acceptance: [仅用于无API软件, 有截图证据人工确认和失败退出]
+
+  - id: EVA-001
+    milestone: M0
+    epic: evaluation
+    title: 建立评测数据格式和运行器
+    status: blocked
+    depends_on: [FND-003, DOM-001, IAM-001]
+    outputs: [evals/schema, evals/runner]
+    acceptance: [记录版本输入预期证据结果错误类型延迟和ActorContext, 支持授权场景]
+  - id: EVA-002
+    milestone: M1
+    epic: evaluation
+    title: 建立制度问答黄金集
+    status: blocked
+    depends_on: [KNO-003, EVA-001]
+    outputs: [evals/knowledge]
+    acceptance: [至少100题且包含现行废止冲突和未知问题]
+  - id: EVA-003
+    milestone: M1
+    epic: evaluation
+    title: 建立角色风格和边界评测集
+    status: blocked
+    depends_on: [TWI-001, EVA-001]
+    outputs: [evals/role-twin]
+    acceptance: [至少30题并由角色本人评分]
+  - id: EVA-004
+    milestone: M1
+    epic: evaluation
+    title: 建立M1自动回归报告
+    status: blocked
+    depends_on: [EVA-002, EVA-003, TWI-003]
+    outputs: [evals/reports/m1]
+    acceptance: [每次版本可比较事实引用风格拒答延迟和成本]
+  - id: EVA-005
+    milestone: M2
+    epic: evaluation
+    title: 建立经营指标黄金集和对账
+    status: blocked
+    depends_on: [DAT-006, EVA-001]
+    outputs: [evals/metrics]
+    acceptance: [至少30题含标准结果时间维度和舍入规则]
+  - id: EVA-006
+    milestone: M2
+    epic: evaluation
+    title: 建立数字会议质量评测
+    status: blocked
+    depends_on: [MTG-004, EVA-001]
+    outputs: [evals/meeting]
+    acceptance: [评价证据覆盖独立性分歧风险行动可执行性]
+
+  - id: OPS-001
+    milestone: M1
+    epic: operations
+    title: 建立开发测试演示三套配置
+    status: blocked
+    depends_on: [FND-005, FND-009]
+    outputs: [deploy/environments]
+    acceptance: [配置隔离, 演示环境可复建]
+  - id: OPS-002
+    milestone: M1
+    epic: operations
+    title: 建立备份恢复和演示数据重置脚本
+    status: blocked
+    depends_on: [FND-006, OPS-001]
+    outputs: [scripts/backup, scripts/reset-demo]
+    acceptance: [可在空环境恢复, 演示数据可重复初始化]
+  - id: OPS-003
+    milestone: M1
+    epic: operations
+    title: 建立内部版本发布和变更日志
+    status: blocked
+    depends_on: [FND-009, OPS-001]
+    outputs: [docs/releases, scripts/release]
+    acceptance: [版本包含迁移配置评测和回退说明]
+  - id: OPS-004
+    milestone: M2
+    epic: operations
+    title: 建立延迟失败率Token和成本看板
+    status: blocked
+    depends_on: [AGT-008, DAT-008, IAM-005]
+    outputs: [apps/web/modules/operations]
+    acceptance: [可按角色模型工具和渠道查看趋势]
+  - id: OPS-005
+    milestone: M3
+    epic: operations
+    title: 建立连接器和Agent运行告警
+    status: blocked
+    depends_on: [OPS-004, ACT-003]
+    outputs: [services/alerts]
+    acceptance: [同步失败回答异常和巡店失败可通知负责人]
+
+  - id: OPS-006
+    milestone: M1
+    epic: operations
+    title: 建立真实运行依赖适配与生产配置门禁
+    status: review
+    depends_on: [FND-005, FND-006, FND-010]
+    outputs: [services/api/src/zhixing_api/object_storage.py, services/api/src/zhixing_api/redis_coordinator.py, deploy/production/.env.example, docs/architecture/18-production-runtime-dependencies.md]
+    acceptance: [PostgreSQL S3 Redis 与模型 Provider 可独立配置和验证, 生产环境拒绝SQLite本地文件模拟Provider自动迁移和开发种子, SQLite到PostgreSQL迁移可预检可回滚且不改源文件, 密钥不进入仓库数据库或浏览器]
+
+  - id: CST-001
+    milestone: M4
+    epic: customer-service
+    title: 定义客户服务知识与动作边界
+    status: deferred
+    depends_on: [TWI-007, ACT-005]
+    outputs: [docs/product/customer-service-scope.md]
+    acceptance: [区分信息回答订单查询承诺补偿和禁止动作]
+  - id: CST-002
+    milestone: M4
+    epic: customer-service
+    title: 建立客服辅助回复工作台
+    status: deferred
+    depends_on: [CST-001, CHN-004, IAM-005]
+    outputs: [apps/web/modules/customer-service]
+    acceptance: [AI只生成带依据草稿, 客服确认后发送]
+  - id: CST-003
+    milestone: M4
+    epic: customer-service
+    title: 接入订单物流商品和售后只读工具
+    status: deferred
+    depends_on: [CST-001, AGT-007, IAM-004]
+    outputs: [mcp/enterprise-gateway/tools/customer-service]
+    acceptance: [工具返回结构化状态和来源时间]
+  - id: CST-004
+    milestone: M4
+    epic: customer-service
+    title: 建立客服质量和客户影响评测
+    status: deferred
+    depends_on: [CST-002, CST-003]
+    outputs: [evals/customer-service]
+    acceptance: [覆盖准确性语气承诺边界转人工和客户满意度]
+

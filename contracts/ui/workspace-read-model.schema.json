@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.example/contracts/ui/workspace-read-model.schema.json",
+  "title": "Workspace Read Model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "data_mode",
+    "workspace",
+    "actor_name",
+    "actor_position",
+    "actor_organization",
+    "scope",
+    "scope_context",
+    "navigation",
+    "metrics",
+    "attention",
+    "decisions",
+    "work_items",
+    "activities",
+    "freshness",
+    "quick_actions",
+    "scene",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "data_mode": { "const": "database" },
+    "workspace": { "$ref": "workspace-profile.schema.json" },
+    "actor_name": { "type": "string", "minLength": 1 },
+    "actor_position": { "type": "string", "minLength": 1 },
+    "actor_organization": { "type": "string", "minLength": 1 },
+    "scope": { "$ref": "#/$defs/scope" },
+    "scope_context": { "$ref": "../identity/scope-context.schema.json" },
+    "navigation": { "type": "array", "items": { "type": "object" } },
+    "metrics": { "type": "array", "items": { "$ref": "#/$defs/metric" } },
+    "attention": { "type": "array", "items": { "$ref": "#/$defs/attention" } },
+    "decisions": { "type": "array", "items": { "$ref": "#/$defs/attention" } },
+    "work_items": { "type": "array", "items": { "$ref": "#/$defs/attention" } },
+    "activities": { "type": "array", "items": { "$ref": "#/$defs/activity" } },
+    "freshness": { "type": "array", "items": { "$ref": "#/$defs/freshness" } },
+    "quick_actions": { "type": "array", "items": { "$ref": "#/$defs/quick_action" } },
+    "scene": { "anyOf": [{ "$ref": "#/$defs/scene" }, { "type": "null" }] },
+    "generated_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "keys", "label", "as_of"],
+      "properties": {
+        "kind": { "type": "string" },
+        "keys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "label": { "type": "string" },
+        "as_of": { "type": "string", "format": "date-time" }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "value", "unit", "change_rate", "as_of", "status", "status_reason", "href", "evidence_refs"],
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "value": { "type": "number" },
+        "unit": { "type": "string" },
+        "change_rate": { "type": ["number", "null"] },
+        "as_of": { "type": "string", "format": "date-time" },
+        "status": { "enum": ["positive", "warning", "critical", "info", "neutral"] },
+        "status_reason": { "type": "string" },
+        "href": { "type": ["string", "null"] },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "attention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "kind", "title", "detail", "severity", "status", "href", "evidence_refs", "as_of"],
+      "properties": {
+        "key": { "type": "string" },
+        "kind": { "enum": ["anomaly", "decision", "approval", "work", "system", "quality"] },
+        "title": { "type": "string" },
+        "detail": { "type": "string" },
+        "severity": { "enum": ["critical", "high", "warning", "info", "neutral"] },
+        "status": { "type": "string" },
+        "href": { "type": ["string", "null"] },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } },
+        "as_of": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "activity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "kind", "title", "detail", "status", "href", "occurred_at"],
+      "properties": {
+        "key": { "type": "string" },
+        "kind": { "type": "string" },
+        "title": { "type": "string" },
+        "detail": { "type": "string" },
+        "status": { "type": "string" },
+        "href": { "type": ["string", "null"] },
+        "occurred_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "status", "as_of", "detail"],
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "status": { "type": "string" },
+        "as_of": { "type": ["string", "null"], "format": "date-time" },
+        "detail": { "type": "string" }
+      }
+    },
+    "quick_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "href", "required_permission", "enabled", "disabled_reason"],
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "href": { "type": "string", "pattern": "^/console(?:/.*)?$" },
+        "required_permission": { "type": ["string", "null"] },
+        "enabled": { "type": "boolean" },
+        "disabled_reason": { "type": ["string", "null"] }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "route", "enabled", "object_refs", "layer_keys"],
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "route": { "type": ["string", "null"] },
+        "enabled": { "type": "boolean" },
+        "object_refs": { "type": "array", "items": { "type": "string" } },
+        "layer_keys": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

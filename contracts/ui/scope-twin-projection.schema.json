@@ -1,0 +1,194 @@
+{
+  "$defs": {
+    "OrganizationNode": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Id"
+        },
+        "kind": {
+          "enum": [
+            "group",
+            "enterprise",
+            "business_unit"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "parent_id",
+        "kind",
+        "name"
+      ],
+      "title": "OrganizationNode",
+      "type": "object"
+    },
+    "SourceLocation": {
+      "properties": {
+        "origin_id": {
+          "title": "Origin Id",
+          "type": "string"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "enterprise_id": {
+          "title": "Enterprise Id",
+          "type": "string"
+        },
+        "business_unit_id": {
+          "title": "Business Unit Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "store",
+            "warehouse"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "entity_status": {
+          "title": "Entity Status",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_name": {
+          "title": "Source Name",
+          "type": "string"
+        },
+        "source_status": {
+          "title": "Source Status",
+          "type": "string"
+        },
+        "connection_status": {
+          "title": "Connection Status",
+          "type": "string"
+        },
+        "resource_key": {
+          "title": "Resource Key",
+          "type": "string"
+        },
+        "resource_enabled": {
+          "title": "Resource Enabled",
+          "type": "boolean"
+        },
+        "schema_status": {
+          "title": "Schema Status",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "origin_id",
+        "entity_id",
+        "enterprise_id",
+        "business_unit_id",
+        "kind",
+        "name",
+        "entity_status",
+        "source_id",
+        "source_name",
+        "source_status",
+        "connection_status",
+        "resource_key",
+        "resource_enabled",
+        "schema_status",
+        "observed_at"
+      ],
+      "title": "SourceLocation",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "scope_snapshot": {
+      "additionalProperties": true,
+      "title": "Scope Snapshot",
+      "type": "object"
+    },
+    "organizations": {
+      "items": {
+        "$ref": "#/$defs/OrganizationNode"
+      },
+      "title": "Organizations",
+      "type": "array"
+    },
+    "locations": {
+      "items": {
+        "$ref": "#/$defs/SourceLocation"
+      },
+      "title": "Locations",
+      "type": "array"
+    },
+    "total": {
+      "title": "Total",
+      "type": "integer"
+    },
+    "offset": {
+      "title": "Offset",
+      "type": "integer"
+    },
+    "limit": {
+      "title": "Limit",
+      "type": "integer"
+    },
+    "data_as_of": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Data As Of"
+    }
+  },
+  "required": [
+    "scope_snapshot",
+    "organizations",
+    "locations",
+    "total",
+    "offset",
+    "limit",
+    "data_as_of"
+  ],
+  "title": "ScopeTwinProjection",
+  "type": "object"
+}

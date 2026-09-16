@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/identity/org-unit-configuration.schema.json",
+  "title": "Governed Identity Organization Unit Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "client_request_key", "name", "unit_type", "reason"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "client_request_key": { "type": "string", "minLength": 8, "maxLength": 160 },
+    "org_key": { "type": "string", "minLength": 2, "maxLength": 120, "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "expected_version": { "type": "integer", "minimum": 1 },
+    "name": { "type": "string", "minLength": 2, "maxLength": 160 },
+    "unit_type": { "type": "string", "minLength": 2, "maxLength": 48 },
+    "parent_org_key": { "type": ["string", "null"], "maxLength": 120 },
+    "status": { "enum": ["active", "suspended"] },
+    "reason": { "type": "string", "minLength": 3, "maxLength": 500 }
+  }
+}

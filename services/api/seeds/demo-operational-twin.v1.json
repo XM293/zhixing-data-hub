@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "seed_key": "demo-operational-twin",
+  "version": "1.30.0",
+  "mode": "idempotent-upsert",
+  "entrypoint": "zhixing_api.seed:seed_database",
+  "environments": ["development", "test"],
+  "description": "吉客云ERP/OMS、CRM、广告、客服四类可替换测试来源，以及企业经营数字孪生、知识证据、受治理记忆、多角色分身、评测、分析、客服、数字会议、身份权限与工具注册的可重复测试数据"
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/identity/channel-identity.schema.json",
+  "title": "Channel Identity Administration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "enterprise_id", "stats", "accounts", "items", "recent_events", "generated_at"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "enterprise_id": { "type": "string", "minLength": 1 },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "bound", "unknown", "suspended", "seen_last_24h", "channel_count"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "bound": { "type": "integer", "minimum": 0 },
+        "unknown": { "type": "integer", "minimum": 0 },
+        "suspended": { "type": "integer", "minimum": 0 },
+        "seen_last_24h": { "type": "integer", "minimum": 0 },
+        "channel_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["principal_id", "account_key", "display_name", "login_name", "organization", "position"],
+        "properties": {
+          "principal_id": { "type": "string", "minLength": 1 },
+          "account_key": { "type": "string", "minLength": 1 },
+          "display_name": { "type": "string", "minLength": 1 },
+          "login_name": { "type": "string", "minLength": 1 },
+          "organization": { "type": "string", "minLength": 1 },
+          "position": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "channel_key", "channel_label", "external_tenant_key", "external_identity_hint", "external_identity_fingerprint", "observed_display_name", "principal_id", "principal_name", "principal_account_key", "binding_status", "version", "first_seen_at", "last_seen_at", "updated_at"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "channel_key": { "type": "string", "minLength": 1 },
+          "channel_label": { "type": "string", "minLength": 1 },
+          "external_tenant_key": { "type": "string", "minLength": 1 },
+          "external_identity_hint": { "type": "string", "minLength": 1 },
+          "external_identity_fingerprint": { "type": "string", "pattern": "^[a-f0-9]{12}$" },
+          "observed_display_name": { "type": ["string", "null"] },
+          "principal_id": { "type": ["string", "null"] },
+          "principal_name": { "type": ["string", "null"] },
+          "principal_account_key": { "type": ["string", "null"] },
+          "binding_status": { "type": "string", "enum": ["unknown", "bound", "suspended"] },
+          "version": { "type": "integer", "minimum": 1 },
+          "first_seen_at": { "type": "string", "format": "date-time" },
+          "last_seen_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "recent_events": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "event_type", "channel_identity_id", "actor_name", "before_status", "after_status", "before_principal_name", "after_principal_name", "reason", "request_id", "run_id", "occurred_at"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "event_type": { "type": "string", "minLength": 1 },
+          "channel_identity_id": { "type": "string", "minLength": 1 },
+          "actor_name": { "type": "string", "minLength": 1 },
+          "before_status": { "type": "string", "minLength": 1 },
+          "after_status": { "type": "string", "minLength": 1 },
+          "before_principal_name": { "type": ["string", "null"] },
+          "after_principal_name": { "type": ["string", "null"] },
+          "reason": { "type": "string", "minLength": 1 },
+          "request_id": { "type": "string", "minLength": 1 },
+          "run_id": { "type": "string", "minLength": 1 },
+          "occurred_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "generated_at": { "type": "string", "format": "date-time" }
+  }
+}

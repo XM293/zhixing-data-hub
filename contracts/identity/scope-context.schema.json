@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.example/contracts/identity/scope-context.schema.json",
+  "title": "Scope Context v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "group_id", "group_name", "enterprise_id", "enterprise_name", "current_enterprise_id", "allowed_enterprise_ids", "selected_enterprise_ids", "business_unit_ids", "store_ids", "warehouse_ids", "scope_level", "scope_version", "timezone", "currency_code", "base_currency", "consolidation_profile_version", "data_as_of"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "group_id": { "type": ["string", "null"] },
+    "group_name": { "type": ["string", "null"] },
+    "enterprise_id": { "type": "string", "minLength": 1 },
+    "current_enterprise_id": { "type": "string", "minLength": 1 },
+    "enterprise_name": { "type": "string", "minLength": 1 },
+    "allowed_enterprise_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "selected_enterprise_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "business_unit_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "store_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "warehouse_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "scope_level": { "enum": ["group", "enterprise", "business_unit", "store", "warehouse"] },
+    "consolidation_profile_version": { "type": ["string", "null"] },
+    "data_as_of": { "type": ["string", "null"], "format": "date-time" },
+    "base_currency": { "type": ["string", "null"], "minLength": 3, "maxLength": 3 },
+    "scope_version": { "type": "string", "minLength": 1 },
+    "timezone": { "type": "string", "minLength": 1 },
+    "currency_code": { "type": ["string", "null"], "minLength": 3, "maxLength": 3 }
+  }
+}

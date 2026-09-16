@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/platform/platform-management.schema.json",
+  "title": "Platform management controls",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "capabilities"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "capabilities": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "background-jobs",
+          "platform-config",
+          "notifications",
+          "file-assets",
+          "bulk-exchange",
+          "access-delegation"
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "mutation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "client_request_key", "reason"],
+      "properties": {
+        "schema_version": { "const": 1 },
+        "client_request_key": { "type": "string", "minLength": 8, "maxLength": 160 },
+        "reason": { "type": "string", "minLength": 3, "maxLength": 500 }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope_type", "scope_ids", "effect"],
+      "properties": {
+        "scope_type": { "type": "string", "minLength": 2, "maxLength": 48 },
+        "scope_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "effect": { "enum": ["allow", "deny"] }
+      }
+    },
+    "platform_operation_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_type",
+        "target_type",
+        "target_id",
+        "actor_principal_id",
+        "idempotency_key",
+        "request_id",
+        "run_id",
+        "occurred_at"
+      ],
+      "properties": {
+        "event_type": { "type": "string" },
+        "target_type": { "type": "string" },
+        "target_id": { "type": "string" },
+        "actor_principal_id": { "type": "string" },
+        "idempotency_key": { "type": "string" },
+        "request_id": { "type": "string" },
+        "run_id": { "type": "string" },
+        "occurred_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

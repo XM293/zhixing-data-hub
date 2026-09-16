@@ -1,0 +1,13 @@
+[Unit]
+Description=Zhixing Worker
+After=zhixing-api.service
+
+[Service]
+WorkingDirectory=/opt/zhixing-data-hub
+EnvironmentFile=/etc/zhixing/zhixing.env
+ExecStart=/opt/zhixing-data-hub/.venv/bin/python services/worker/scripts/worker.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

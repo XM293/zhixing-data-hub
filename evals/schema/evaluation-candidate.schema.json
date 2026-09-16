@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/evals/schema/evaluation-candidate.schema.json",
+  "title": "Governed feedback-to-evaluation candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "candidate_id",
+    "source_handoff_case_id",
+    "source_feedback_event_id",
+    "source_agent_run_id",
+    "proposed_case_key",
+    "proposed_title",
+    "domain",
+    "risk_level",
+    "actor_login_name",
+    "target_twin_key",
+    "input",
+    "expectations",
+    "resolution_summary",
+    "status"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "candidate_id": { "type": "string" },
+    "source_handoff_case_id": { "type": "string" },
+    "source_feedback_event_id": { "type": "string" },
+    "source_agent_run_id": { "type": "string" },
+    "proposed_case_key": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+    "proposed_title": { "type": "string", "minLength": 2 },
+    "domain": { "enum": ["knowledge", "role-twin", "metric", "authorization", "meeting", "tool"] },
+    "risk_level": { "enum": ["low", "medium", "high", "critical"] },
+    "actor_login_name": { "type": "string", "minLength": 1 },
+    "target_twin_key": { "type": "string", "minLength": 1 },
+    "input": { "$ref": "evaluation-case.schema.json#/$defs/input" },
+    "expectations": { "$ref": "evaluation-case.schema.json#/$defs/expectations" },
+    "resolution_summary": { "type": "string", "minLength": 2 },
+    "status": { "enum": ["pending", "accepted", "rejected"] },
+    "accepted_case_id": { "type": ["string", "null"] },
+    "review_reason": { "type": ["string", "null"] }
+  }
+}

@@ -1,0 +1,2544 @@
+{
+  "schema_version": 1,
+  "allowlist_version": "lingxing-readonly-review-2026-09-11.4",
+  "official_contract_version": "lingxing-contract-2026-09-11.7",
+  "source": "https://apidoc.lingxing.com/",
+  "entries": [
+    {
+      "operation_id": "lingxing_op_014323a3ca3de182",
+      "method": "POST",
+      "path": "/bd/sp/api/open/settlement/summary/list",
+      "document_sha256": "38ab38dcedb85bba18fa6b83a803949368aeed68cfbbd38c5c2a1250a98f86b6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_014edc1b6706160e",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/profit/report/order",
+      "document_sha256": "883e6680c8a235f0c72c3976280aa715bb33b193390928d47672d7868fdbc3d7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_02eabf7c7d379e7d",
+      "method": "POST",
+      "path": "/basicOpen/lazadaAd/campaign/info",
+      "document_sha256": "abab7a29ad1df2443848532576dd95112651e3caedd375c91f85e3bd12503994",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_044ffc8e4003fc69",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/profit/report/sku",
+      "document_sha256": "9ae7eb85a6756dbda61415b30832cfd9df381f3cf8812ccd0fb47387ba7a36cd",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_04957300fd9047e6",
+      "method": "POST",
+      "path": "/listing/publish/openapi/amazon/product/search",
+      "document_sha256": "e3d1ec862a46df3708a6b36d553a32f7160fffdcd753ada3210f2e3cd779ed92",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_04efc974c7a32bed",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/ads/invoice/campaign/list",
+      "document_sha256": "55a26ce5e2afde839754a04bafcdfaf089fc7a20b43cab46a1c8309de67a67c3",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_052e6e536d006926",
+      "method": "POST",
+      "path": "/basicOpen/openapi/sale/fbaFeeDifference/order/list",
+      "document_sha256": "0635f06c82566da86df605e8b3b9e09189ac16be28fc5a355a7ee6d2785b4caf",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_05ad44ba0d57cf05",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/awd/inbound-plan/detail",
+      "document_sha256": "321df9afe5f280251e741453df6f0ca28dcdfea91c277b99782404b6713ad689",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_06605f4586cd90e5",
+      "method": "POST",
+      "path": "/erp/sc/routing/fba/shipment/getFbaProductList",
+      "document_sha256": "b0f3e9a7d4f710d6b93045fab885d20e1c6a47de7a4147917aa916f0260228ef",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_08444cadc4cce2cc",
+      "method": "POST",
+      "path": "/erp/sc/routing/finance/ProfitState/profitAsinSon",
+      "document_sha256": "3a8885744952b4e4c25bb4db5dac967f9407685168dd919c3bb872c63aa662e8",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_0c965b63c13509a7",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdMatchTargetReports",
+      "document_sha256": "4634e76ad129490f751f3162a7ebf82b42b6c4d3513cd32f7ac0c84fc4f5b5a4",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_0d800b351733abab",
+      "method": "POST",
+      "path": "/basicOpen/finance/shopee/payout/list",
+      "document_sha256": "89b4dd8664b05fc6e8c5799914bce7b7d211a9a724b44807c232731252522da6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_0e56fdfae7c28e18",
+      "method": "POST",
+      "path": "/basicOpen/salesAnalysis/returnOrder/analysisLists",
+      "document_sha256": "0b81f06c2debe8f0a49efe6142a41cd78ea02b11f303befef3803467b381cdfb",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_0ef00891b5a28def",
+      "method": "POST",
+      "path": "/basicOpen/lazadaAd/store/report/list",
+      "document_sha256": "616af36d7b58a18a9608fac10393e4aa4b8af6fabb72bcb9063665f692df96d0",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_0f9b6c6ba75e63db",
+      "method": "POST",
+      "path": "/pb/mp/listing/v2/getPairList",
+      "document_sha256": "623c8ade7cdc0f7d3a177c44b1a9bece8a653da10e23451a3c6fb057b5d5eae6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_110049cb54c92c71",
+      "method": "POST",
+      "path": "/erp/sc/data/fba_report/shipmentPlanLists",
+      "document_sha256": "b8c42464b862bcf3bea0fb82910d93c40639dbffd1b9e8673955b9eba9529c60",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_11028d0a358daf01",
+      "method": "POST",
+      "path": "/promotionApi/open/promotion/primeDiscountAllDetailBatch",
+      "document_sha256": "293f6877c5d9df5fe49637c4b19c297431888e5fe64967f2ace573f198567fbd",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_11bb1741d5441737",
+      "method": "POST",
+      "path": "/basicOpen/salesAnalysis/productPerformance/performanceTrendByHour",
+      "document_sha256": "5bd9f2d6c05159985655c3bcc5ae5a2b287b7b564ad543c74866e22e3769ad6d",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_13027c43f3d0cccd",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/shopee/list",
+      "document_sha256": "f623e018c2dd9dfdc33afd22f0d5d1789fabc928c453037d29d047e8bf35c7f9",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_142cc170b9409482",
+      "method": "POST",
+      "path": "/basicOpen/report/query/reportExportTask",
+      "document_sha256": "79a60339c39885d98584a32842cbaf51ebdec949802405d40567423e9a78f95f",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_147dd70d0ebde23a",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/shein/list",
+      "document_sha256": "9b87824fa1cce8d2ac6532daba2d47a7d609e67bbf27e2d069f03b3cfab073bb",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_15594f4b49a03827",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/address/returnAddressList",
+      "document_sha256": "59919a5d96f447bbda2aa07244e38ddc216b970e7403749a0abfa0374ab45cd9",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_15d5fa1654598c73",
+      "method": "POST",
+      "path": "/cepf/fms/openapi/walmartPayment/queryPage",
+      "document_sha256": "ff4185e2ac43eac015a702756c1927585db537fb25e0f6b132bfc2bf73b66463",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1761ca8b487c628b",
+      "method": "POST",
+      "path": "/erp/sc/routing/inventoryLog/WareHouseInventory/wareHouseCenterStatement",
+      "document_sha256": "3453f76125e4c6285f0f154abad07a0f79f3d4c951b9b09e5b23b39e38f5c404",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_18920b9628fb9e22",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/refundOrders",
+      "document_sha256": "869cd16ad331081009760bcf4169c84eb4184079b625a1ed0ef90a5480638265",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_19b078e0d7b17a30",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/ozon/list",
+      "document_sha256": "0b14e30bbdb627fd38badecce56d1ef62b65e55237eda6428632b15b58ea7ba6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1a540d9bc9ff2f4a",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/alibaba/list",
+      "document_sha256": "748b13e55b0f6198aa8f7b4bbfdddd22d1dfce62ddd6db84586e26d227f85428",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1a92fdecd92cfdd3",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/getBatchStatementList",
+      "document_sha256": "3123a5a06f5b5801ada8ec720b8195dd8399fe0974052d9f4a18d27e4cc3e7db",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1ac39a97c96f4d6c",
+      "method": "POST",
+      "path": "/basicOpen/lazadaAd/item/report/list",
+      "document_sha256": "4327765e344e02a0c7be3aaaf41f4bde219725fcca833f7b22b6d64b824057c9",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1accf3fcfe303635",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaNegativeKeywords",
+      "document_sha256": "2b855fc3afd800a9409b8a13f1b163eaf7d6487323e113dc4815c19b6bcc2933",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1b7b0eec8af7d4b1",
+      "method": "POST",
+      "path": "/cost/center/ods/detail/query",
+      "document_sha256": "647f396b56f80193502ff68d211070f5a1a02a8983c72a8cc4c18c4758a29b48",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1c5334fdfd21b4d0",
+      "method": "POST",
+      "path": "/erp/sc/statistic/removalShipment/list",
+      "document_sha256": "88d9f352127d030d03d89a375ad9ae698ccbdc1af723aa549d2fa699415b8bb8",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1c54bda36d63739d",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/cargo/addCargoGoods/list",
+      "document_sha256": "919fc85d4bab02cd22fb4259405972274ecb93096a51db6e16b08dc11f124289",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1d88c71195ebcea0",
+      "method": "POST",
+      "path": "/basicOpen/openapi/getInvoice/page/list",
+      "document_sha256": "44adb189c1e52b64f3c69d062c443bf8cb27f3facf1aee46452cfbc26a5f52b0",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1e87d6e5711757bf",
+      "method": "POST",
+      "path": "/erp/sc/routing/order/Order/getOrderList",
+      "document_sha256": "a3961fc752d0c0ba286f5b2ae50beb6c2bd6d8094c2dc0c0cab713330da0cb87",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1ec67db1946e5548",
+      "method": "POST",
+      "path": "/basicOpen/customerService/storeTarget/detail",
+      "document_sha256": "00e22a08229fcc06ad31f72ecf8818252f564b58429c256ec27d95322fb6885a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1f19855f9de1addf",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuFull/fee/list",
+      "document_sha256": "93ecf6cebb74ff1432838e82344564f96f60a8147841e8a560f374ebff638d3b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_1f62b5154c5436d8",
+      "method": "POST",
+      "path": "/basicOpen/openapi/replenishmentRestriction/page/list",
+      "document_sha256": "f83c6ca05a345e02adf8b3779dd672c1888c143fca60c4b1a823aa709329dded",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2000554b61d12cae",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/parent/asin/list",
+      "document_sha256": "32149c4c9e95162afe70a3431b25b2fe7d9555bd4e8920d7f7355820b960731f",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2007a259c912fff1",
+      "method": "POST",
+      "path": "/erp/sc/data/local_inventory/brand",
+      "document_sha256": "d39daca0aeae62b77c8663d13833974a3dece1525f5b604af2504c1cbeb55519",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_203fa644e59db56c",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/ebay/list",
+      "document_sha256": "7ea5575dc6f0d14f3fc12d60205e1aff7c99be9104b703e0ae856e3766b46179",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_207de4a51d478606",
+      "method": "POST",
+      "path": "/erp/sc/v2/data/mws/reviews",
+      "document_sha256": "0d815f5b82dc0cecc74b9a5b59816432639ef588798c0e23e4ebd8c3a3dfcda7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_20ea9894c69263c4",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdAdGroupReports",
+      "document_sha256": "ac0d974da39dca2a72935c7e84ebff759ae36b126da4717e466ae09c92ae4a88",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_21224ef5d7114ccf",
+      "method": "POST",
+      "path": "/erp/sc/routing/storage/spu/spuList",
+      "document_sha256": "2ce2f278f2e9fcc7d3ac1c32efff5e3d1ceb67c43c8a06b4e956211667e40040",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_216a0d9a9c31f09c",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-shipment/getTransportList",
+      "document_sha256": "3434f9505bfbc9c78379f2d847ae70a66bbe8ebf607c7f68ab466cbd6eba370a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_22e58f36b77b15a6",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/order/list",
+      "document_sha256": "7d457b49b3d13f8cf433d7492f0c84ffc6bb7c01a9da77d7778be5ac396a0a76",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2354b5359897bc3d",
+      "method": "POST",
+      "path": "/erp/sc/data/fba_report/storageFeeLongTerm",
+      "document_sha256": "2deec796663b477ce72c3407b294d12c7de026d333aac811329b6d85e79a0164",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_26ca516f5ff2a508",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdProductAdReports",
+      "document_sha256": "cfbd542a5a8072a5a634588cddeb14f9b4ddfdf07d01c5d6b0ae6883c726b6b7",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_271a3c2c8d3dfc09",
+      "method": "POST",
+      "path": "/pb/openapi/newad/listHsaTargetingReport",
+      "document_sha256": "11796a9f7bfc7630cd2ba3323c7317565f28f884035f42e8df909fcab1a8f6b2",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_273db2b48715beeb",
+      "method": "POST",
+      "path": "/pb/openapi/newad/campaignPlacementReports",
+      "document_sha256": "3a6fee1d2a842ded23a7044aacc6c918a6f83e72524435f13a6c48fa3d3022e1",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_281e1d2a31717fc9",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-plan/page",
+      "document_sha256": "59cf96a7ca36341aa8963c7a12dbeccd6d1f84da19c96b61b96a985aadad08fc",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2864cb874b67e59f",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuFull/finance/list",
+      "document_sha256": "2fe00be391b1636fe51f23fe78dccc838f516c5e62d514aa6b3983b460580acc",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_29007f96e7677376",
+      "method": "POST",
+      "path": "/basicOpen/operateManage/operateLog/list/v2",
+      "document_sha256": "07cd01c54391c2fcb36930bd668c72db6bc613ee609d230401dbd1dd739bf308",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2926773821a3f6eb",
+      "method": "POST",
+      "path": "/basicOpen/openapi/mwsReport/adjustmentList",
+      "document_sha256": "204069e788127a8a514859aad955bf5fad13d7b2d7cf522fad3aeb0700ea463b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_29be5f1449ac82be",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-shipment/listShipmentBoxes",
+      "document_sha256": "d52b3904011314105946bc2489be3ea713403841abef3f59f41b93e37556dd8c",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_29c2ecea89316017",
+      "method": "POST",
+      "path": "/basicOpen/promotion/listingDetailManage",
+      "document_sha256": "17e8d7eafb9b3d293a4cd66bb3b5c99930e655b7efbd8c18418a046b3b926ac0",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2abb55595a41c891",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuHalf/fee/list",
+      "document_sha256": "afbed22e521786dbed812b37a9528271e29e7c8037f15c466f1abb59c196ca41",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2ac2fafe4f6abf14",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/shopify/bill/statement/list",
+      "document_sha256": "902be4316f7896eddbfb3cc47f73edc7173cc77c1ece5f737d0a24cb60030efc",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2b3f32f26f0e64ef",
+      "method": "POST",
+      "path": "/listing/publish/openapi/amazon/product/list",
+      "document_sha256": "e9394b7e391d3d96f62e974d0f1343b1f9c63e92734384e7f22295f4521bfab4",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2b405c2333888845",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaSug/msku/getInfo",
+      "document_sha256": "78b331974ff1cde66ea2d677d9a0e8cefa40596d6375c8848d8e019bc25e1d32",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2d2bf6a15cef1f18",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/order/fbaExchangeOrderList",
+      "document_sha256": "be9c141cc47be98a69a4fe011818369b39aa86db3a16b6481295b3b7253b9572",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2d9184aadf4f348d",
+      "method": "POST",
+      "path": "/basicOpen/openapi/fbc/stockSearch",
+      "document_sha256": "e76e70486d7fbc752bef2d9d306ea8bdc427aa1e6844fc926760a383a25a383e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2d9cf2e675319e70",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-plan/detail",
+      "document_sha256": "cef1799bc4984054cf13e4a6f8c1be48efbb01704c15a65034dccc7853329779",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2dbe32f66db9cd5b",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/walmart/bill/payout/list",
+      "document_sha256": "27e39c22ad819bd34942d13b97d8cc656d32fb6230874533ab84f67875500f52",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2de6012ca58a500a",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/asin/list",
+      "document_sha256": "aad5e4c91df8eb8f49f11bda13362ca97b38159ed57531b6386942e6baa9090a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2eeb6e5205deb764",
+      "method": "POST",
+      "path": "/pb/openapi/newad/queryWordReports",
+      "document_sha256": "8e573d10b686809b1f23dd09dc529f6b320fb74780a38e62f2b6660b7192684e",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_2fda4da101ac755e",
+      "method": "POST",
+      "path": "/cepf/warehouse/api/openApi/queryWFSCargoPage",
+      "document_sha256": "ecbf2b26e366593107a22a4f987e0ba9ba8ddb0f40ce58037b73c3e9ed56ec76",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_301899f8a10bb79e",
+      "method": "POST",
+      "path": "/erp/sc/routing/deliveryReceipt/PurchaseReceiptOrder/getOrderList",
+      "document_sha256": "c1404b63d82a80b386814ec4a57b0dbb42504c08c5e4eea9498f7b821fbbc260",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_307ed67b3b2459e8",
+      "method": "POST",
+      "path": "/bd/productPerformance/openApi/asinList",
+      "document_sha256": "028e3245728a1a5a18ed3916926bf6539612dde7b8088524e0d26a3ff264fe2d",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_31fbb54d434449aa",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaSug/msku/getSourceList",
+      "document_sha256": "f4c9660cd9ff0d3afc4d4a626e633acf9e311c03610515b585494c25dffeed61",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_333ffd8b2fa8de3b",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaSug/asin/getInfo",
+      "document_sha256": "712c2f56182e027b739d9ae93cb346fe5b2ac4563a6d830aa10afdd18ded5c30",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_34475ffd96ab2c9a",
+      "method": "POST",
+      "path": "/erp/sc/routing/finance/ProfitStatis/profitMsku",
+      "document_sha256": "d41db6dc88a83cefeab65096cb761f4a6dc8f653a5b97e8998925eda0406ef12",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_359f1f0aca53db93",
+      "method": "POST",
+      "path": "/pb/mp/returns/v2/list",
+      "document_sha256": "2c56e3234c9f7f5e4cdabda57dcbbb3c575e9437fa68369799009d952965470f",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_361a2d5a6a1a5bc0",
+      "method": "POST",
+      "path": "/basicOpen/finance/mreport/OrderProfit",
+      "document_sha256": "e69b8a72b7bfbf8d5a103b2933ece117667f2a08a3e65634c34f45c2d849ec36",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_361b03c664452e20",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaSug/msku/getConfig",
+      "document_sha256": "0c46d48fb86f2bd0e72e765e6a1ff45d82f719b16f3ca6284479a43ea5a2e933",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_369d7d507fdadf85",
+      "method": "POST",
+      "path": "/basicOpen/customerService/storeTarget/list",
+      "document_sha256": "fa88fcd87fee4517bd828f7a18bf18b2261b5c0f3cafa842408c00591a0ea30f",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_37602ceb015cf8ac",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaSug/asin/getDailySalesInfoFeature",
+      "document_sha256": "9b5cf12e8b0d060e3fbb60659282f3d15df0330ce6a41bc3e0bf6e12ca869c82",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_38e5cfebea8455e5",
+      "method": "POST",
+      "path": "/erp/sc/data/local_inventory/supplier",
+      "document_sha256": "4c2587b0bd60f437fe5e13f8dec4b4140e76169e3c720ec795b8f9748c9846f7",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_39ebdc2026eb6092",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuFull/warehouse/list",
+      "document_sha256": "b25dd4216dfc0af21695787da5f2aafb17b70fc03b13ff17dcb4b79cb7bded52",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3a577a0db1a34f8d",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuHalf/return/fee/list",
+      "document_sha256": "44b90b09dac08d7be012c1d6c81235fd9b4ab37dcc1005e6e204875139565210",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3b6e689cefd8ef55",
+      "method": "POST",
+      "path": "/erp/sc/routing/amzod/order/afterSaleList",
+      "document_sha256": "c50f238b53350a2c152a41e5c34655d07e232869b5b1f5c762e1f28c0b432cd6",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3c42c2b62994cfc5",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuLocal/bill/list",
+      "document_sha256": "6275c07040c8760f9e6b5f0ba8e1a7cf4e34ff9e76672fcaeb926c77e1273416",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3d23265b87349669",
+      "method": "POST",
+      "path": "/erp/sc/routing/inventoryReceipt/StorageAdjustment/getStorageAdjustOrderList",
+      "document_sha256": "06ab0bdb97ad847f32eaabb1c1f08e1903dfed734864d26c92367a4f532d7c46",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3dccc42b26111cae",
+      "method": "POST",
+      "path": "/basicOpen/finance/profitReport/order/transcation/list",
+      "document_sha256": "194403290a92842b54653e0ec5a1ede1cef5b5675416882dd04cbc6b01ccab78",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3deda321b3d6f17c",
+      "method": "POST",
+      "path": "/erp/sc/cs/feedbackReport/detail",
+      "document_sha256": "382a23d21c7111e10b8e8efeb6038bf5f3d36b562eab5f2c36d6c19f71862c06",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3df2efff9ddaac06",
+      "method": "POST",
+      "path": "/bd/sp/api/open/monthly/receivable/report/list",
+      "document_sha256": "18101ecf679de7fd2f13547ede99cf90d2a6c1315a8e311bf79e504f73f37551",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3e39754910d10221",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-shipment/shipmentDetailList",
+      "document_sha256": "846b55d5a6ce7500e83a8f34e0e22e20d17b86665e18edd4244f7123922a3b69",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3e3dd5c5f9a138ab",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spCampaignReports",
+      "document_sha256": "66111d8b4d77212b352cb03dd3823ada0ff56b04ec3e4dfb39315f2da50dc38e",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3e3df53c424dadf3",
+      "method": "POST",
+      "path": "/order/amzod/api/orderList",
+      "document_sha256": "00bd267676e2a46773a4887508340b90a1b9476e880a6f89dc16724a0379acc2",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3e68495907ab0f72",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaProductAds",
+      "document_sha256": "7f0353f0cc1d70e1db41d041c12e5d56c67c3e6f25083b24e204af3db80c839c",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3f051e5baa5a134c",
+      "method": "POST",
+      "path": "/pb/mp/order/getFulfillmentResult",
+      "document_sha256": "42da890a459c07e0e2a78f925ada7f77c080def52a9cfc53efcacaeda6721c88",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3f5271a4e944974d",
+      "method": "POST",
+      "path": "/basicOpen/vc/report/realtimeSales/list",
+      "document_sha256": "90501edc605f3f7ced2ebb2ae16b60e2d23c2152f2cfcd37218d117b2211d3cd",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_3fb2b69a5a023816",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/aliexpress/list/v2",
+      "document_sha256": "8931b4c7e50d11080511bad4109bfb388c9320ed5505f9f83a0dfea7c2c9ac48",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_41831dde4af8b73a",
+      "method": "POST",
+      "path": "/erp/sc/routing/restocking/analysis/getSummaryList",
+      "document_sha256": "b1645f8a52504a07b50727774c0e79ab951d26f1e5fe4c0f3e6b6b46c7f2cb19",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4388aea5946ca534",
+      "method": "POST",
+      "path": "/erp/sc/data/sales_report/asinDailyLists",
+      "document_sha256": "5cedbdb138b2c31ddcfc1252f63acee80223113bed6dcf6504c2a787056b9642",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_44834e4a61d753cc",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdTargets",
+      "document_sha256": "85b2222f53d7e0b1142e14a9496087b9bbaa0b017138445a6724cd3d416c1116",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4673bfc9f9133624",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/getPurchasePlans",
+      "document_sha256": "0d869f1a72f75e6fa8ff340c6bb50bfdc75fa2dc9ed47f922222e1175919c3fe",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4774b830574c79fc",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/mercado/bill/list",
+      "document_sha256": "853054685e2b1b1e4119d5af79ad9997c10c373a334987e028dc2db3dbde9e03",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_47b4ba0825fc5a69",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-packing/getInboundPackingBoxInfo",
+      "document_sha256": "d07898a8c0a954d042922719c568f2859b31ec603bb3cf1081db3848683c1a93",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4a4c7818d7c2b40f",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/order/removalOrderListNew",
+      "document_sha256": "fa09d0ffd8ab0567aaf9e59d180ca4a3c7f707e4951824e148186924158315a8",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4ad598b326c0b4bb",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-plan/listInboundPlanGroupPacking",
+      "document_sha256": "e1cdeb096c3c04ac3bdc906e676c4b7e9c27efd5cd1aa378ea93f96e0d1e3166",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4b4259f3b53730f1",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaPurchasedAsinReports",
+      "document_sha256": "15163e338b9e1b0914996519aae09e0a892a09bd4a4f6184b3dc5e11198e3117",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4c6aae62d96af650",
+      "method": "POST",
+      "path": "/basicOpen/openapi/mwsReport/reimbursementList",
+      "document_sha256": "33123dbe0503b8635321ed23a3a7a58ebb06bddc5093fbc29b054236204a4482",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4ce492e4cc82b516",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-packing/getPrepDetails",
+      "document_sha256": "f551466862e23817d99b4a87e2104cdce99e04b6b6a6a2a54fbd10a27ed92017",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4e246a7534f79a79",
+      "method": "POST",
+      "path": "/cost/center/ods/summary/query",
+      "document_sha256": "5880584397827a5727c8b4e4b4578fca369dc3ffa0b8d56b7158e846cd067167",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4f933f3d1fafaf71",
+      "method": "POST",
+      "path": "/pb/openapi/newad/asinReports",
+      "document_sha256": "3d2d337321c11d3587f0361e9eeeb010d3171e3d87a1d42d7f3d6e1d9b72d8c3",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_4fa8b7280fe6ed17",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaAdGroups",
+      "document_sha256": "26270ae8759cd2ae23eb1fd35923220e473eaf62e120e386c9449c047560eb0e",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_50423e5154d53bc5",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/dailyInventory",
+      "document_sha256": "a7cdda2b8392ed6b8928045c188bb7a10ec279ebdf4ba88baae932ef064542e6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_51f725f3ee495f11",
+      "method": "POST",
+      "path": "/erp/sc/routing/finance/currency/currencyMonth",
+      "document_sha256": "1d258f87a11186b02da13fb07ee280eba7c2f2b66df7cf69f1a9e28671f2a6fc",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5231e3bfc4da3532",
+      "method": "POST",
+      "path": "/basicOpen/customerService/performanceNotice/list",
+      "document_sha256": "d274aabb810704069afdda67972705411d5ee3d80c50f7f08f6b3c8f898a6031",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_52bf74e4d3ee044c",
+      "method": "POST",
+      "path": "/bd/sp/api/open/monthly/receivable/report/list/detail/info",
+      "document_sha256": "e2a6e5916a1fd40aa6a95ba323ccbe7039c9665b9d1a5a821da3456087809870",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_530e7e686bbbff69",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spTargetReports",
+      "document_sha256": "308909d3d436414eda8eec4804a2ec34fa51363b9bf08a4b1b2a26b91255cba6",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_55520d61cae5a151",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report_v1/getFbaInventoryEventDetailList",
+      "document_sha256": "6739d5bd256bd8cd0c5f9702f1e5b8867f90dbd648d48d959a135ea1bed92922",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_55dd5d3b7710029a",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/shopify/variantList",
+      "document_sha256": "d313acd8afee3d123d040f4f91dd199cc07fde45b6742f636f96d2f04c939e00",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_562b21cffc8e04d1",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/transaction",
+      "document_sha256": "6ba050c683c1d023c6b4919b74298b2b5e5aaa85e4f71b97ff07e6ee54c586e2",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_576da4fe8614f636",
+      "method": "POST",
+      "path": "/basicOpen/platformStatistics/walmartProductAnalysis/list",
+      "document_sha256": "b3158f22733c8b40d6f93867e6817becefdc3b8684021d0d9bba3b8a51050364",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_580f72fb9e259e99",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/walmart/bill/statement/list",
+      "document_sha256": "39db6ba21c6182e8ab2016568a72020689ba8879aaaf576a74ecd40ad05a80fb",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_587dad772c736228",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/inventoryBinDetails",
+      "document_sha256": "2c6e0c601e56a1946ff48b40989e63be33d64e6f28037f755cba33ef44e95595",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_589d4a4b0d8a5def",
+      "method": "POST",
+      "path": "/basicOpen/vc/report/sales/list",
+      "document_sha256": "ffce2dad39bde9bc5a4433194d7b1ddfb2abf79ec6bd0d95b0816301ff76e645",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_58e56a75bfcd2009",
+      "method": "POST",
+      "path": "/erp/sc/routing/finance/ProfitState/profitMsku",
+      "document_sha256": "72b9b43a047ccd13ce1a46884b25d6c3310e14521d7b0fa85b11878ee5124074",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_59d912daab29be66",
+      "method": "POST",
+      "path": "/erp/sc/data/sales_report/sales",
+      "document_sha256": "69e2012b8031ce6bc0558f51c9f882ae20fedd352a654d706500a2df5b3d4991",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5a38007739bca4a9",
+      "method": "POST",
+      "path": "/erp/sc/data/local_inventory/warehouse",
+      "document_sha256": "708a17daf3096b5eb3688b40a435dd19f3e5ce62d8aa3b95c690ecf02a419a1a",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5b70e6c18c973e74",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/awd/inbound-plan/page",
+      "document_sha256": "8ab732cb4ad53254f8a8c2bf9eccd4bb77a87337636d6c99d06e7ebdbdc15e39",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5c513243a6ecc9ae",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spKeywords",
+      "document_sha256": "a2289519d375dbc27a1f915b565b907d68b009ec4d5da6e436efc7580d73caa4",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5ca4f7fd042cd40d",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/category",
+      "document_sha256": "21e657e7b515883e5bf5c5291c7adbb4c8a506f131f45bee97fd922630ee19b9",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5cf3ca2479355ec8",
+      "method": "POST",
+      "path": "/erp/sc/routing/storage/attribute/attributeList",
+      "document_sha256": "8a776e39d60d81b3e4d375c582d9930312a9e45923da3fb8a0592d6f90bc8177",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5d1229debbc5f694",
+      "method": "POST",
+      "path": "/basicOpen/vc/report/nppm/list",
+      "document_sha256": "ca977d820a2c2e17ad6197f4a2b3f857f2210e9c09361f0867c9c848a1ee5370",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5d233a3018943a7b",
+      "method": "POST",
+      "path": "/erp/sc/routing/inventoryReceipt/StorageAllocation/getStorageAllocationList",
+      "document_sha256": "5782288da81f85952e40c9cd1b2f2c716bec122662c26c219b36e10a9a949ed0",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5f1adce90a4972fc",
+      "method": "POST",
+      "path": "/erp/sc/routing/inventoryReceipt/StorageProcess/getOrderLists",
+      "document_sha256": "1f25cd1c494342b49b1007be19138dcff32a0c8f141012e97c796266234342f7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5f2db44c8763ca79",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spKeywordReports",
+      "document_sha256": "ec70cb895d192b2c852de99215fb3e67394f05f3acca9fa4723adacc7b53219a",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5f43665a2906cfc8",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/rakuten/list",
+      "document_sha256": "707bb8714a53de4388961347e89be9d655d93579a598b6f5e2808fd4c6f5b727",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_5fa5adbc83fb72db",
+      "method": "POST",
+      "path": "/basicOpen/promotionalActivities/secKill/list",
+      "document_sha256": "a300e2c79c8a4cb722285f43ec334ce7d671795e09e057b76214100527d51145",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6017be7d8fae1744",
+      "method": "POST",
+      "path": "/erp/sc/data/fba_report/shipmentList",
+      "document_sha256": "0bd14a39af111f5caeca4c5ccd36cc8c14931c3b852a0bb6351e1b659e145f06",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_603aa36f9430fd19",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdAdGroups",
+      "document_sha256": "8e9f0870c363481b8b4a295e5aabb5c644fad9097593ea10fea14761663781a6",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_611a94df623eaef0",
+      "method": "POST",
+      "path": "/basicOpen/openapi/storage/fbaWarehouseDetail",
+      "document_sha256": "da62ef7338c7ba1d6c2025d0cab0051b3569f30de9bd2ab4c647426202507a44",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_613f4652034754e5",
+      "method": "POST",
+      "path": "/erp/sc/routing/finance/ProfitState/profitAsin",
+      "document_sha256": "20c776cf04df2cd26f3cef9fa2bbe0eb49e6b76d2b04697f69d89344c157c6c6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_620d8a99e9a99e8a",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/fbs/stockSearch",
+      "document_sha256": "31c53f6d9fae4603bdc2b21796e495bbbc9321b7ef1cc183ed720112633c370d",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_624fb6144182162d",
+      "method": "POST",
+      "path": "/basicOpen/report/purchase/product/list",
+      "document_sha256": "6cac40c298349ee8bc6a86ab2be31935fd8e633a97bf604c1092383e65d90ee7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_63f3cea28fee4c75",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/profit/report/stateList",
+      "document_sha256": "df152cd4397b7d7eb4200b2ad84dbac457fdd6eda2533b390ba9f33d22567203",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6425643b73ecfc43",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/coupang/stockSearch",
+      "document_sha256": "cb6146e5323c20ad7a6f26cbc9cc9947b89fa273ce4ed79b0bcea2dd17e4eb2b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_65aac57bda6a53d1",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/lazada/list",
+      "document_sha256": "b3cca737260eac7d75f63f681fa155bf83acb6bcea669628f1168b17b30cdd10",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_67479dcb2caea117",
+      "method": "POST",
+      "path": "/promotionApi/open/promotion/couponAllDetailBatch",
+      "document_sha256": "ecc7268101800efa3295d4c6818584960ddaab2053df5d61c028052b2a606dc8",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_67c24bc035a4c6f1",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaLimit/restock/getIpiInfo",
+      "document_sha256": "5eb9e573dff5984c1fa2cc7abad0efc461a708faf2f6f0ea844895015f631981",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6a5ea799e3e4a248",
+      "method": "POST",
+      "path": "/order/amzod/api/orderDetails/logisticsInformation",
+      "document_sha256": "e0c203a2f92e353883d9a73f6c0ddcf81aad52737fa00b4daaaf1857e137702e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6a6b697dc4a28a18",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/walmart/list",
+      "document_sha256": "d88ce752ececb9e9ca0827552addfad1e4d9cbb9f276663b41c7f7f0a43f5505",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6b150a4b9f245290",
+      "method": "POST",
+      "path": "/erp/sc/cs/feedback/list",
+      "document_sha256": "bc4b701741c074f6a21eb1ca7a5e26279470bd17ad3700c62d4e7ff95dd290e0",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6b4e9d491796a0d4",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdNegativeTargets",
+      "document_sha256": "ea60109d16fd13e02a7a15193f27c4a14e442003523cc67fcefcdd68ee16a81b",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6b701b81972df02c",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaSug/asin/getConfig",
+      "document_sha256": "25086b0c3e847024f50ec8c41fda1f48a331d926ea73954a14638dbf44028c15",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6c37f91b5f3b6c08",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/temu/list",
+      "document_sha256": "358af45a51c0f2994788854a415906238ef9d7fdccc309a9e6845b391eb82664",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6f19f75244f9681f",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/profit/report/seller",
+      "document_sha256": "5c2af100ea6aab47dd56ce4570323f5027877874e0c7e1aceb47c307b5ebc155",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6f8f972281e1690a",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/awd/inbound-shipment/detail",
+      "document_sha256": "74606f1c52902c113d07f6f62aa673c18437c5f4f059214daad0836a9917a8d9",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_6fbfb9ae5ae07bff",
+      "method": "POST",
+      "path": "/basicOpen/module/adjustPrice/AdjustPriceManual",
+      "document_sha256": "2a38976dc683e3746eb1ae7fe1abb64c2f963a541d683297bb4526a9b62ae0ce",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7024a9509efbb90c",
+      "method": "POST",
+      "path": "/pb/mp/shop/v2/getSellerList",
+      "document_sha256": "c20bbeb26780b0b9f085145630d0b41d5762d390fb262de79461944414e2b855",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_708956ecb911c985",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/mercado/list",
+      "document_sha256": "444f1c181a63ac3b664091895e94ad877df58e21215b4f0d55875e26541d260b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7207d5aed8adb604",
+      "method": "POST",
+      "path": "/basicOpen/customerService/rmaManage/list",
+      "document_sha256": "847d134316bfe570c1637723e5377b376d5020d6463050cf9d9c4afe568538c7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_72791537e588ec5e",
+      "method": "POST",
+      "path": "/cost/center/openApi/fba/gather/query",
+      "document_sha256": "19a789f67f90579b7696539af1c973343ad93c74d3b4bf64dba4cdbeab33a359",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_72d2c55bdbc031ea",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/cargo/storage",
+      "document_sha256": "71b8a91619f29e92a40709ce0d5b03c36033548ae3c5e6cc66496769a3f8a20a",
+      "decision": "blocked_mutation",
+      "reason": "official_title_declares_state_mutation"
+    },
+    {
+      "operation_id": "lingxing_op_731de72df7f00ac5",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/sheinFullManaged/salesSettlement/list",
+      "document_sha256": "9379ea10d17af3f8bb0d88bd3f6c0dab8e88ef4a9fa580ffde881e0d3e71d8bd",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7446edf373f71478",
+      "method": "POST",
+      "path": "/erp/sc/data/fba_report/removalLists",
+      "document_sha256": "943ebecbdb03adcac877317c7316b5616b9b2198c86512e05fbcac4fc4bbbfe3",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_75083cd878535634",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-shipment/getDeliveryDateList",
+      "document_sha256": "04df9e60bab53e111acc560b84ada68cbeb42e8374d3349aa4ded6d97cfc14bf",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_77161d6e3fc050c6",
+      "method": "POST",
+      "path": "/basicOpen/finance/settlement/profitList",
+      "document_sha256": "f378c154f49f3cbd3ca53c7f15ff617d9406806f20b72356a45b63e2f5b5510d",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_77e366c8a035465e",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/inventoryDetails",
+      "document_sha256": "dea77278d1a0dd43e7c723105421d5dc53755519c67dcbaa1fc44e4e36e3ab27",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_77fe5590f8dab444",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spProductAds",
+      "document_sha256": "26d839774ca51f0a02423433ff1e2220504a235dc9ddc8b36671f52d583a41f8",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_783ea35a9813c6bd",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaCampaignReports",
+      "document_sha256": "7cd16164ffd8459b42b3452d741a97a8c58fadc7995e380dad383e41bb7138c0",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7854052822535a7c",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spAdGroups",
+      "document_sha256": "cdab9c2bd0b21f3505d8c10854392e654e0320070f4ef2db21c5a9bcc5a40dbb",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_786f0ff26e0851f0",
+      "method": "POST",
+      "path": "/basicOpen/openapi/publish/manage/categoryChildren",
+      "document_sha256": "bcb00dbae730de5575e49bbf40abdd031ae1850e3090caaff4614b4717cf2158",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7a8a818ccd02a2cf",
+      "method": "POST",
+      "path": "/basicOpen/vc/report/inventory/list",
+      "document_sha256": "b58e08c41a4e05cdaae281d3de7f48dffbc0d820ceae82bd07eec4f69dfb2866",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7bf5c45d338f18e9",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/fbaOrders",
+      "document_sha256": "8f3ff6b820abadf843dfe04f1fe501732e86a1e6f14bacccf7a9844fb720e0ae",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7c1b084436bb9373",
+      "method": "POST",
+      "path": "/erp/sc/data/mws/listing",
+      "document_sha256": "1424552158431ccc4b8bad9ca4b76f6e0c0a36ce29bad01936e602111d9fdd67",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7c83dfbbccd82798",
+      "method": "POST",
+      "path": "/basicOpen/promotionalActivities/coupon/list",
+      "document_sha256": "59f7cc33f68028e304c4b0bbb793e4da1795607f75bb8a608a7dd5531bc96cec",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7cddb5a64b602620",
+      "method": "POST",
+      "path": "/erp/sc/routing/fba/fbaStockReport/getList",
+      "document_sha256": "e98ada609a1d88015131869c5017ff985a710f154c20b1ac8dcf9a6498ea3bf4",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7ecf02bce974ca8e",
+      "method": "POST",
+      "path": "/erp/sc/routing/owms/inbound/matchSkuList",
+      "document_sha256": "c5202f03a00b0ea4277689e16955650ddd52383487ba146cf690b1170efa2263",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_7fa1045d9f29372a",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/productList",
+      "document_sha256": "5ffa2d29c461e77ed17d4476eb10d70ab01113c6ff3806365e3f9911e674a956",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_814603b5d7e61e0d",
+      "method": "POST",
+      "path": "/basicOpen/operateManage/operateLog/list",
+      "document_sha256": "ef205bd0061132f6ec11c150dae97498da0078d017c74e4369790ba48c3d8172",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_817dec61565c4d0f",
+      "method": "POST",
+      "path": "/basicOpen/finance/lazada/settlement/list",
+      "document_sha256": "cfbd8882d12c7c6ed4faa270af8f204b3e02adea5c026a77134571eac4f2edf4",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_81f530f8a30f8ad7",
+      "method": "POST",
+      "path": "/basicOpen/report/amazonReportExportTask",
+      "document_sha256": "b51dbc176f0ad4fcb196c2374840b8db067d7cecca4844113e94df46c4a3b657",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_82817b8ce1982c28",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/ads/queryGmvCampaignReportList",
+      "document_sha256": "b0536f2a9bd6179e3c47eba58c825e402a71536ecfd3fe2b03f887c654089a50",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8332ea46214c6dcc",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/warehouseBin",
+      "document_sha256": "674d3cb662b3159fd2347fa91f4a99f709863575e736d8f3871a5b7e5c3ac7d3",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_85280117035b6b6c",
+      "method": "POST",
+      "path": "/erp/sc/data/worldState/lists",
+      "document_sha256": "d9085c03258c52dd78cdeff1a692c953d3973bfc9e81a0e802fdb2c40a26a0bb",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_85846e335759cfad",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/aliExpress/list",
+      "document_sha256": "18eb18422014545934e7a0124f41da0a0c604be65b5ca999f185238ff96acadc",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8645bbe343b16f43",
+      "method": "POST",
+      "path": "/bd/profit/statistics/open/msku/list",
+      "document_sha256": "edea614c9363037353d74e83dd6f88e80a22689c76d174d99be7f87a6e35216e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_873e47220cad4d3c",
+      "method": "POST",
+      "path": "/bd/crm/open/api/customer/list",
+      "document_sha256": "b714f71a305bc48f6dfa4b2e94cbef636d101ebf2d390c6bc5c23347693699a4",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_87c99dbd3632f592",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/fbt/stockSearch/v2",
+      "document_sha256": "c0c8c3d06523bb9e1325982ba7156eab26a1eedc1a3d3626df3c201c74b1986a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_880605b6a4cae4fa",
+      "method": "POST",
+      "path": "/erp/sc/routing/inventoryReceipt/InventoryCheck/getOrderList",
+      "document_sha256": "a876efa6ced3e44a4207efa33ad94d8086183d1cb2c9e8316015d55e192f97e9",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_88799967d16a9b84",
+      "method": "GET",
+      "path": "/erp/sc/data/seller/conceptLists",
+      "document_sha256": "77e0d3fe09df75b8047fe4093f434ecf8d4d1c7c328d2c428e27ac630322a8cc",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8914ba39527ded84",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/seller/list",
+      "document_sha256": "2690ab1db2d8451689025902e2581e6f0dadf5cc7cf5abe5cd680d6c6a381ee1",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8a2d9cbfdd4f6343",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/manageInventory",
+      "document_sha256": "f32055be3e20ca2d6803e3d2963a129448e444be0462b7fced3c6fe0f94c6dd2",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8b8601849b0f6be8",
+      "method": "POST",
+      "path": "/basicOpen/promotion/listingDetailCoupon",
+      "document_sha256": "3499f9f0b274df6bd36c9e5e2c9cb924a2247644068aacd5142981391ffbf3b3",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8c35228f62ce213b",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaAdGroupReports",
+      "document_sha256": "1bf793b7f60ab562b1ecc2b5a2b3e601b9649dedd6b9e9d1472e9a253f0f7c70",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8d1d331f791e0635",
+      "method": "POST",
+      "path": "/basicOpen/lazadaAd/keyword/report/list",
+      "document_sha256": "9a50187d31099134efe81f0a3048bc69a7b629ecf1f44da30c6c88079e87a57e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8d5b3d29e98824d3",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/tiktokBill/list",
+      "document_sha256": "5b84bb9bfb0768d07b2145675e571a964dfea5fd95f874978957202abaa9e9a6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8d698e8a4dd94b51",
+      "method": "POST",
+      "path": "/basicOpen/settings/warningMessage/goodsList",
+      "document_sha256": "bbbc03dc7efbdc77b72ecb2cb51275c8f543d2462548fad0050bb985e437961b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8e2e3f4a4ed9dbde",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spNegativeTargetsOrKeywords",
+      "document_sha256": "825f8267a1540fb2c2975b5fd0f0e0358d083d264bfad3aa2abb483b3c40c5f0",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8e9e5f51f4aa10e1",
+      "method": "POST",
+      "path": "/basicOpen/platformStatisticsV2/saleStat/pageList",
+      "document_sha256": "2da2ef1a7ed0facc7614da3a40edd24a469eb39044d1079372c7e704cf4b97ec",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8fe1404cb399d338",
+      "method": "POST",
+      "path": "/basicOpen/finance/lazada/payout/list",
+      "document_sha256": "f9401d9d7d378bcb9dc10a28843cdc9775e26eeef1cc4876a7e3fe2345775a03",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_8fe87c0b75e9aae0",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/getAfnFulfillableQuantity",
+      "document_sha256": "60907d513e7cf6d68fd8275d2a26a685e19c6e10a0905ee41d2c5b54a3e0a4de",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_90c4038bd605c8eb",
+      "method": "GET",
+      "path": "/erp/sc/data/seller/lists",
+      "document_sha256": "111c67eaa6ef5cc31344e3487dc66cf7c7518efdc87e2db9deb69d81fb2addb3",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_90f8f09fd136ebc5",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/shein/full-managed/payout/list",
+      "document_sha256": "8bf92bf7d04b4f7f27dc6e38431c34f978303a3eb6d10ae0688e7c96d384b941",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_91609b93ec2b7dfc",
+      "method": "POST",
+      "path": "/pb/openapi/newad/apiLogStandard",
+      "document_sha256": "641a2e6ea4aa394433dfa0deeb67e588f92c83e82003d02f90a6da6b02fed197",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_930e49cbc5ef3b7f",
+      "method": "POST",
+      "path": "/basicOpen/customerService/voiceOfBuyer/list",
+      "document_sha256": "088580b267ca6d992b3da8eb7fb32eff8612f67b869bc2cd962dbfb6757c08c7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_93d0f274a58cc6d7",
+      "method": "POST",
+      "path": "/pb/openapi/newad/portfolios",
+      "document_sha256": "03f98b080aebf5d4baa7c6f0218faccd397f8931e91b871ebaea89f06f36e29c",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_94024d7f6f6081e8",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/purchaseOrderList",
+      "document_sha256": "105b02ada820bb1f9c49685ab85f10f36364e60d5fd02dc3800c4ebd3f9be697",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_94d1edc52476c783",
+      "method": "POST",
+      "path": "/basicOpen/openapi/sale/fbaFeeDifference/msku/list",
+      "document_sha256": "df87d3cef14054ba96d0cf784d9cf6a3e653db9ad34bc3fba95ad3404a0acc56",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9667dd6f67183b71",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report_v1/getAmazonFulfilledShipmentsList",
+      "document_sha256": "d5f744037a6f161184ec248840a86db73cf482c41a44db096de7f42990a5f9a6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_96b436a7b7ce62d2",
+      "method": "POST",
+      "path": "/basicOpen/promotion/listingList",
+      "document_sha256": "9c5a12f3fee645b5f878b6c6b2bf012de90dca340079277741bdd84aa51852af",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9729a61e6dd9d9f7",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/walmart/queryCommentList",
+      "document_sha256": "2a4e4408c761e3ff5d86e0d6849d1ee46e2b7ba737bc1a87d4390282cb3ab3b0",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_98c023d7248e5223",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/ads/shopee/campaign/report/list",
+      "document_sha256": "47786c7fbeb95a3473ad483d6e5d24b44c4d20685f5a1ca44b4552facff286f1",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_99412f30cb88c7b0",
+      "method": "POST",
+      "path": "/order/amzod/api/orderDetails/returnInformation",
+      "document_sha256": "0e58aa84ad84288043b23e1c86b8420784eeb1a5c85f736ac89eb50735e7de7a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9a24daac7382a112",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sbTargeting",
+      "document_sha256": "d55f2cc67e9e71653a2c925af606cdd6c297a9edee2432c99fddd0a80e208609",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9a833737b529f3e5",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/removalOrders",
+      "document_sha256": "d454a01c2a054a0bec4db25023fc7d121ab736bb8b0efae8d65b8cca83b7aae5",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9af369897f95897f",
+      "method": "POST",
+      "path": "/basicOpen/promotionalActivities/manage/list",
+      "document_sha256": "9ecff321ad528ae30e35a169be923582270467839f9dbf320ab7561a32a9913f",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9b3b8a9018d05527",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-packing/listPackingGroupItems",
+      "document_sha256": "7fe8653c6b48fe7d1f81d6b9fef8720ebcbc32b576946571e594667913a2217a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9c81f3016fd05e55",
+      "method": "POST",
+      "path": "/bd/sp/api/open/monthly/receivable/report/list/detail",
+      "document_sha256": "020712c88aa3dcf1f5fbbe0ebbb38da6032f67bc0df520ecf5fdf4f384cf3fdc",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9cb4a80a6291c7b4",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/profit/report/msku",
+      "document_sha256": "4f082465f0d382377a3a53ec9d606f900b3e3185810dd27309cd91dae894c43e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_9f1e91e9562e1dca",
+      "method": "POST",
+      "path": "/promotionApi/open/promotion/secKillAllDetailBatch",
+      "document_sha256": "93f480631cca71f2c0e29ed550de1c512ff6a9110296590fbfc4422d4ac127ce",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a0073c38cd99ab3f",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/sku/list",
+      "document_sha256": "d6bd9769b44cabfad499b304fa5a29af7a979f713a903de927d680efd701b574",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a08f8cfbd51f8aa5",
+      "method": "POST",
+      "path": "/pb/openapi/newad/listHsaKeywordPlacementReport",
+      "document_sha256": "2266ac55bd8c1d8433b41dacf636d0143818cbe2ce5b9470078c31ea34bfc560",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a0ee7ce0a017f483",
+      "method": "POST",
+      "path": "/erp/sc/routing/storage/outbound/getOrders",
+      "document_sha256": "6b3976b953f8f3e0d25a492c2e8de19719536c3802fd01c0b69abf1535599a9c",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a2d36233dedf90df",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spTargets",
+      "document_sha256": "704fbf88dd0842d08157e27343e6dc5441150c95c043af216128c910d58705a0",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a2fa77b89b3172af",
+      "method": "POST",
+      "path": "/basicOpen/adReport/productOrderAnalysis/list",
+      "document_sha256": "4430cb31ff98748dbd7a7c1c80ca58fe52e32a47db2fd1ab1d5ef2af7114d493",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a313092f6870458b",
+      "method": "POST",
+      "path": "/basicOpen/warehouseConfig/warehouseBin/getEntryRecommendBinList",
+      "document_sha256": "6257766cc01d962dd5d4f20dde937e39da28dd31395256484ff4edabdde94471",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a403d4882f2de94f",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/line/list",
+      "document_sha256": "6662bab96ef17c86b8a202ebe3cf627ca426201cab690a22e9cef47190059123",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a681ef5b8dc2b61c",
+      "method": "POST",
+      "path": "/cost/center/openApi/fba/detail/query",
+      "document_sha256": "83bfb366530720d130bfc374276d39e116f28b401642f3f709e78f4403729f99",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a6a70e22572b4d98",
+      "method": "GET",
+      "path": "/erp/sc/v2/cs/reviewReport/lists",
+      "document_sha256": "f6785edb5059b7cf3db05048f9ac4cda991f5a36038cf822669f19ee60ed519e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a6b51e1ac72a4813",
+      "method": "POST",
+      "path": "/basicOpen/lazadaAd/item/info",
+      "document_sha256": "17e98ef3b1ed5ac90786dd06af90657b2c3d0e759401fd80e3ed05b63eebdf60",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a6bb9e464ef861a1",
+      "method": "POST",
+      "path": "/cepf/warehouse/api/openApi/queryWFSInventionPage",
+      "document_sha256": "fbe808bacb8dd7fd187a2d8f549679dce8b72e00bf63864b1bf3276f87499bf7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a6eed442006d8186",
+      "method": "POST",
+      "path": "/basicOpen/openapi/publish/manage/getMerchantShippingGroup",
+      "document_sha256": "b30ec5696c38871d4cf83d125bdcaa12065bb2f4761089048dcdc3ddf8816662",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a768dc767e71d7be",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/msku/list",
+      "document_sha256": "b9521a7aa671f5acd3fea0c15cb3cb801844266276b22aabe86c31d4fb1cc323",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a91d36406f4978f7",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaCampaigns",
+      "document_sha256": "face83f291126d05fec807f2b1ca4beb0e3d9358b10592ad1fb2f29826cd5912",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_a9617a31fe8f385c",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdCampaigns",
+      "document_sha256": "5e5f74b95c84369ea77a897478767d56c35b4bbe7b90c10d7297719206f83abb",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_aaa8632983e22bab",
+      "method": "POST",
+      "path": "/erp/sc/routing/storage/shipment/getInboundShipmentList",
+      "document_sha256": "64e3245c51ca8de2f5076145bc839d22ab8885eee914a534277093e0d4b7c223",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ab181ba95a1d00f2",
+      "method": "POST",
+      "path": "/basicOpen/logistics/headLogisticsProvider/query/list",
+      "document_sha256": "0649c0306e66db2babb2b5a406eb74869fb3556129c8117f07d40bc4ec3fdea0",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ac6873a70cf30793",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdCampaignReports",
+      "document_sha256": "3b5d9dd283b92b55916cd36248ba55950e6ddd060fbf395301de55d42cb5d597",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ad32c4bc796136f3",
+      "method": "POST",
+      "path": "/basicOpen/promotion/listingDetailPrimeDiscount",
+      "document_sha256": "c2606e2a8f9b7724fa146c74c787ca42c13efc629679d06fedbe8e0650d9f67b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ae5619f5de4ac003",
+      "method": "POST",
+      "path": "/erp/sc/routing/fba/shipment/boxInfo",
+      "document_sha256": "8d7902d4d47900a72adf15249477683a8a50f32ee79af2d691d1d24b4b549a7c",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ae7c34d7d1faf90a",
+      "method": "POST",
+      "path": "/bd/sp/api/open/settlement/export/url/get",
+      "document_sha256": "f95a2d540a272ec5e3cd5d56c91b25940f05b9055b98b0b96e215852dde33930",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b06fd47efef50065",
+      "method": "POST",
+      "path": "/erp/sc/cs/feedback/listMws",
+      "document_sha256": "e8a36d362f692642cd9ea0b10d1d55d18c3dca6853630f4c34df1d1d955bbcfa",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b1c85bbb349b0890",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spProductAdReports",
+      "document_sha256": "5317274208efbfab30ee55499161398fb6c03e2d07033cb38f4ead7299b9ff68",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b1d18ba8971795ce",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spAdGroupReports",
+      "document_sha256": "d5ac0f66d9c4b13a82dd30894f8da061357a6c47297422fddff3702e06bfdfe4",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b2031fac80d741df",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/wareHouseBinStatement",
+      "document_sha256": "e3b3eb758c9362710516601967c1bc68e9b026fc49b1c30f126905f63c943f2b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b222f8cbc23f3e80",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/reservedInventory",
+      "document_sha256": "0595e4d9a7cae4535f87376221a39ad682d85cb139b5af7fe11187d3d08b60ac",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b2f2fcc613fe813c",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/ads/queryGmvItemGroupReportList",
+      "document_sha256": "9d5df734fd4a3537d0345443fe3b701e9a552fa61dacc147317afc9e91d0f8d9",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b608c2acde25181b",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdProductAds",
+      "document_sha256": "373ca6be6225fbf055fce718bca53624cbb725f5debb1745009883f1297af430",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b79947965a6fbd5c",
+      "method": "POST",
+      "path": "/erp/sc/routing/finance/Refund/profitMonthRefund",
+      "document_sha256": "9004ffa5121282043cca56844a538c065cb6f507d5feba7408c68b5d09ed2b82",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b7a1653c943bf1f9",
+      "method": "POST",
+      "path": "/erp/sc/routing/deliveryReceipt/ReceiptOrderQc/getOrderList",
+      "document_sha256": "25ea13be338b488076c86195b8f2c9682a4ebdb3db792218002824d2eab69a5c",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b946bd46318b5998",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/inbound-shipment/shipmentPreView",
+      "document_sha256": "e45c917a7afc5ec1c147673cc2c46eb68afd3ec0e2e55574d94b6a3b96f0bbe2",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b9a97e2786db9371",
+      "method": "POST",
+      "path": "/cepf/warehouse/api/openApi/queryShippingListPage",
+      "document_sha256": "858fb35db076a6400dfc10ea07f1cec8b2df41ac2c1ca3782d541792fb19e60f",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_b9cdc2b25d52a833",
+      "method": "POST",
+      "path": "/basicOpen/openapi/publish/manage/categoryRoot",
+      "document_sha256": "8d04cca3d85431496ce7f345f7292b71f8c393715f09e3f4426455e14555c7ef",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ba35522ef5da57fd",
+      "method": "POST",
+      "path": "/erp/sc/data/fba_report/storageFeeMonth",
+      "document_sha256": "e90616359fa8da58cd6edb60ebe4f2126df53ef2074a47b4e9398881ff0f7daa",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ba7e2b854c9f77aa",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaSug/asin/getSourceList",
+      "document_sha256": "92502111de68e66f27617f41790f2f16da5aefd37d9dad4b618bdbcff3cdd652",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ba97c7f807fffa04",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/seller/summary/list",
+      "document_sha256": "6392a250865b788ffaf0eb987010a65a8b1839aaa0daaa9f90bfbdd235906ac1",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_bb59531962ed316e",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/qoo10/list",
+      "document_sha256": "96f880c040dddcd1be01a72f53d88b2357058be4062730525a952e236f0b9b0a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_bbde3521f4649c64",
+      "method": "POST",
+      "path": "/cost/center/api/settlement/report",
+      "document_sha256": "f05f6ad15544a3eb5193f6378c253e245ed47a42af881f7253698ed7834fe5ea",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_bdf5a2637e0fc969",
+      "method": "POST",
+      "path": "/listing/listing/open/api/listing/getPrices",
+      "document_sha256": "d0abffcea1e1493636dc395086042fb3feb93c983946b1c04b7ca451046cfd9c",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_bef8e9e919fdfa1c",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/ads/queryGmvAdvertiserReportList",
+      "document_sha256": "e097c4d1edec672452fdba3afe888e2e4554d1473848fa7abb87314ca28d4d01",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c1cb5942e09077d0",
+      "method": "POST",
+      "path": "/basicOpen/finance/shopee/adjustment/list",
+      "document_sha256": "439d5ed36372032b3f9915da22a0b3cfacbf54739be0eafa47a0c273603f073e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c31ff059f39aa2f2",
+      "method": "POST",
+      "path": "/basicOpen/openapi/salesOrder/multi-channel/list/transaction",
+      "document_sha256": "7fd47b1cd48b7630ecd40fc9bda47400cbbcdcd1bbf5bc1de365208b4658e549",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c3c067ff4e63c596",
+      "method": "POST",
+      "path": "/pb/mp/order/v2/list",
+      "document_sha256": "9032811f83708170346995bb9070f7ac787b85e6168c2373a2624d2f209e39cd",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c43d719e1f198828",
+      "method": "POST",
+      "path": "/pb/openapi/newad/listHsaProductAdReport",
+      "document_sha256": "ae76889fe57af1f65130f2ab8c7d2c0833eba72bd6277c28719835b230a7f15b",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c474c236fa13b337",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/coupang/list",
+      "document_sha256": "ff9d49c42f18b4ffa21647472edb3b6e1aaa108c6fde954a23e16d6872c71a3e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c48eded36c845bcc",
+      "method": "POST",
+      "path": "/bd/profit/statistics/open/asin/list",
+      "document_sha256": "73b78dd3b7a199934f8fd818f05b90c6596bdfe6a315672a06410dc6af2d429d",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c4fe6dd955d734e4",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/wareHouseStatement",
+      "document_sha256": "5269d57c8a2a3bd7d3abd2ce7f95b3bc33c5edda5852d6cf2027a24231dd2de5",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c52ecc90a9549079",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaCampaignPlacementReports",
+      "document_sha256": "d5a517a4038d4e895003ad89b0fa2a33cb427ffc9d6e6cb24686570ddc0c7707",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c6420e02af5ac4ea",
+      "method": "POST",
+      "path": "/basicOpen/vc/report/traffic/list",
+      "document_sha256": "daa188fec5f9f265466b4b6a686a5ac5f949666acb5e71c7a0e7eebf29676bd5",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c6472175f1ef5a14",
+      "method": "POST",
+      "path": "/erp/sc/routing/fba/fbaStock/getFbaAgeList",
+      "document_sha256": "f206bd39130699b7c640ab458491c0a04efd7bd8620db8a066548094acad6409",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c8205312b9aed0b4",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdAsinReports",
+      "document_sha256": "92a6c4e20011324b8db3a687b6cf0ccba395219692988ce2ce66906403acb9a9",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_c8b269e402d67633",
+      "method": "POST",
+      "path": "/pb/openapi/newad/spCampaigns",
+      "document_sha256": "ee8b827a0675084408fd8d15ea4a0d3faa2d6a04591c09f5b47dd56012273a7f",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ca29222d2fdc5226",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/cdiscount/list",
+      "document_sha256": "ca507a3ce6e2fb4ca98fe7fc186c6a86fa177f6f41581a9f5ac4df8e4ced4dec",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ca30eccf26eca0f5",
+      "method": "POST",
+      "path": "/erp/sc/routing/fbaSug/msku/getDailySalesInfoFeature",
+      "document_sha256": "357d827f6f8ec7a93941c0992bc1987fe77e24988bf37994552fa86f2e760f5e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ca721b033d759020",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuHalf/po/list",
+      "document_sha256": "33db33d8337bab0c8c590effb3f1b99a6b05ea5cebdb1efb5c691144bcf2f65a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_cb7046ad0f24d26e",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuHalf/other/list",
+      "document_sha256": "7308cb5cfe738bec542a4e236686c6d531a1f9ca9f3bfb7e45b5ad4e3904e327",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_cd5c65a106df79f9",
+      "method": "POST",
+      "path": "/pb/openapi/newad/sdTargetReports",
+      "document_sha256": "fc676d20b05efc1c476413122eea3fdf90e9bb396a67cef0c54a2efb8aff7c44",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_cf524a2c99e5f5f6",
+      "method": "POST",
+      "path": "/basicOpen/lazadaAd/audience/report/list",
+      "document_sha256": "658da4713c86968452a0c7c439327eea41a886222eedd544d0fe2fa6fc1985e7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_cff6a52cc71f0e00",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/allOrders",
+      "document_sha256": "90cf114ac079d65daf508903438c2c7e03a5e217d29e95886ff2e2db27b78a2e",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_d04c6d3119a09f51",
+      "method": "POST",
+      "path": "/basicOpen/lazadaAd/campaign/report/list",
+      "document_sha256": "7c30eb90c81244f2e863af5d4faba8a65b7ad471cff37e5bb5717e3697fd2a91",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_d4875cf394d5a7ab",
+      "method": "POST",
+      "path": "/bd/sp/api/open/settlement/transaction/detail/list",
+      "document_sha256": "add8126391058f13ad9e43acd4f5d983e1ef7bfce5b38eda4c6097bb6472ee5a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_d658d341d355c889",
+      "method": "POST",
+      "path": "/order/amzod/api/orderDetails/productInformation",
+      "document_sha256": "b663a470dce72f3ee228d061f223a4a0a11fc224c43887379e5eb29a30618ba4",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_d7e120889c513ab7",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/getAmazonFulfilledShipmentsList",
+      "document_sha256": "d10630c31cd4d8e79f0406ab48e1d47800cc5c0dd5dddbdff176bac205975639",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_d82ef06c6be39f88",
+      "method": "POST",
+      "path": "/cepf/fms/openapi/walmartPayment/queryReport",
+      "document_sha256": "635ed3dff98bf4bfda3584b1bbae5b8c91a4bd23217ec7f2cc47db4f41fc7016",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_dc59c585b0bedf7c",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/kaufland/list",
+      "document_sha256": "ecf02ad9578efb9ba5af54ec1aba51b4770bacce9ccc643da805981d3d0cd6a6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_dd72d919caad9e74",
+      "method": "POST",
+      "path": "/erp/sc/data/local_inventory/channelList",
+      "document_sha256": "c9c78ddc6adfefd8c485544fbf1769bdebd2c8a74cac4a1698619ae76041fd09",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ded62143192f334e",
+      "method": "GET",
+      "path": "/erp/sc/data/account/lists",
+      "document_sha256": "f982e018da99e8003d6b14fbe0fd78e93f6473af08a8d1c5310e42e667f4f23e",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e118db08a2f009f7",
+      "method": "POST",
+      "path": "/basicOpen/promotionalActivities/vipDiscount/list",
+      "document_sha256": "1b190a1255c3cc7c25b5c8910a096a3696877d1c809935740b082f5a7bf4d7a7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e2656de8768294c2",
+      "method": "POST",
+      "path": "/erp/sc/data/fba_report/receivedInventory",
+      "document_sha256": "62eacfcabc206da8963a43655e89e595618787bb91fe15337bb721eb9e4ba7b7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e411e7bf9954d4c6",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/ads/invoice/detail",
+      "document_sha256": "10fbb8ba08256aec3a5ccd51ae3d2e11b8bdd4d44dcb074706bc5d210aa9582a",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e49ec5983cd05aac",
+      "method": "POST",
+      "path": "/erp/sc/data/sales_report/asinList",
+      "document_sha256": "4a9fb67530b179c978514edfa6bebb3896ac03579554c663d70fe824e8c8f3aa",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e4db8a51f2497629",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/wayfair/stockSearch",
+      "document_sha256": "5a7248eef7dceb70e7cf82d4f94dfee13f5f875ac683069b59f512bfeb791152",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e538c1149d341c8a",
+      "method": "POST",
+      "path": "/basicOpen/platformStatistics/tiktokProductAnalysis/list",
+      "document_sha256": "c097d82850fd4b7f69573319ec75f3fede1105b755e899fc20d4278f280b3234",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e5b1d30760a30531",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/query/shippingList",
+      "document_sha256": "844aea6c106bd5c75f93d25f39e7ea82f8720bb6e451e9cb4c377272ee47ebf9",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e66ab151066dae64",
+      "method": "POST",
+      "path": "/basicOpen/packingTask/list",
+      "document_sha256": "35ff15a62a9685a4ac02c2bbff8998dcbbf0ebaee103bea220e5d54ed98ef9a8",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e6d150b0783457b2",
+      "method": "POST",
+      "path": "/amzStaServer/openapi/awd/inbound-shipment/page",
+      "document_sha256": "00797723e30eb8fd13e341553d7cafe0bc6c6b07b56957241a9775184b33cf5d",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e798e99c2011756a",
+      "method": "POST",
+      "path": "/basicOpen/promotion/listingDetailSecKill",
+      "document_sha256": "2dc31cd57aa4cbe4056dcc6809725b863c5c678db6b8fe93253f95b26bf27f94",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e7d026e8551e6b3c",
+      "method": "POST",
+      "path": "/basicOpen/openapi/service/v3/data/mws/reviews",
+      "document_sha256": "20acbf2eb32c1f8c0d5292a26f880542a7a85e1178426bd9cc885391a0c9d128",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e9cc14c2f2f81b58",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuHalf/finance/list",
+      "document_sha256": "bcaa6c4cc1eeefd3518f134a0d81f0b6f139f7c43ac3b6c67fd266d0fc6cbb52",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_e9e8082a67403eb5",
+      "method": "GET",
+      "path": "/label/operation/v1/label/product/list",
+      "document_sha256": "a65102550740e79248919aa7613788f9a1e1144159a7afdd4084a47fc5fb0699",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ea21cf8223b27a16",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/otto/list",
+      "document_sha256": "a98479454cac4c1a9d34a80fa2e557c731bd854879e907c47a44371a654b9b7b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ebc946dff4a72818",
+      "method": "POST",
+      "path": "/basicOpen/customerService/crm/customer/index",
+      "document_sha256": "bc570ac22a00bd66c556aee374898bc1724cc9be167106f36fa47202f9d34c0b",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ecea42ada2d2bf6c",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuFull/epr/list",
+      "document_sha256": "0a8728fcc0ef09eaaa3abbd3be13f5bb3ea40afb3edfd464da829d31662f0f16",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_eea612fa3fa114f4",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/order/fbmReturnOrderList",
+      "document_sha256": "58a4840db122399c2ce26bc56d7e5e9b05f59c954189a8e3b6342c13ddc03cbb",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ef8dd251cad53f7c",
+      "method": "POST",
+      "path": "/bd/fee/management/open/feeManagement/otherFee/list",
+      "document_sha256": "2bd184c48a31031524b608566379f19c7fcbd2b99bb30b3292e7e9baf342f73a",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f0920d3940b0d970",
+      "method": "POST",
+      "path": "/pb/openapi/newad/hsaNegativeTargets",
+      "document_sha256": "fdacd63baa2ee7688fde5072c0eb70853fa117a19fd268d5935ccc0629e4324a",
+      "decision": "read_only",
+      "reason": "official_newad_store_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f0b9ecffabf8aa7e",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/shein/full-managed/adjustment-settlement/list",
+      "document_sha256": "76318830ebc018d3014c7b90dfab0827d9a42fcc00c2367877dfda3032110d73",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f0be53893eb1f3e8",
+      "method": "POST",
+      "path": "/erp/sc/routing/wms/order/wmsOrderList",
+      "document_sha256": "7554d663e66d9ffd849ac8b615d311cc90ec6125d07cb8637c44368b6b928db5",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f1183871ea771f40",
+      "method": "GET",
+      "path": "/erp/sc/data/seller/allMarketplace",
+      "document_sha256": "4aa892c3da693bf66413be246fb99d694c0204c15d6344abf1a35c78f65f45ae",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f1b6309ca5cf638b",
+      "method": "POST",
+      "path": "/bd/profit/statistics/open/parent/asin/list",
+      "document_sha256": "a924c2eed83819dc9139308bed6d510d5d65ea486c56c84fa3f2f71f366ceb72",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f2511db369729df5",
+      "method": "POST",
+      "path": "/erp/sc/data/mws/orders",
+      "document_sha256": "62c42cd59e9b2f2c1d3a1c2180ad8e581013b91480afc8d67b2aa40aadeaa987",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f2764ea9f0ea274c",
+      "method": "POST",
+      "path": "/basicOpen/listingManage/queryListingRelationTagList",
+      "document_sha256": "c9c64e7b7f1e5767eaa281d0b7781e8bd179491d1e73eab3e714fc84f0dd936c",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f310d7d7c864872a",
+      "method": "POST",
+      "path": "/erp/sc/routing/fba/fbaStock/fbaList",
+      "document_sha256": "ecc0d40fa781ae834c937035e70f3a37bf9fe359aa78eea9c46c3e0a5dde3cde",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f46565a3336d9d82",
+      "method": "POST",
+      "path": "/bd/profit/report/open/report/ads/invoice/list",
+      "document_sha256": "540386c2ed9e5f808f70f6d903c5f2bc688d709a436715f37b3a1735502da80e",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f4efc1a68a41cdb4",
+      "method": "POST",
+      "path": "/promotionApi/open/promotion/managementAllDetailBatch",
+      "document_sha256": "b3a6549faa7a2076ae3f05e11296011b58498ce4603bae989ae90777b69a4a31",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f5b5da501a151354",
+      "method": "POST",
+      "path": "/basicOpen/finance/shopee/income/list",
+      "document_sha256": "16a4d6e9bff3a3c77948e3fa6f49c55dd680a2f7a62ad0725545f36e0d2332d7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f7ae57f521788cbc",
+      "method": "POST",
+      "path": "/basicOpen/multiplatformFinance/temuFull/transaction/list",
+      "document_sha256": "67999a36afe1f2b5e6dd53484efee65df14f6cdc0df136750d9db3d9a1e271c6",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_f7b29492bd680824",
+      "method": "POST",
+      "path": "/erp/sc/routing/data/local_inventory/getBatchDetailList",
+      "document_sha256": "0e2ddd3efdf2b47e5a6e8c8f3284018c22626631898de6648ec055401b131d10",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_faf515bf7d122870",
+      "method": "POST",
+      "path": "/erp/sc/routing/storage/inbound/getOrders",
+      "document_sha256": "a31fd03df1bfc7b6238c8fe4f867a9c149728216038448473728e28e73d6d8b1",
+      "decision": "read_only",
+      "reason": "explicit_runtime_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_fd5ad1830b57163c",
+      "method": "POST",
+      "path": "/erp/sc/data/mws_report/getFbaInventoryEventDetailList",
+      "document_sha256": "165649d7f2e84581bbb9d686ccc32b06c3a5bf0067a03a68c0c02d4d75d7df32",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ff3ca47c090b768e",
+      "method": "POST",
+      "path": "/basicOpen/multiplatform/tiktok/list",
+      "document_sha256": "2876b94d469bb950af351995d4c657c18f07e3a5a682d692e079722f88d7c926",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    },
+    {
+      "operation_id": "lingxing_op_ff9cd37f781a56d2",
+      "method": "POST",
+      "path": "/basicOpen/listingManage/listingOperateLog/pageList",
+      "document_sha256": "3f8206c723171214be1a67a6c6c221a211405170460c7e3a08812fa981468fa7",
+      "decision": "read_only",
+      "reason": "official_read_contract_reviewed"
+    }
+  ]
+}

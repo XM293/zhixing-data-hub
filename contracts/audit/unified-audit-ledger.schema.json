@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/audit/unified-audit-ledger.schema.json",
+  "title": "Unified Audit Ledger Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "enterprise_id",
+    "filters",
+    "stats",
+    "facets",
+    "items",
+    "pagination",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "enterprise_id": { "type": "string", "minLength": 1 },
+    "filters": { "$ref": "#/$defs/filters" },
+    "stats": { "$ref": "#/$defs/stats" },
+    "facets": { "$ref": "#/$defs/facets" },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/event" }
+    },
+    "pagination": { "$ref": "#/$defs/pagination" },
+    "generated_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "source": {
+      "type": "string",
+      "enum": [
+        "authorization",
+        "identity",
+        "mcp",
+        "tool",
+        "worker",
+        "agent",
+        "action"
+      ]
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "outcome",
+        "actor_principal_id",
+        "request_id",
+        "run_id",
+        "query",
+        "start_at",
+        "end_at"
+      ],
+      "properties": {
+        "source": { "oneOf": [{ "$ref": "#/$defs/source" }, { "type": "null" }] },
+        "outcome": { "type": ["string", "null"], "maxLength": 48 },
+        "actor_principal_id": { "type": ["string", "null"], "maxLength": 64 },
+        "request_id": { "type": ["string", "null"], "maxLength": 96 },
+        "run_id": { "type": ["string", "null"], "maxLength": 96 },
+        "query": { "type": ["string", "null"], "maxLength": 160 },
+        "start_at": { "type": ["string", "null"], "format": "date-time" },
+        "end_at": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_events",
+        "events_last_24h",
+        "attention_events",
+        "unique_actors",
+        "correlated_runs"
+      ],
+      "properties": {
+        "total_events": { "type": "integer", "minimum": 0 },
+        "events_last_24h": { "type": "integer", "minimum": 0 },
+        "attention_events": { "type": "integer", "minimum": 0 },
+        "unique_actors": { "type": "integer", "minimum": 0 },
+        "correlated_runs": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "countFacet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "count"],
+      "properties": {
+        "key": { "type": "string", "minLength": 1 },
+        "count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "actorFacet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["principal_id", "display_name", "count"],
+      "properties": {
+        "principal_id": { "type": "string", "minLength": 1 },
+        "display_name": { "type": "string", "minLength": 1 },
+        "count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "facets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sources", "outcomes", "actors"],
+      "properties": {
+        "sources": { "type": "array", "items": { "$ref": "#/$defs/countFacet" } },
+        "outcomes": { "type": "array", "items": { "$ref": "#/$defs/countFacet" } },
+        "actors": { "type": "array", "items": { "$ref": "#/$defs/actorFacet" } }
+      }
+    },
+    "attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "value"],
+      "properties": {
+        "key": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "value": { "type": "string" }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "event_type",
+        "outcome",
+        "severity",
+        "actor_principal_id",
+        "actor_name",
+        "subject_type",
+        "subject_key",
+        "summary",
+        "request_id",
+        "run_id",
+        "agent_run_id",
+        "duration_ms",
+        "occurred_at",
+        "attributes"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/source" },
+        "event_type": { "type": "string", "minLength": 1 },
+        "outcome": { "type": "string", "minLength": 1 },
+        "severity": { "type": "string", "enum": ["normal", "warning", "critical"] },
+        "actor_principal_id": { "type": ["string", "null"] },
+        "actor_name": { "type": "string", "minLength": 1 },
+        "subject_type": { "type": "string", "minLength": 1 },
+        "subject_key": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string" },
+        "request_id": { "type": ["string", "null"] },
+        "run_id": { "type": ["string", "null"] },
+        "agent_run_id": { "type": ["string", "null"] },
+        "duration_ms": { "type": ["integer", "null"], "minimum": 0 },
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } }
+      }
+    },
+    "pagination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["offset", "limit", "total", "has_more"],
+      "properties": {
+        "offset": { "type": "integer", "minimum": 0 },
+        "limit": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "total": { "type": "integer", "minimum": 0 },
+        "has_more": { "type": "boolean" }
+      }
+    }
+  }
+}

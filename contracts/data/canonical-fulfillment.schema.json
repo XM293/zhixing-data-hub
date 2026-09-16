@@ -1,0 +1,307 @@
+{
+  "$defs": {
+    "FulfillmentLineView": {
+      "properties": {
+        "external_key": {
+          "title": "External Key",
+          "type": "string"
+        },
+        "product_external_key": {
+          "title": "Product External Key",
+          "type": "string"
+        },
+        "sku": {
+          "title": "Sku",
+          "type": "string"
+        },
+        "quantity": {
+          "title": "Quantity",
+          "type": "integer"
+        },
+        "bundle_type": {
+          "title": "Bundle Type",
+          "type": "integer"
+        },
+        "parent_external_key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent External Key"
+        }
+      },
+      "required": [
+        "external_key",
+        "product_external_key",
+        "sku",
+        "quantity",
+        "bundle_type",
+        "parent_external_key"
+      ],
+      "title": "FulfillmentLineView",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "enterprise_id": {
+      "title": "Enterprise Id",
+      "type": "string"
+    },
+    "business_unit_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Business Unit Id"
+    },
+    "external_system_id": {
+      "title": "External System Id",
+      "type": "string"
+    },
+    "resource_key": {
+      "title": "Resource Key",
+      "type": "string"
+    },
+    "external_key": {
+      "title": "External Key",
+      "type": "string"
+    },
+    "raw_manifest_id": {
+      "title": "Raw Manifest Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "mapping_version": {
+      "title": "Mapping Version",
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "title": "Observed At",
+      "type": "string"
+    },
+    "source_updated_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Source Updated At"
+    },
+    "store_key": {
+      "title": "Store Key",
+      "type": "string"
+    },
+    "warehouse_key": {
+      "title": "Warehouse Key",
+      "type": "string"
+    },
+    "shipment_number": {
+      "title": "Shipment Number",
+      "type": "string"
+    },
+    "order_external_key": {
+      "title": "Order External Key",
+      "type": "string"
+    },
+    "platform_order_keys": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Platform Order Keys",
+      "type": "array"
+    },
+    "status": {
+      "title": "Status",
+      "type": "string"
+    },
+    "logistics_status": {
+      "title": "Logistics Status",
+      "type": "integer"
+    },
+    "freight_amount": {
+      "anyOf": [
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Freight Amount"
+    },
+    "freight_currency_code": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Freight Currency Code"
+    },
+    "base_freight_amount": {
+      "anyOf": [
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Base Freight Amount"
+    },
+    "base_currency_code": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Base Currency Code"
+    },
+    "exchange_rate_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Exchange Rate Version"
+    },
+    "source_local_time": {
+      "title": "Source Local Time",
+      "type": "string"
+    },
+    "source_updated_local_time": {
+      "title": "Source Updated Local Time",
+      "type": "string"
+    },
+    "dispatched_local_time": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Dispatched Local Time"
+    },
+    "source_timezone": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Source Timezone"
+    },
+    "created_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Created At"
+    },
+    "dispatched_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Dispatched At"
+    },
+    "business_date": {
+      "format": "date",
+      "title": "Business Date",
+      "type": "string"
+    },
+    "quality_flags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Quality Flags",
+      "type": "array"
+    },
+    "lines": {
+      "items": {
+        "$ref": "#/$defs/FulfillmentLineView"
+      },
+      "title": "Lines",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "enterprise_id",
+    "business_unit_id",
+    "external_system_id",
+    "resource_key",
+    "external_key",
+    "raw_manifest_id",
+    "schema_version",
+    "mapping_version",
+    "observed_at",
+    "source_updated_at",
+    "store_key",
+    "warehouse_key",
+    "shipment_number",
+    "order_external_key",
+    "platform_order_keys",
+    "status",
+    "logistics_status",
+    "freight_amount",
+    "freight_currency_code",
+    "base_freight_amount",
+    "base_currency_code",
+    "exchange_rate_version",
+    "source_local_time",
+    "source_updated_local_time",
+    "dispatched_local_time",
+    "source_timezone",
+    "created_at",
+    "dispatched_at",
+    "business_date",
+    "quality_flags"
+  ],
+  "title": "FulfillmentView",
+  "type": "object"
+}

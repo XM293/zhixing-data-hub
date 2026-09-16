@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/evals/schema/evaluation-case.schema.json",
+  "title": "Versioned enterprise AI evaluation case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_key",
+    "version_number",
+    "domain",
+    "risk_level",
+    "actor_login_name",
+    "target_twin_key",
+    "input",
+    "expectations"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "case_key": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+    "version_number": { "type": "integer", "minimum": 1 },
+    "domain": { "enum": ["knowledge", "role-twin", "metric", "authorization", "meeting", "tool"] },
+    "risk_level": { "enum": ["low", "medium", "high", "critical"] },
+    "actor_login_name": { "type": "string", "minLength": 1 },
+    "target_twin_key": { "type": "string", "minLength": 1 },
+    "input": { "$ref": "#/$defs/input" },
+    "expectations": { "$ref": "#/$defs/expectations" }
+  },
+  "$defs": {
+    "input": {
+      "type": "object",
+      "required": ["question", "top_k"],
+      "properties": {
+        "question": { "type": "string", "minLength": 2 },
+        "top_k": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "scope_key": { "type": ["string", "null"] }
+      }
+    },
+    "expectations": {
+      "type": "object",
+      "required": [
+        "minimum_evidence",
+        "minimum_metric_context",
+        "minimum_memory_context",
+        "required_document_keys",
+        "required_terms",
+        "forbidden_terms",
+        "require_caveat",
+        "expected_error_code",
+        "manual_review_required"
+      ],
+      "properties": {
+        "minimum_evidence": { "type": "integer", "minimum": 0 },
+        "minimum_metric_context": { "type": "integer", "minimum": 0 },
+        "minimum_memory_context": { "type": "integer", "minimum": 0 },
+        "required_document_keys": { "type": "array", "items": { "type": "string" } },
+        "required_terms": { "type": "array", "items": { "type": "string" } },
+        "forbidden_terms": { "type": "array", "items": { "type": "string" } },
+        "require_caveat": { "type": "boolean" },
+        "expected_error_code": { "type": ["string", "null"] },
+        "manual_review_required": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/metric/metric-series-response.schema.json",
+  "title": "Metric time-series response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "data_mode",
+    "scope_key",
+    "date_from",
+    "date_to",
+    "granularity",
+    "series",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "data_mode": { "const": "database" },
+    "scope_key": { "type": "string" },
+    "date_from": { "type": ["string", "null"], "format": "date-time" },
+    "date_to": { "type": ["string", "null"], "format": "date-time" },
+    "granularity": { "const": "day" },
+    "series": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "label",
+          "unit",
+          "scope_key",
+          "definition_version",
+          "latest_value",
+          "period_change_rate",
+          "minimum",
+          "maximum",
+          "points"
+        ],
+        "properties": {
+          "key": { "type": "string" },
+          "label": { "type": "string" },
+          "unit": { "type": "string" },
+          "scope_key": { "type": "string" },
+          "definition_version": { "type": "string" },
+          "latest_value": { "type": ["number", "null"] },
+          "period_change_rate": { "type": ["number", "null"] },
+          "minimum": { "type": ["number", "null"] },
+          "maximum": { "type": ["number", "null"] },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["as_of", "value", "change_rate"],
+              "properties": {
+                "as_of": { "type": "string", "format": "date-time" },
+                "value": { "type": "number" },
+                "change_rate": { "type": ["number", "null"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "generated_at": { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/knowledge/knowledge-provider-evaluation.schema.json",
+  "title": "Knowledge Provider Evaluation Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "client_request_key", "provider_keys", "top_k"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "client_request_key": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 160
+    },
+    "provider_keys": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "enum": ["weknora", "ragflow"] }
+    },
+    "top_k": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/action/customer-operation-action-proposal.schema.json",
+  "title": "Customer operation action proposal request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["step_indexes", "due_hint", "idempotency_key"],
+  "properties": {
+    "step_indexes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "type": "integer", "minimum": 0, "maximum": 7 }
+    },
+    "due_hint": { "type": "string", "minLength": 2, "maxLength": 300 },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 160,
+      "pattern": "^[a-zA-Z0-9:_-]+$"
+    }
+  }
+}

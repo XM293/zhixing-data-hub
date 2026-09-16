@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.example/contracts/ui/workspace-catalog.schema.json",
+  "title": "Workspace Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "data_mode", "default_workspace_key", "workspaces", "scope", "generated_at"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "data_mode": { "const": "database" },
+    "default_workspace_key": {
+      "enum": ["executive", "manager", "operator", "service", "finance", "people", "data-governance", "platform-ops", "ai-ops"]
+    },
+    "workspaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "workspace-profile.schema.json" }
+    },
+    "scope": { "$ref": "#/$defs/scope" },
+    "generated_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "keys", "label", "as_of"],
+      "properties": {
+        "kind": { "type": "string", "minLength": 1 },
+        "keys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "label": { "type": "string", "minLength": 1 },
+        "as_of": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

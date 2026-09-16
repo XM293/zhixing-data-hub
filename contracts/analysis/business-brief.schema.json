@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/analysis/business-brief.schema.json",
+  "title": "BusinessBrief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "enterprise_id",
+    "brief_key",
+    "version_number",
+    "brief_type",
+    "scope",
+    "title",
+    "status",
+    "source_analysis_run_id",
+    "headline",
+    "sections",
+    "evidence_refs",
+    "created_by_principal_id",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 8, "maxLength": 64 },
+    "enterprise_id": { "type": "string", "minLength": 3, "maxLength": 64 },
+    "brief_key": { "type": "string", "minLength": 3, "maxLength": 160 },
+    "version_number": { "type": "integer", "minimum": 1 },
+    "brief_type": { "enum": ["daily", "weekly", "exception"] },
+    "scope": {
+      "$ref": "business-analysis-run.schema.json#/$defs/scope"
+    },
+    "title": { "type": "string", "minLength": 2, "maxLength": 240 },
+    "status": { "enum": ["generated", "confirmed", "superseded"] },
+    "source_analysis_run_id": { "type": "string", "minLength": 8, "maxLength": 64 },
+    "headline": { "type": "string", "minLength": 2, "maxLength": 400 },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "title", "items"],
+        "properties": {
+          "key": { "type": "string", "minLength": 2, "maxLength": 80 },
+          "title": { "type": "string", "minLength": 2, "maxLength": 160 },
+          "items": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 2, "maxLength": 1200 }
+          }
+        }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^E[1-9][0-9]*$" }
+    },
+    "provider": { "type": "string", "maxLength": 64 },
+    "model": { "type": "string", "maxLength": 100 },
+    "execution_mode": { "enum": ["model", "evidence-fallback"] },
+    "created_by_principal_id": { "type": "string", "minLength": 3, "maxLength": 64 },
+    "request_id": { "type": "string", "minLength": 8, "maxLength": 96 },
+    "run_id": { "type": "string", "minLength": 8, "maxLength": 96 },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

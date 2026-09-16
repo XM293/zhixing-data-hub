@@ -1,0 +1,14 @@
+from __future__ import annotations
+
+SENSITIVE_KEYS = {"access_token", "refresh_token", "app_secret", "signature", "phone", "email"}
+
+
+def redact(value: object) -> object:
+    if isinstance(value, dict):
+        return {
+            key: "[REDACTED]" if key.lower() in SENSITIVE_KEYS else redact(item)
+            for key, item in value.items()
+        }
+    if isinstance(value, list):
+        return [redact(item) for item in value]
+    return value

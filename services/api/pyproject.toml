@@ -1,0 +1,58 @@
+[project]
+name = "zhixing-api"
+version = "0.1.0"
+description = "知行数枢模块化 API"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "alembic>=1.16,<2",
+  "boto3>=1.40,<2",
+  "fastapi>=0.116,<1",
+  "httpx>=0.28,<1",
+  "psycopg[binary]>=3.2,<4",
+  "redis>=6,<7",
+  "sqlalchemy>=2.0,<3",
+  "uvicorn[standard]>=0.35,<1",
+  "zhixing-agent-runtime",
+  "zhixing-codex-runtime",
+  "zhixing-connectors",
+  "zhixing-jobs",
+  "zhixing-observability",
+]
+
+[tool.uv.sources]
+zhixing-agent-runtime = { workspace = true }
+zhixing-codex-runtime = { workspace = true }
+zhixing-connectors = { workspace = true }
+zhixing-jobs = { workspace = true }
+zhixing-observability = { workspace = true }
+
+[dependency-groups]
+dev = [
+  "httpx>=0.28,<1",
+  "mypy>=1.17,<2",
+  "pytest>=8,<10",
+  "ruff>=0.12,<1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/zhixing_api"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_configs = true

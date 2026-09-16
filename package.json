@@ -1,0 +1,38 @@
+{
+  "name": "zhixing-data-hub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "知行数枢企业数据智能运营中枢 Monorepo",
+  "type": "module",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=22 <25",
+    "pnpm": ">=9 <10"
+  },
+  "scripts": {
+    "bootstrap": "node tools/workspace.mjs bootstrap",
+    "doctor": "node tools/workspace.mjs doctor",
+    "dev": "node tools/workspace.mjs dev",
+    "infra:up": "node tools/workspace.mjs infra up",
+    "infra:down": "node tools/workspace.mjs infra down",
+    "infra:verify": "node tools/infra-verify.mjs",
+    "db:upgrade": "uv run --directory services/api python scripts/database.py upgrade",
+    "db:status": "uv run --directory services/api python scripts/database.py status",
+    "db:seed": "uv run --directory services/api python scripts/database.py seed",
+    "db:migrate-sqlite": "uv run --directory services/api python scripts/migrate_sqlite_to_postgres.py",
+    "db:migrate-sqlite:dry-run": "uv run --directory services/api python scripts/migrate_sqlite_to_postgres.py --dry-run",
+    "db:rebuild:test": "uv run --directory services/api python scripts/database.py rebuild --confirm-test-database",
+    "worker:once": "uv run --directory services/worker python scripts/worker.py --once",
+    "worker:run": "uv run --directory services/worker python scripts/worker.py",
+    "worker:verify": "uv run --directory services/worker python scripts/verify.py",
+    "mcp:run": "uv run --directory mcp/enterprise-gateway python -m zhixing_mcp.server",
+    "mcp:verify": "uv run --directory mcp/enterprise-gateway python scripts/verify.py",
+    "runtime:verify": "uv run --directory services/api python scripts/runtime_verify.py",
+    "runtime:verify:ai": "uv run --directory services/api python scripts/runtime_verify.py --probe-ai",
+    "codex:task": "node scripts/codex/run-task.mjs",
+    "check": "node tools/workspace.mjs check && pnpm --filter @zhixing/web check && uv run --directory services/api ruff check src tests scripts && uv run --directory services/api mypy src && uv run --package zhixing-agent-runtime ruff check packages/agent-runtime/src packages/agent-runtime/tests && uv run --package zhixing-agent-runtime mypy packages/agent-runtime/src && uv run --directory services/adapters/codex-runtime ruff check src tests && uv run --directory services/adapters/codex-runtime mypy src && uv run --package zhixing-jobs ruff check packages/jobs/src packages/jobs/tests && uv run --package zhixing-jobs mypy packages/jobs/src && uv run --directory services/worker ruff check src tests scripts && uv run --directory services/worker mypy src && uv run --directory services/mock-commerce ruff check src tests && uv run --directory services/mock-commerce mypy src && uv run --directory services/mock-memory ruff check src tests && uv run --directory services/mock-memory mypy src && uv run --directory services/mock-knowledge ruff check src tests && uv run --directory services/mock-knowledge mypy src && uv run --directory mcp/enterprise-gateway ruff check src tests scripts && uv run --directory mcp/enterprise-gateway mypy src && pnpm test",
+    "check:connectors": "uv run --package zhixing-connectors ruff check packages/connectors/src packages/connectors/tests && uv run --package zhixing-connectors mypy packages/connectors/src && uv run --package zhixing-connectors pytest packages/connectors/tests",
+    "test": "node --test tests/workspace.test.mjs tests/codex-runner.test.mjs && pnpm --filter @zhixing/web test && pnpm check:connectors && uv run --directory services/api pytest && uv run --package zhixing-agent-runtime pytest packages/agent-runtime/tests && uv run --directory services/adapters/codex-runtime pytest && uv run --package zhixing-jobs pytest packages/jobs/tests && uv run --directory services/worker pytest && uv run --directory services/mock-commerce pytest && uv run --directory services/mock-memory pytest && uv run --directory services/mock-knowledge pytest && uv run --directory mcp/enterprise-gateway pytest",
+    "build": "pnpm --filter @zhixing/web build"
+  }
+}

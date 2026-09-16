@@ -1,0 +1,109 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "enterprise_id": {
+      "title": "Enterprise Id",
+      "type": "string"
+    },
+    "business_unit_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Business Unit Id"
+    },
+    "system_key": {
+      "title": "System Key",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "system_type": {
+      "title": "System Type",
+      "type": "string"
+    },
+    "base_url": {
+      "title": "Base Url",
+      "type": "string"
+    },
+    "provider_key": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Provider Key"
+    },
+    "access_mode": {
+      "title": "Access Mode",
+      "type": "string"
+    },
+    "status": {
+      "title": "Status",
+      "type": "string"
+    },
+    "connection_status": {
+      "default": "unknown",
+      "title": "Connection Status",
+      "type": "string"
+    },
+    "version": {
+      "title": "Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Created At"
+    },
+    "last_probe_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Probe At"
+    }
+  },
+  "required": [
+    "id",
+    "enterprise_id",
+    "system_key",
+    "name",
+    "system_type",
+    "base_url",
+    "provider_key",
+    "access_mode",
+    "status",
+    "version"
+  ],
+  "title": "SourceRegistrationView",
+  "type": "object"
+}

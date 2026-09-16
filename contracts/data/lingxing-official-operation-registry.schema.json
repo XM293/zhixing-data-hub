@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/data/lingxing-official-operation-registry.schema.json",
+  "title": "Lingxing official read operation registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "registry_version", "source", "operations"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "registry_version": {"type": "string", "minLength": 1},
+    "source": {"const": "https://apidoc.lingxing.com/_sidebar.md"},
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id", "title", "document_path", "documentation_url", "method", "path",
+          "wave", "review_status", "execution_status", "schema_status",
+          "resource_keys", "document_sha256"
+        ],
+        "properties": {
+          "id": {"type": "string", "pattern": "^lingxing_op_[0-9a-f]{16}$"},
+          "title": {"type": "string", "minLength": 1},
+          "document_path": {"type": "string", "minLength": 1},
+          "documentation_url": {
+            "type": "string",
+            "pattern": "^https://apidoc\\.lingxing\\.com/"
+          },
+          "method": {"enum": ["GET", "POST"]},
+          "path": {"type": "string", "pattern": "^/"},
+          "wave": {"enum": ["W0", "W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8"]},
+          "review_status": {
+            "enum": ["read_candidate", "read_only_confirmed", "read_only_schema_pending"]
+          },
+          "execution_status": {
+            "enum": ["metadata_only", "runtime_raw_only", "runtime_projectable"]
+          },
+          "schema_status": {"enum": ["schema_pending", "confirmed"]},
+          "resource_keys": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "document_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}

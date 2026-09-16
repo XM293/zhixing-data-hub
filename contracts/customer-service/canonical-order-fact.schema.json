@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/customer-service/canonical-order-fact.schema.json",
+  "title": "CustomerServiceCanonicalOrderFact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "match_status",
+    "match_reason",
+    "consistency_status",
+    "consistency_reason",
+    "material_conflict",
+    "differences",
+    "order_key",
+    "customer_key",
+    "store_scope_key",
+    "external_store_key",
+    "order_status",
+    "paid_amount",
+    "cost_amount",
+    "gross_margin_rate",
+    "currency",
+    "item_count",
+    "refund_count",
+    "refund_amount",
+    "refund_statuses",
+    "business_date",
+    "paid_at",
+    "source_system_key",
+    "sync_run_ids",
+    "scope_mapping_id",
+    "mapping_version"
+  ],
+  "properties": {
+    "match_status": {
+      "enum": ["matched", "not_applicable", "missing", "scope_mismatch"]
+    },
+    "match_reason": { "type": "string", "minLength": 2, "maxLength": 500 },
+    "consistency_status": {
+      "enum": ["consistent", "conflict", "not_checked"]
+    },
+    "consistency_reason": { "type": "string", "minLength": 2, "maxLength": 500 },
+    "material_conflict": { "type": "boolean" },
+    "differences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field",
+          "severity",
+          "context_value",
+          "canonical_value",
+          "message"
+        ],
+        "properties": {
+          "field": {
+            "enum": ["order_status", "paid_amount", "item_count", "refund_state"]
+          },
+          "severity": { "enum": ["info", "warning", "critical"] },
+          "context_value": { "type": ["string", "null"], "maxLength": 160 },
+          "canonical_value": { "type": ["string", "null"], "maxLength": 160 },
+          "message": { "type": "string", "minLength": 2, "maxLength": 500 }
+        }
+      }
+    },
+    "order_key": { "type": ["string", "null"], "maxLength": 160 },
+    "customer_key": { "type": ["string", "null"], "maxLength": 160 },
+    "store_scope_key": { "type": "string", "minLength": 2, "maxLength": 160 },
+    "external_store_key": { "type": ["string", "null"], "maxLength": 160 },
+    "order_status": { "type": ["string", "null"], "maxLength": 32 },
+    "paid_amount": { "type": ["number", "null"], "minimum": 0 },
+    "cost_amount": { "type": ["number", "null"], "minimum": 0 },
+    "gross_margin_rate": { "type": ["number", "null"] },
+    "currency": { "const": "CNY" },
+    "item_count": { "type": ["integer", "null"], "minimum": 0 },
+    "refund_count": { "type": "integer", "minimum": 0 },
+    "refund_amount": { "type": "number", "minimum": 0 },
+    "refund_statuses": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 32 },
+      "uniqueItems": true
+    },
+    "business_date": { "type": ["string", "null"], "format": "date" },
+    "paid_at": { "type": ["string", "null"], "format": "date-time" },
+    "source_system_key": { "type": ["string", "null"], "maxLength": 80 },
+    "sync_run_ids": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 64 },
+      "uniqueItems": true
+    },
+    "scope_mapping_id": { "type": ["string", "null"], "maxLength": 64 },
+    "mapping_version": { "type": ["string", "null"], "maxLength": 32 }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/data/source-binding-suggestion.schema.json",
+  "title": "Source binding suggestion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "suggested_business_unit_id",
+    "suggestion_reason",
+    "suggestion_evidence",
+    "suggestion_evidence_count"
+  ],
+  "properties": {
+    "suggested_business_unit_id": {"type": ["string", "null"], "maxLength": 64},
+    "suggestion_reason": {
+      "type": ["string", "null"],
+      "enum": ["approved_related_dimension", "conflicting_related_dimensions", null]
+    },
+    "suggestion_evidence": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["resource_key", "raw_manifest_id", "anchor_types"],
+        "properties": {
+          "resource_key": {"type": "string", "maxLength": 120},
+          "raw_manifest_id": {"type": "string", "maxLength": 64},
+          "anchor_types": {
+            "type": "array",
+            "items": {"type": "string", "enum": ["store", "warehouse", "product"]},
+            "uniqueItems": true,
+            "minItems": 1,
+            "maxItems": 3
+          }
+        }
+      }
+    },
+    "suggestion_evidence_count": {"type": "integer", "minimum": 0, "maximum": 50}
+  }
+}

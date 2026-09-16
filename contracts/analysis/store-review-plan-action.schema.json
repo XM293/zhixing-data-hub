@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/analysis/store-review-plan-action.schema.json",
+  "title": "StoreReviewPlanActionRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["action", "idempotency_key"],
+  "properties": {
+    "action": { "type": "string", "enum": ["pause", "resume", "run_now"] },
+    "expected_version": { "type": ["integer", "null"], "minimum": 1 },
+    "idempotency_key": { "type": "string", "minLength": 8, "maxLength": 200 }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/agent-runtime/agent-feedback.schema.json",
+  "title": "Agent answer feedback and human handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "agent_run_id", "feedback", "handoff_case"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "agent_run_id": { "type": "string", "minLength": 1 },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "message", "expected_answer", "actor_principal_id", "created_at"],
+      "properties": {
+        "kind": {
+          "enum": ["helpful", "inaccurate", "incomplete", "unsafe", "scope_issue", "handoff"]
+        },
+        "message": { "type": "string" },
+        "expected_answer": { "type": ["string", "null"] },
+        "actor_principal_id": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "handoff_case": {
+      "type": ["object", "null"],
+      "properties": {
+        "id": { "type": "string" },
+        "status": { "enum": ["open", "in_review", "resolved"] },
+        "priority": { "enum": ["normal", "high", "urgent"] },
+        "assigned_to_principal_id": { "type": ["string", "null"] },
+        "resolution_type": {
+          "type": ["string", "null"],
+          "enum": [null, "corrected_answer", "policy_update", "memory_update", "no_issue", "rerouted"]
+        },
+        "resolution_summary": { "type": ["string", "null"] },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["event_type", "actor_principal_id", "created_at"],
+            "properties": {
+              "event_type": {
+                "enum": ["feedback_submitted", "assigned", "note_added", "resolved", "reopened"]
+              },
+              "actor_principal_id": { "type": "string" },
+              "created_at": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

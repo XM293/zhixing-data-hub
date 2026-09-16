@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/identity/user-configuration.schema.json",
+  "title": "Governed Identity User Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "client_request_key",
+    "display_name",
+    "experience_role_key",
+    "org_key",
+    "position_key",
+    "status",
+    "role_assignments",
+    "reason"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "client_request_key": { "type": "string", "minLength": 8, "maxLength": 160 },
+    "expected_version": { "type": "integer", "minimum": 1 },
+    "login_name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "display_name": { "type": "string", "minLength": 2, "maxLength": 160 },
+    "email": { "type": ["string", "null"], "format": "email", "maxLength": 240 },
+    "experience_role_key": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 48,
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "org_key": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "position_key": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "status": { "enum": ["active", "suspended"] },
+    "role_assignments": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role_key", "scopes"],
+        "properties": {
+          "role_key": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "scopes": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 12,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["scope_type", "scope_ids", "effect"],
+              "properties": {
+                "scope_type": {
+                  "enum": [
+                    "enterprise",
+                    "org_subtree",
+                    "store",
+                    "knowledge_space",
+                    "object",
+                    "self",
+                    "business_unit"
+                  ]
+                },
+                "scope_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 100,
+                  "uniqueItems": true,
+                  "items": { "type": "string", "minLength": 1, "maxLength": 160 }
+                },
+                "effect": { "enum": ["allow", "deny"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reason": { "type": "string", "minLength": 3, "maxLength": 500 }
+  }
+}

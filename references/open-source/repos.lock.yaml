@@ -1,0 +1,81 @@
+snapshot_date: "2026-08-24"
+clone_mode: "shallow depth=1, filter=blob:none"
+repositories:
+  - name: OpenViking
+    category: context
+    path: references/open-source/context/OpenViking
+    remote: https://github.com/volcengine/OpenViking.git
+    branch: main
+    commit: 6e944cc3e148
+    license: AGPL-3.0
+  - name: TencentDB-Agent-Memory
+    category: memory
+    path: references/open-source/memory/TencentDB-Agent-Memory
+    remote: https://github.com/TencentCloud/TencentDB-Agent-Memory.git
+    branch: feat/server_team
+    commit: 97f94654280b
+    license: MIT
+  - name: WeKnora
+    category: knowledge
+    path: references/open-source/knowledge/WeKnora
+    remote: https://github.com/Tencent/WeKnora.git
+    branch: main
+    commit: 412dcc41c662
+    license: MIT-with-third-party-notices
+  - name: RAGFlow
+    category: knowledge
+    path: references/open-source/knowledge/RAGFlow
+    remote: https://github.com/infiniflow/ragflow.git
+    branch: main
+    commit: 2db8eb6c9118
+    license: Apache-2.0
+  - name: OpenMetadata
+    category: governance
+    path: references/open-source/governance/OpenMetadata
+    remote: https://github.com/open-metadata/OpenMetadata.git
+    branch: main
+    commit: 689958eaf7fd
+    license: Apache-2.0
+  - name: MetricFlow
+    category: metrics
+    path: references/open-source/metrics/MetricFlow
+    remote: https://github.com/dbt-labs/metricflow.git
+    branch: main
+    commit: db501c34a0cf
+    license: Apache-2.0
+  - name: Mem0
+    category: memory
+    path: references/open-source/memory/Mem0
+    remote: https://github.com/mem0ai/mem0.git
+    branch: main
+    commit: 8d5b7865bd05
+    license: Apache-2.0
+  - name: Codex
+    category: runtime
+    path: references/open-source/runtime/Codex
+    remote: https://github.com/openai/codex.git
+    branch: main
+    commit: 2161ec272a7d
+    license: Apache-2.0
+  - name: LangGraph
+    category: orchestration
+    path: references/open-source/orchestration/LangGraph
+    remote: https://github.com/langchain-ai/langgraph.git
+    branch: main
+    commit: f09cfe8ffc1e
+    license: MIT
+  - name: Temporal
+    category: workflow
+    path: references/open-source/workflow/Temporal
+    remote: https://github.com/temporalio/temporal.git
+    branch: main
+    commit: 6805caea59e3
+    license: MIT
+  - name: MCP-Python-SDK
+    category: protocol
+    path: references/open-source/protocol/MCP-Python-SDK
+    remote: https://github.com/modelcontextprotocol/python-sdk.git
+    branch: main
+    commit: 57394b0548d1
+    license: MIT
+

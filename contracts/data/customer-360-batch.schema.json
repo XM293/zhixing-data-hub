@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/data/customer-360-batch.schema.json",
+  "title": "Canonical customer 360 batch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "profiles", "touchpoints"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "profiles": { "type": "array", "items": { "$ref": "#/$defs/profile" } },
+    "touchpoints": { "type": "array", "items": { "$ref": "#/$defs/touchpoint" } }
+  },
+  "$defs": {
+    "business_key": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["customer_key", "display_name", "home_store_key", "member_level", "lifecycle_stage", "status", "province", "acquisition_channel", "registered_at", "last_active_at", "member_points", "growth_value", "churn_risk_score", "preferred_category", "consent_status", "tags"],
+      "properties": {
+        "customer_key": { "$ref": "#/$defs/business_key" },
+        "display_name": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "home_store_key": { "$ref": "#/$defs/business_key" },
+        "member_level": { "type": "string", "minLength": 1, "maxLength": 48 },
+        "lifecycle_stage": { "type": "string", "enum": ["new", "growing", "mature", "sleeping", "at_risk"] },
+        "status": { "type": "string", "enum": ["active", "inactive"] },
+        "province": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "acquisition_channel": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "registered_at": { "type": "string", "format": "date-time" },
+        "last_active_at": { "type": "string", "format": "date-time" },
+        "member_points": { "type": "integer", "minimum": 0 },
+        "growth_value": { "type": "integer", "minimum": 0 },
+        "churn_risk_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "preferred_category": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "consent_status": { "type": "string", "enum": ["granted", "revoked", "unknown"] },
+        "tags": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 80 }, "uniqueItems": true }
+      }
+    },
+    "touchpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["touchpoint_key", "customer_key", "store_key", "touchpoint_type", "channel", "occurred_at", "campaign_key", "value_fen", "properties"],
+      "properties": {
+        "touchpoint_key": { "$ref": "#/$defs/business_key" },
+        "customer_key": { "$ref": "#/$defs/business_key" },
+        "store_key": { "$ref": "#/$defs/business_key" },
+        "touchpoint_type": { "type": "string", "enum": ["visit", "product_view", "add_to_cart", "coupon_claim", "service", "campaign_click"] },
+        "channel": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "campaign_key": { "type": ["string", "null"], "maxLength": 160 },
+        "value_fen": { "type": "integer", "minimum": 0 },
+        "properties": { "type": "object" }
+      }
+    }
+  }
+}

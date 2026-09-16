@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.example/contracts/ui/center-catalog.schema.json",
+  "title": "Center Catalog Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "group_id", "enterprise_id", "groups", "resolved_at"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "group_id": { "type": ["string", "null"] },
+    "enterprise_id": { "type": "string", "minLength": 1 },
+    "resolved_at": { "type": "string", "format": "date-time" },
+    "groups": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/group" }
+    }
+  },
+  "$defs": {
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "order", "items"],
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "order": { "type": "integer" },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/item" } }
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "group_key", "label", "short_label", "icon_key", "href", "delivery_state", "required_permissions", "scope_level", "scene_node_key"],
+      "properties": {
+        "key": { "type": "string" },
+        "group_key": { "type": "string" },
+        "label": { "type": "string" },
+        "short_label": { "type": "string" },
+        "icon_key": { "type": "string" },
+        "href": { "type": "string", "pattern": "^/console(?:/|$)" },
+        "delivery_state": { "enum": ["prototype", "implemented", "unavailable"] },
+        "required_permissions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "scope_level": { "enum": ["group", "enterprise", "business_unit", "org_unit", "store", "warehouse"] },
+        "scene_node_key": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

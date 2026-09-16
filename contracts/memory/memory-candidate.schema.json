@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/memory/memory-candidate.schema.json",
+  "title": "MemoryCandidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "enterprise_id",
+    "twin_key",
+    "category",
+    "content",
+    "status",
+    "conflict_status",
+    "evidence_refs",
+    "created_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "enterprise_id": { "type": "string", "minLength": 1 },
+    "twin_key": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "content": { "type": "string", "minLength": 1 },
+    "status": {
+      "enum": ["candidate", "approved", "rejected", "active", "retired"]
+    },
+    "conflict_status": { "enum": ["clear", "unverified", "conflicted"] },
+    "conflict_ref": { "type": ["string", "null"] },
+    "source_type": { "type": "string" },
+    "source_ref": { "type": "string" },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "ref"],
+        "properties": {
+          "type": { "type": "string" },
+          "ref": { "type": "string" },
+          "excerpt": { "type": "string" }
+        }
+      }
+    },
+    "reviewer": { "type": ["string", "null"] },
+    "review_reason": { "type": ["string", "null"] },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

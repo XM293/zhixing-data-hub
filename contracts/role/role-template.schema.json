@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/role/role-template.schema.json",
+  "title": "Versioned role template",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "key",
+    "name",
+    "description",
+    "status",
+    "versions"
+  ],
+  "properties": {
+    "key": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+    "name": { "type": "string", "minLength": 2, "maxLength": 160 },
+    "description": { "type": "string", "minLength": 2, "maxLength": 1000 },
+    "status": { "enum": ["draft", "published", "retired"] },
+    "versions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version_number",
+          "status",
+          "role_title",
+          "responsibilities",
+          "capability_boundaries",
+          "default_voice_guide",
+          "default_reasoning_guide",
+          "default_answer_policy",
+          "change_summary"
+        ],
+        "properties": {
+          "version_number": { "type": "integer", "minimum": 1 },
+          "status": { "enum": ["draft", "published", "retired"] },
+          "role_title": { "type": "string" },
+          "responsibilities": { "type": "array", "items": { "type": "string" } },
+          "capability_boundaries": { "type": "array", "items": { "type": "string" } },
+          "default_voice_guide": { "type": "string" },
+          "default_reasoning_guide": { "type": "string" },
+          "default_answer_policy": { "type": "string" },
+          "change_summary": { "type": "string" }
+        }
+      }
+    }
+  }
+}

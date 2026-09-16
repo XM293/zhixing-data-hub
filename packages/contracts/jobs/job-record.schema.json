@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/jobs/job-record.v2.schema.json",
+  "title": "Background job record v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "enterprise_id",
+    "job_type",
+    "status",
+    "attempt",
+    "max_attempts",
+    "idempotency_key",
+    "initiator_type",
+    "initiator_id",
+    "actor_snapshot",
+    "permission_set_version",
+    "required_permissions",
+    "scope_type",
+    "scope_id",
+    "request_id",
+    "run_id"
+  ],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "id": { "type": "string", "minLength": 8, "maxLength": 64 },
+    "enterprise_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "job_type": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "payload": { "type": "object" },
+    "status": {
+      "enum": ["queued", "running", "retry_wait", "succeeded", "failed", "cancelled"]
+    },
+    "attempt": { "type": "integer", "minimum": 0 },
+    "max_attempts": { "type": "integer", "minimum": 1 },
+    "continuation_count": { "type": "integer", "minimum": 0, "default": 0 },
+    "continuation_progress": { "type": "integer", "minimum": 0, "default": 0 },
+    "priority": { "type": "integer" },
+    "timeout_seconds": { "type": "number", "exclusiveMinimum": 0 },
+    "available_at": { "type": "string", "format": "date-time" },
+    "idempotency_key": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "initiator_type": { "type": "string", "minLength": 1, "maxLength": 32 },
+    "initiator_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "actor_snapshot": { "type": "object" },
+    "permission_set_version": { "type": "string", "minLength": 1, "maxLength": 96 },
+    "required_permissions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 160 },
+      "uniqueItems": true
+    },
+    "scope_type": { "type": "string", "minLength": 1, "maxLength": 48 },
+    "scope_id": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "request_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{7,95}$" },
+    "run_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{7,95}$" },
+    "worker_id": { "type": ["string", "null"], "maxLength": 120 },
+    "result": { "type": ["object", "null"] },
+    "last_error_code": { "type": ["string", "null"], "maxLength": 120 },
+    "last_error_message": { "type": ["string", "null"], "maxLength": 1000 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  }
+}

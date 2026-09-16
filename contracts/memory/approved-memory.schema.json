@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/memory/approved-memory.schema.json",
+  "title": "ApprovedMemory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "enterprise_id",
+    "twin_key",
+    "candidate_id",
+    "memory_key",
+    "version_number",
+    "content",
+    "status",
+    "evidence_refs",
+    "approved_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "enterprise_id": { "type": "string", "minLength": 1 },
+    "twin_key": { "type": "string", "minLength": 1 },
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "memory_key": { "type": "string", "minLength": 1 },
+    "version_number": { "type": "integer", "minimum": 1 },
+    "content": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["approved", "active", "retired"] },
+    "evidence_refs": { "type": "array", "items": { "type": "object" } },
+    "approved_at": { "type": "string", "format": "date-time" },
+    "effective_from": { "type": ["string", "null"], "format": "date-time" },
+    "effective_until": { "type": ["string", "null"], "format": "date-time" }
+  }
+}

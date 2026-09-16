@@ -1,0 +1,1848 @@
+{
+  "schema_version": 1,
+  "policy_version": "lingxing-parameter-policy-2026-09-13.5",
+  "official_contract_version": "lingxing-contract-2026-09-11.7",
+  "source": "https://apidoc.lingxing.com/",
+  "resources": [
+    {
+      "resource_key": "official_044ffc8e4003fc69",
+      "operation_id": "lingxing_op_044ffc8e4003fc69",
+      "wave": "W2",
+      "status": "manual_required",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "mids",
+          "strategy": "manual",
+          "reason": "country_id_scope_required"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_04957300fd9047e6",
+      "operation_id": "lingxing_op_04957300fd9047e6",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "skus",
+          "strategy": "dependency",
+          "value_types": [
+            "sellerSku",
+            "msku"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_29c2ecea89316017",
+      "operation_id": "lingxing_op_29c2ecea89316017",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "sellerSku",
+          "strategy": "dependency",
+          "value_types": [
+            "sellerSku",
+            "msku"
+          ]
+        },
+        {
+          "field": "sortField",
+          "strategy": "enum",
+          "values": [
+            "startTime"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        },
+        {
+          "field": "sortType",
+          "strategy": "enum",
+          "values": [
+            "asc"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_3fb2b69a5a023816",
+      "operation_id": "lingxing_op_3fb2b69a5a023816",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "isParent",
+          "strategy": "enum",
+          "values": [
+            "0",
+            "1"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_4774b830574c79fc",
+      "operation_id": "lingxing_op_4774b830574c79fc",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "currencyCode",
+          "strategy": "dependency",
+          "value_types": [
+            "currencyCode"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_576da4fe8614f636",
+      "operation_id": "lingxing_op_576da4fe8614f636",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "dimensionType",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_6c37f91b5f3b6c08",
+      "operation_id": "lingxing_op_6c37f91b5f3b6c08",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "searchField",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_708956ecb911c985",
+      "operation_id": "lingxing_op_708956ecb911c985",
+      "wave": "W2",
+      "status": "manual_required",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "productType",
+          "strategy": "manual",
+          "reason": "product_type_values_required"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_786f0ff26e0851f0",
+      "operation_id": "lingxing_op_786f0ff26e0851f0",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "categoryUniqueId",
+          "strategy": "dependency",
+          "value_types": [
+            "categoryUniqueId"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_8b8601849b0f6be8",
+      "operation_id": "lingxing_op_8b8601849b0f6be8",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "sellerSku",
+          "strategy": "dependency",
+          "value_types": [
+            "sellerSku",
+            "msku"
+          ]
+        },
+        {
+          "field": "sortField",
+          "strategy": "enum",
+          "values": [
+            "startTime"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        },
+        {
+          "field": "sortType",
+          "strategy": "enum",
+          "values": [
+            "asc"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_96b436a7b7ce62d2",
+      "operation_id": "lingxing_op_96b436a7b7ce62d2",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "site_date",
+          "strategy": "calendar",
+          "unit": "day"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_98c023d7248e5223",
+      "operation_id": "lingxing_op_98c023d7248e5223",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "orderField",
+          "strategy": "enum",
+          "values": [
+            "campaignId"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        },
+        {
+          "field": "orderType",
+          "strategy": "enum",
+          "values": [
+            "asc"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_a403d4882f2de94f",
+      "operation_id": "lingxing_op_a403d4882f2de94f",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "isParent",
+          "strategy": "enum",
+          "values": [
+            "0",
+            "1"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_a6eed442006d8186",
+      "operation_id": "lingxing_op_a6eed442006d8186",
+      "wave": "W2",
+      "status": "manual_required",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "marketplaceId",
+          "strategy": "dependency",
+          "value_types": [
+            "marketplaceId"
+          ]
+        },
+        {
+          "field": "productType",
+          "strategy": "manual",
+          "reason": "product_type_values_required"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_ad32c4bc796136f3",
+      "operation_id": "lingxing_op_ad32c4bc796136f3",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "sellerSku",
+          "strategy": "dependency",
+          "value_types": [
+            "sellerSku",
+            "msku"
+          ]
+        },
+        {
+          "field": "sortField",
+          "strategy": "enum",
+          "values": [
+            "startTime"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        },
+        {
+          "field": "sortType",
+          "strategy": "enum",
+          "values": [
+            "asc"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_c31ff059f39aa2f2",
+      "operation_id": "lingxing_op_c31ff059f39aa2f2",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "amazonOrderId",
+          "strategy": "dependency",
+          "value_types": [
+            "amazonOrderId"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_d82ef06c6be39f88",
+      "operation_id": "lingxing_op_d82ef06c6be39f88",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "new_report",
+          "strategy": "enum",
+          "values": [
+            "1"
+          ],
+          "purpose": "documented_latest",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_e538c1149d341c8a",
+      "operation_id": "lingxing_op_e538c1149d341c8a",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "dimensionType",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_e798e99c2011756a",
+      "operation_id": "lingxing_op_e798e99c2011756a",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "sellerSku",
+          "strategy": "dependency",
+          "value_types": [
+            "sellerSku",
+            "msku"
+          ]
+        },
+        {
+          "field": "sortField",
+          "strategy": "enum",
+          "values": [
+            "startTime"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        },
+        {
+          "field": "sortType",
+          "strategy": "enum",
+          "values": [
+            "asc"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_f0b9ecffabf8aa7e",
+      "operation_id": "lingxing_op_f0b9ecffabf8aa7e",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "timeType",
+          "strategy": "enum",
+          "values": [
+            "1"
+          ],
+          "purpose": "documented_default",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_ff9cd37f781a56d2",
+      "operation_id": "lingxing_op_ff9cd37f781a56d2",
+      "wave": "W2",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "msku",
+          "strategy": "dependency",
+          "value_types": [
+            "msku"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_05ad44ba0d57cf05",
+      "operation_id": "lingxing_op_05ad44ba0d57cf05",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "orderId",
+          "strategy": "dependency",
+          "value_types": [
+            "orderId"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_1f62b5154c5436d8",
+      "operation_id": "lingxing_op_1f62b5154c5436d8",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "storage_type",
+          "strategy": "enum",
+          "values": [
+            "Standard",
+            "Oversize",
+            "Apparel",
+            "Footwear",
+            "ExtraLarge"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_216a0d9a9c31f09c",
+      "operation_id": "lingxing_op_216a0d9a9c31f09c",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "source_tuple",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "inboundPlanId",
+          "strategy": "dependency",
+          "value_types": [
+            "inboundPlanId"
+          ]
+        },
+        {
+          "field": "shipmentId",
+          "strategy": "dependency",
+          "value_types": [
+            "shipmentId",
+            "shipment_id"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_281e1d2a31717fc9",
+      "operation_id": "lingxing_op_281e1d2a31717fc9",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "dateType",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_2b405c2333888845",
+      "operation_id": "lingxing_op_2b405c2333888845",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "msku",
+          "strategy": "dependency",
+          "value_types": [
+            "msku"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_2d9cf2e675319e70",
+      "operation_id": "lingxing_op_2d9cf2e675319e70",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "inboundPlanId",
+          "strategy": "dependency",
+          "value_types": [
+            "inboundPlanId"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_31fbb54d434449aa",
+      "operation_id": "lingxing_op_31fbb54d434449aa",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "msku",
+          "strategy": "dependency",
+          "value_types": [
+            "msku"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_333ffd8b2fa8de3b",
+      "operation_id": "lingxing_op_333ffd8b2fa8de3b",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "asin",
+          "strategy": "dependency",
+          "value_types": [
+            "asin"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_361b03c664452e20",
+      "operation_id": "lingxing_op_361b03c664452e20",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "msku",
+          "strategy": "dependency",
+          "value_types": [
+            "msku"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_37602ceb015cf8ac",
+      "operation_id": "lingxing_op_37602ceb015cf8ac",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "asin",
+          "strategy": "dependency",
+          "value_types": [
+            "asin"
+          ]
+        },
+        {
+          "field": "sug_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_41831dde4af8b73a",
+      "operation_id": "lingxing_op_41831dde4af8b73a",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "data_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_4ce492e4cc82b516",
+      "operation_id": "lingxing_op_4ce492e4cc82b516",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "msku",
+          "strategy": "dependency",
+          "value_types": [
+            "msku"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_5b70e6c18c973e74",
+      "operation_id": "lingxing_op_5b70e6c18c973e74",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "dateType",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_6b701b81972df02c",
+      "operation_id": "lingxing_op_6b701b81972df02c",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "asin",
+          "strategy": "dependency",
+          "value_types": [
+            "asin"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_6f8f972281e1690a",
+      "operation_id": "lingxing_op_6f8f972281e1690a",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "shipmentId",
+          "strategy": "dependency",
+          "value_types": [
+            "shipmentId",
+            "shipment_id"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_75083cd878535634",
+      "operation_id": "lingxing_op_75083cd878535634",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "source_tuple",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "inboundPlanId",
+          "strategy": "dependency",
+          "value_types": [
+            "inboundPlanId"
+          ]
+        },
+        {
+          "field": "shipmentId",
+          "strategy": "dependency",
+          "value_types": [
+            "shipmentId",
+            "shipment_id"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_9b3b8a9018d05527",
+      "operation_id": "lingxing_op_9b3b8a9018d05527",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "inboundPlanId",
+          "strategy": "dependency",
+          "value_types": [
+            "inboundPlanId"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_ae5619f5de4ac003",
+      "operation_id": "lingxing_op_ae5619f5de4ac003",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "shipment_id",
+          "strategy": "dependency",
+          "value_types": [
+            "shipment_id",
+            "shipmentId"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_b946bd46318b5998",
+      "operation_id": "lingxing_op_b946bd46318b5998",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "inboundPlanId",
+          "strategy": "dependency",
+          "value_types": [
+            "inboundPlanId"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_ba7e2b854c9f77aa",
+      "operation_id": "lingxing_op_ba7e2b854c9f77aa",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "asin",
+          "strategy": "dependency",
+          "value_types": [
+            "asin"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_ca30eccf26eca0f5",
+      "operation_id": "lingxing_op_ca30eccf26eca0f5",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "msku",
+          "strategy": "dependency",
+          "value_types": [
+            "msku"
+          ]
+        },
+        {
+          "field": "sug_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_e6d150b0783457b2",
+      "operation_id": "lingxing_op_e6d150b0783457b2",
+      "wave": "W3",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "dateType",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_4673bfc9f9133624",
+      "operation_id": "lingxing_op_4673bfc9f9133624",
+      "wave": "W4",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "search_field_time",
+          "strategy": "enum",
+          "values": [
+            "update_time"
+          ],
+          "purpose": "complete_time_axis",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_271a3c2c8d3dfc09",
+      "operation_id": "lingxing_op_271a3c2c8d3dfc09",
+      "wave": "W5",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "sponsored_type",
+          "strategy": "enum",
+          "values": [
+            "ALL"
+          ],
+          "purpose": "all_data",
+          "allow_empty": false
+        },
+        {
+          "field": "target_type",
+          "strategy": "enum",
+          "values": [
+            "ALL"
+          ],
+          "purpose": "all_data",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_2eeb6e5205deb764",
+      "operation_id": "lingxing_op_2eeb6e5205deb764",
+      "wave": "W5",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "target_type",
+          "strategy": "enum",
+          "values": [
+            "keyword",
+            "target"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_8e2e3f4a4ed9dbde",
+      "operation_id": "lingxing_op_8e2e3f4a4ed9dbde",
+      "wave": "W5",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "target_type",
+          "strategy": "enum",
+          "values": [
+            "keyword",
+            "target"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_91609b93ec2b7dfc",
+      "operation_id": "lingxing_op_91609b93ec2b7dfc",
+      "wave": "W5",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "log_source",
+          "strategy": "enum",
+          "values": [
+            "all"
+          ],
+          "purpose": "all_data",
+          "allow_empty": false
+        },
+        {
+          "field": "operate_type",
+          "strategy": "enum",
+          "values": [
+            "campaigns",
+            "adGroups",
+            "productAds",
+            "keywords",
+            "negativeKeywords",
+            "targets",
+            "negativeTargets",
+            "profiles"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "sponsored_type",
+          "strategy": "enum",
+          "values": [
+            "sp",
+            "sb",
+            "sd"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_9a24daac7382a112",
+      "operation_id": "lingxing_op_9a24daac7382a112",
+      "wave": "W5",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "ads_type",
+          "strategy": "enum",
+          "values": [
+            "ALL"
+          ],
+          "purpose": "all_data",
+          "allow_empty": false
+        },
+        {
+          "field": "targeting_type",
+          "strategy": "enum",
+          "values": [
+            "ALL"
+          ],
+          "purpose": "all_data",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_a08f8cfbd51f8aa5",
+      "operation_id": "lingxing_op_a08f8cfbd51f8aa5",
+      "wave": "W5",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "sponsored_type",
+          "strategy": "enum",
+          "values": [
+            "ALL"
+          ],
+          "purpose": "all_data",
+          "allow_empty": false
+        },
+        {
+          "field": "target_type",
+          "strategy": "enum",
+          "values": [
+            "keyword"
+          ],
+          "purpose": "only_value",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_a2fa77b89b3172af",
+      "operation_id": "lingxing_op_a2fa77b89b3172af",
+      "wave": "W5",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "group_type",
+          "strategy": "enum",
+          "values": [
+            "hourly",
+            "weekly"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "sku",
+          "strategy": "dependency",
+          "value_types": [
+            "msku",
+            "sellerSku"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_04efc974c7a32bed",
+      "operation_id": "lingxing_op_04efc974c7a32bed",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "invoice_id",
+          "strategy": "dependency",
+          "value_types": [
+            "invoice_id"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_08444cadc4cce2cc",
+      "operation_id": "lingxing_op_08444cadc4cce2cc",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "asin",
+          "strategy": "dependency",
+          "value_types": [
+            "asin"
+          ]
+        },
+        {
+          "field": "currency_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "month",
+          "strategy": "calendar",
+          "unit": "month"
+        },
+        {
+          "field": "version",
+          "strategy": "enum",
+          "values": [
+            ""
+          ],
+          "purpose": "documented_empty",
+          "allow_empty": true
+        }
+      ]
+    },
+    {
+      "resource_key": "official_0e56fdfae7c28e18",
+      "operation_id": "lingxing_op_0e56fdfae7c28e18",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "asinType",
+          "strategy": "enum",
+          "values": [
+            "msku",
+            "asin",
+            "parentAsin",
+            "sku",
+            "spu"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "dateType",
+          "strategy": "enum",
+          "values": [
+            "0",
+            "1"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_11bb1741d5441737",
+      "operation_id": "lingxing_op_11bb1741d5441737",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "summary_field",
+          "strategy": "paired_dependency",
+          "value_field": "summary_field_value",
+          "dimensions": {
+            "parent_asin": [
+              "parentAsin"
+            ],
+            "asin": [
+              "asin"
+            ],
+            "msku": [
+              "msku"
+            ],
+            "sku": [
+              "sellerSku"
+            ],
+            "spu": [
+              "spu"
+            ]
+          }
+        },
+        {
+          "field": "summary_field_value",
+          "strategy": "provided_by_pair"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_22e58f36b77b15a6",
+      "operation_id": "lingxing_op_22e58f36b77b15a6",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "search_date_field",
+          "strategy": "enum",
+          "values": [
+            "posted_date_locale"
+          ],
+          "purpose": "complete_time_axis",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_29007f96e7677376",
+      "operation_id": "lingxing_op_29007f96e7677376",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "summary_type",
+          "strategy": "enum",
+          "values": [
+            "asin",
+            "parent_asin",
+            "msku"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_307ed67b3b2459e8",
+      "operation_id": "lingxing_op_307ed67b3b2459e8",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "sort_field",
+          "strategy": "enum",
+          "values": [
+            "volume"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        },
+        {
+          "field": "sort_type",
+          "strategy": "enum",
+          "values": [
+            "desc"
+          ],
+          "purpose": "ordering",
+          "allow_empty": false
+        },
+        {
+          "field": "summary_field",
+          "strategy": "enum",
+          "values": [
+            "asin",
+            "parent_asin",
+            "msku",
+            "sku"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_3df2efff9ddaac06",
+      "operation_id": "lingxing_op_3df2efff9ddaac06",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "settleMonth",
+          "strategy": "calendar",
+          "unit": "month"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_4e246a7534f79a79",
+      "operation_id": "lingxing_op_4e246a7534f79a79",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "queryType",
+          "strategy": "enum",
+          "values": [
+            "2"
+          ],
+          "purpose": "most_granular",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_52bf74e4d3ee044c",
+      "operation_id": "lingxing_op_52bf74e4d3ee044c",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "currencyCode",
+          "strategy": "dependency",
+          "value_types": [
+            "currencyCode"
+          ]
+        },
+        {
+          "field": "settleMonth",
+          "strategy": "calendar",
+          "unit": "month"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_589d4a4b0d8a5def",
+      "operation_id": "lingxing_op_589d4a4b0d8a5def",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "view",
+          "strategy": "enum",
+          "values": [
+            "sourcing",
+            "manufacturing"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_58e56a75bfcd2009",
+      "operation_id": "lingxing_op_58e56a75bfcd2009",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "currency_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "month",
+          "strategy": "calendar",
+          "unit": "month"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_613f4652034754e5",
+      "operation_id": "lingxing_op_613f4652034754e5",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "currency_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "month",
+          "strategy": "calendar",
+          "unit": "month"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_77161d6e3fc050c6",
+      "operation_id": "lingxing_op_77161d6e3fc050c6",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "summaryField",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "11"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_7a8a818ccd02a2cf",
+      "operation_id": "lingxing_op_7a8a818ccd02a2cf",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "view",
+          "strategy": "enum",
+          "values": [
+            "sourcing",
+            "manufacturing"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_814603b5d7e61e0d",
+      "operation_id": "lingxing_op_814603b5d7e61e0d",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "date_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "search_field",
+          "strategy": "paired_dependency",
+          "value_field": "search_value",
+          "dimensions": {
+            "asin": [
+              "asin"
+            ],
+            "parent_asin": [
+              "parentAsin"
+            ],
+            "msku": [
+              "msku"
+            ]
+          }
+        },
+        {
+          "field": "search_value",
+          "strategy": "provided_by_pair"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_81f530f8a30f8ad7",
+      "operation_id": "lingxing_op_81f530f8a30f8ad7",
+      "wave": "W6",
+      "status": "manual_required",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "region",
+          "strategy": "manual",
+          "reason": "approved_store_region_mapping_required"
+        },
+        {
+          "field": "report_document_id",
+          "strategy": "dependency",
+          "value_types": [
+            "report_document_id"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_8e9e5f51f4aa10e1",
+      "operation_id": "lingxing_op_8e9e5f51f4aa10e1",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "data_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "date_unit",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        },
+        {
+          "field": "result_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_9c81f3016fd05e55",
+      "operation_id": "lingxing_op_9c81f3016fd05e55",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "currencyCode",
+          "strategy": "dependency",
+          "value_types": [
+            "currencyCode"
+          ]
+        },
+        {
+          "field": "settleMonth",
+          "strategy": "calendar",
+          "unit": "month"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_b79947965a6fbd5c",
+      "operation_id": "lingxing_op_b79947965a6fbd5c",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "asin_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_ba35522ef5da57fd",
+      "operation_id": "lingxing_op_ba35522ef5da57fd",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "month",
+          "strategy": "calendar",
+          "unit": "month"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_e411e7bf9954d4c6",
+      "operation_id": "lingxing_op_e411e7bf9954d4c6",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "invoice_id",
+          "strategy": "dependency",
+          "value_types": [
+            "invoice_id"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_key": "official_1ec67db1946e5548",
+      "operation_id": "lingxing_op_1ec67db1946e5548",
+      "wave": "W7",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "pullDate",
+          "strategy": "calendar",
+          "unit": "day"
+        }
+      ]
+    },
+    {
+      "resource_key": "official_873e47220cad4d3c",
+      "operation_id": "lingxing_op_873e47220cad4d3c",
+      "wave": "W7",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "time_search_type",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_1d88c71195ebcea0",
+      "operation_id": "lingxing_op_1d88c71195ebcea0",
+      "wave": "W8",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "shipmentType",
+          "strategy": "enum",
+          "values": [
+            "1",
+            "2",
+            "3"
+          ],
+          "purpose": "exhaustive",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_4a4c7818d7c2b40f",
+      "operation_id": "lingxing_op_4a4c7818d7c2b40f",
+      "wave": "W8",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "search_field_time",
+          "strategy": "enum",
+          "values": [
+            "last_updated_date"
+          ],
+          "purpose": "complete_time_axis",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_8d698e8a4dd94b51",
+      "operation_id": "lingxing_op_8d698e8a4dd94b51",
+      "wave": "W8",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "show_status",
+          "strategy": "enum",
+          "values": [
+            "1"
+          ],
+          "purpose": "all_statuses",
+          "allow_empty": false
+        }
+      ]
+    },
+    {
+      "resource_key": "official_ae7c34d7d1faf90a",
+      "operation_id": "lingxing_op_ae7c34d7d1faf90a",
+      "wave": "W6",
+      "status": "ready_for_bounded_fanout",
+      "combination": "bounded_product",
+      "max_partitions_per_batch": 64,
+      "rules": [
+        {
+          "field": "financial_event_group_id",
+          "strategy": "dependency",
+          "value_types": [
+            "financialEventGroupId"
+          ],
+          "purpose": "settlement_summary_group",
+          "allow_empty": false
+        }
+      ]
+    }
+  ]
+}

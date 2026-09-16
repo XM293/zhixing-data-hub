@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/data/commerce-fact-batch.schema.json",
+  "title": "Canonical commerce fact batch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scope_mappings", "orders", "order_lines", "refunds", "inventory", "advertising"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "scope_mappings": { "type": "array", "items": { "$ref": "#/$defs/scope_mapping" } },
+    "orders": { "type": "array", "items": { "$ref": "#/$defs/order" } },
+    "order_lines": { "type": "array", "items": { "$ref": "#/$defs/order_line" } },
+    "refunds": { "type": "array", "items": { "$ref": "#/$defs/refund" } },
+    "inventory": { "type": "array", "items": { "$ref": "#/$defs/inventory" } },
+    "advertising": { "type": "array", "items": { "$ref": "#/$defs/advertising" } }
+  },
+  "$defs": {
+    "money_fen": { "type": "integer", "minimum": 0 },
+    "business_key": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "scope_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope_type", "scope_key", "external_scope_key", "label", "status", "attributes"],
+      "properties": {
+        "scope_type": { "type": "string", "enum": ["store"] },
+        "scope_key": { "$ref": "#/$defs/business_key" },
+        "external_scope_key": { "$ref": "#/$defs/business_key" },
+        "label": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "status": { "type": "string", "enum": ["active", "inactive"] },
+        "attributes": { "type": "object" }
+      }
+    },
+    "order": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order_key", "store_key", "customer_key", "channel", "status", "business_date", "paid_at", "paid_amount_fen", "item_amount_fen", "discount_amount_fen", "freight_amount_fen", "cost_amount_fen", "item_count", "province"],
+      "properties": {
+        "order_key": { "$ref": "#/$defs/business_key" },
+        "store_key": { "$ref": "#/$defs/business_key" },
+        "customer_key": { "$ref": "#/$defs/business_key" },
+        "channel": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "status": { "type": "string", "enum": ["paid", "shipped", "completed", "refunding", "cancelled"] },
+        "business_date": { "type": "string", "format": "date" },
+        "paid_at": { "type": "string", "format": "date-time" },
+        "shipped_at": { "type": ["string", "null"], "format": "date-time" },
+        "paid_amount_fen": { "$ref": "#/$defs/money_fen" },
+        "item_amount_fen": { "$ref": "#/$defs/money_fen" },
+        "discount_amount_fen": { "$ref": "#/$defs/money_fen" },
+        "freight_amount_fen": { "$ref": "#/$defs/money_fen" },
+        "cost_amount_fen": { "$ref": "#/$defs/money_fen" },
+        "item_count": { "type": "integer", "minimum": 1 },
+        "province": { "type": "string", "minLength": 1, "maxLength": 80 }
+      }
+    },
+    "order_line": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line_key", "order_key", "product_key", "sku_key", "quantity", "unit_price_fen", "paid_amount_fen", "cost_amount_fen", "refund_quantity", "refund_amount_fen"],
+      "properties": {
+        "line_key": { "$ref": "#/$defs/business_key" },
+        "order_key": { "$ref": "#/$defs/business_key" },
+        "product_key": { "$ref": "#/$defs/business_key" },
+        "sku_key": { "$ref": "#/$defs/business_key" },
+        "quantity": { "type": "integer", "minimum": 1 },
+        "unit_price_fen": { "$ref": "#/$defs/money_fen" },
+        "paid_amount_fen": { "$ref": "#/$defs/money_fen" },
+        "cost_amount_fen": { "$ref": "#/$defs/money_fen" },
+        "refund_quantity": { "type": "integer", "minimum": 0 },
+        "refund_amount_fen": { "$ref": "#/$defs/money_fen" }
+      }
+    },
+    "refund": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["refund_key", "order_key", "line_key", "store_key", "customer_key", "sku_key", "reason_category", "status", "requested_at", "refund_amount_fen", "quantity"],
+      "properties": {
+        "refund_key": { "$ref": "#/$defs/business_key" },
+        "order_key": { "$ref": "#/$defs/business_key" },
+        "line_key": { "$ref": "#/$defs/business_key" },
+        "store_key": { "$ref": "#/$defs/business_key" },
+        "customer_key": { "$ref": "#/$defs/business_key" },
+        "sku_key": { "$ref": "#/$defs/business_key" },
+        "reason_category": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "status": { "type": "string", "enum": ["requested", "approved", "completed", "rejected"] },
+        "requested_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": ["string", "null"], "format": "date-time" },
+        "refund_amount_fen": { "$ref": "#/$defs/money_fen" },
+        "quantity": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshot_key", "warehouse_key", "product_key", "sku_key", "as_of", "available_quantity", "reserved_quantity", "in_transit_quantity", "safety_quantity", "inventory_cost_fen", "days_cover", "status"],
+      "properties": {
+        "snapshot_key": { "$ref": "#/$defs/business_key" },
+        "warehouse_key": { "$ref": "#/$defs/business_key" },
+        "product_key": { "$ref": "#/$defs/business_key" },
+        "sku_key": { "$ref": "#/$defs/business_key" },
+        "as_of": { "type": "string", "format": "date-time" },
+        "available_quantity": { "type": "integer", "minimum": 0 },
+        "reserved_quantity": { "type": "integer", "minimum": 0 },
+        "in_transit_quantity": { "type": "integer", "minimum": 0 },
+        "safety_quantity": { "type": "integer", "minimum": 0 },
+        "inventory_cost_fen": { "$ref": "#/$defs/money_fen" },
+        "days_cover": { "type": "number", "minimum": 0 },
+        "status": { "type": "string", "enum": ["low", "healthy", "overstock", "inactive"] }
+      }
+    },
+    "advertising": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["performance_key", "campaign_key", "store_key", "product_key", "channel", "business_date", "impressions", "clicks", "spend_fen", "attributed_order_count", "attributed_revenue_fen"],
+      "properties": {
+        "performance_key": { "$ref": "#/$defs/business_key" },
+        "campaign_key": { "$ref": "#/$defs/business_key" },
+        "store_key": { "$ref": "#/$defs/business_key" },
+        "product_key": { "$ref": "#/$defs/business_key" },
+        "channel": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "business_date": { "type": "string", "format": "date" },
+        "impressions": { "type": "integer", "minimum": 0 },
+        "clicks": { "type": "integer", "minimum": 0 },
+        "spend_fen": { "$ref": "#/$defs/money_fen" },
+        "attributed_order_count": { "type": "integer", "minimum": 0 },
+        "attributed_revenue_fen": { "$ref": "#/$defs/money_fen" }
+      }
+    }
+  }
+}

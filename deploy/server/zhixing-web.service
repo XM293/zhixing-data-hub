@@ -1,0 +1,13 @@
+[Unit]
+Description=Zhixing Web
+After=zhixing-api.service
+
+[Service]
+WorkingDirectory=/opt/zhixing-data-hub
+Environment=NODE_ENV=production
+ExecStart=/opt/zhixing/node/bin/next start -p 3000 -H 127.0.0.1
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

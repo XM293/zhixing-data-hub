@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "group": {"id": "group-verify", "code": "verify", "name": "Synthetic verification group"},
+  "enterprises": [
+    {"id": "legal-a", "code": "legal-a", "name": "Synthetic legal A"},
+    {"id": "legal-b", "code": "legal-b", "name": "Synthetic legal B"}
+  ],
+  "business_units": [
+    {"id": "project-a", "enterprise_id": "legal-a", "unit_key": "project-a", "name": "Synthetic project A"},
+    {"id": "brand-a", "enterprise_id": "legal-a", "unit_key": "brand-a", "name": "Synthetic brand A"},
+    {"id": "project-b", "enterprise_id": "legal-b", "unit_key": "project-b", "name": "Synthetic project B"}
+  ],
+  "role_templates": [{
+    "role_key": "source-admin", "name": "Source administrator",
+    "permission_keys": ["platform.navigation.read", "identity.user.manage", "identity.access.manage", "source.manage", "metric.query.execute"]
+  }],
+  "administrators": [
+    {
+      "id": "admin-1", "home_enterprise_id": "legal-a", "login_name": "admin-1@verify",
+      "display_name": "Synthetic administrator 1", "password_env": "BOOTSTRAP_VERIFY_ADMIN_1_PASSWORD",
+      "enterprise_ids": ["legal-a", "legal-b"], "role_keys": ["source-admin"]
+    },
+    {
+      "id": "admin-2", "home_enterprise_id": "legal-a", "login_name": "admin-2@verify",
+      "display_name": "Synthetic administrator 2", "password_env": "BOOTSTRAP_VERIFY_ADMIN_2_PASSWORD",
+      "enterprise_ids": ["legal-a", "legal-b"], "role_keys": ["source-admin"]
+    }
+  ]
+}

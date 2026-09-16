@@ -1,0 +1,83 @@
+{
+  "kind": "codex-session-export",
+  "packageVersion": 1,
+  "exportedAt": "2026-09-16T04:07:04.634353300+00:00",
+  "sessions": [
+    {
+      "sessionId": "01a0a819-bf98-7c91-b333-841f5e3da441",
+      "title": "你好",
+      "cwd": "D:\\722\\codex-tools\\zhixing-data-hub",
+      "updatedAt": 1789531620,
+      "relativeRolloutPath": "sessions/2026/09/16/rollout-2026-09-16T10-44-14-01a0a819-bf98-7c91-b333-841f5e3da441.jsonl",
+      "fileEntry": "files/0001-01a0a819-bf98-7c91-b333-841f5e3da441/rollout.jsonl",
+      "sizeBytes": 17555030,
+      "sha256": "13b800731815647b2936cd10de5b220a5fa425dd98aa9115a78d0fcbacfa4977",
+      "sessionIndexEntry": {
+        "id": "01a0a819-bf98-7c91-b333-841f5e3da441",
+        "thread_name": "你好",
+        "updated_at": "2026-09-16T02:44:29.9787615Z"
+      },
+      "sourceInstance": {
+        "id": "2da29516-e33d-4297-941b-ebf9314f213c",
+        "name": "xmcodex"
+      }
+    },
+    {
+      "sessionId": "01a08fb4-d157-7700-bc81-77ec01bfdda5",
+      "title": "继续推进 Codex 会话任务",
+      "cwd": "D:\\722\\codex-tools\\zhixing-data-hub",
+      "updatedAt": 1789526638,
+      "relativeRolloutPath": "sessions/2026/09/11/rollout-2026-09-11T17-03-07-01a08fb4-d157-7700-bc81-77ec01bfdda5.jsonl",
+      "fileEntry": "files/0002-01a08fb4-d157-7700-bc81-77ec01bfdda5/rollout.jsonl",
+      "sizeBytes": 93934692,
+      "sha256": "bb27c3adf6087b75a3c9cebe7803bc62f160eec04e609e2cbf8eb7df335cfe56",
+      "sessionIndexEntry": {
+        "id": "01a08fb4-d157-7700-bc81-77ec01bfdda5",
+        "thread_name": "继续推进 Codex 会话任务",
+        "updated_at": "2026-09-11T09:03:28.6328143Z"
+      },
+      "sourceInstance": {
+        "id": "2da29516-e33d-4297-941b-ebf9314f213c",
+        "name": "xmcodex"
+      }
+    },
+    {
+      "sessionId": "01a09446-4908-7010-abca-e20801848e3c",
+      "title": "研究视频数字孪生效果",
+      "cwd": "D:\\722\\codex-tools\\zhixing-data-hub",
+      "updatedAt": 1789386650,
+      "relativeRolloutPath": "sessions/2026/09/12/rollout-2026-09-12T14-20-29-01a09446-4908-7010-abca-e20801848e3c.jsonl",
+      "fileEntry": "files/0003-01a09446-4908-7010-abca-e20801848e3c/rollout.jsonl",
+      "sizeBytes": 908037,
+      "sha256": "18d672b1ae10157c341e6aeeb0141e574757b76384e8642727b2e25d9cd65bff",
+      "sessionIndexEntry": {
+        "id": "01a09446-4908-7010-abca-e20801848e3c",
+        "thread_name": "研究视频数字孪生效果",
+        "updated_at": "2026-09-12T06:21:00.4525696Z"
+      },
+      "sourceInstance": {
+        "id": "__default__",
+        "name": "默认实例"
+      }
+    },
+    {
+      "sessionId": "01a05d26-ba87-7a83-890a-16f3e09d1a69",
+      "title": "研究吉客云对接实现",
+      "cwd": "D:\\722\\codex-tools\\zhixing-data-hub",
+      "updatedAt": 1788269277,
+      "relativeRolloutPath": "sessions/2026/09/01/rollout-2026-09-01T21-26-54-01a05d26-ba87-7a83-890a-16f3e09d1a69.jsonl",
+      "fileEntry": "files/0004-01a05d26-ba87-7a83-890a-16f3e09d1a69/rollout.jsonl",
+      "sizeBytes": 2758052,
+      "sha256": "62dd2f14160f5d06b14a00363a2baa774bd4c9e64f4de828e292b99054b9858d",
+      "sessionIndexEntry": {
+        "id": "01a05d26-ba87-7a83-890a-16f3e09d1a69",
+        "thread_name": "研究吉客云对接实现",
+        "updated_at": "2026-09-01T13:27:57.7386004Z"
+      },
+      "sourceInstance": {
+        "id": "__default__",
+        "name": "默认实例"
+      }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "processes": [
+    {
+      "name": "web",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@zhixing/web",
+        "dev",
+        "--hostname",
+        "127.0.0.1",
+        "--port",
+        "3000"
+      ]
+    },
+    {
+      "name": "api",
+      "cwd": ".",
+      "command": [
+        "uv",
+        "run",
+        "--directory",
+        "services/api",
+        "uvicorn",
+        "zhixing_api.main:app",
+        "--app-dir",
+        "src",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000"
+      ]
+    },
+    {
+      "name": "mock-commerce",
+      "cwd": ".",
+      "command": [
+        "uv",
+        "run",
+        "--directory",
+        "services/mock-commerce",
+        "uvicorn",
+        "mock_commerce.main:app",
+        "--app-dir",
+        "src",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8100"
+      ]
+    },
+    {
+      "name": "mock-memory",
+      "cwd": ".",
+      "command": [
+        "uv",
+        "run",
+        "--directory",
+        "services/mock-memory",
+        "uvicorn",
+        "mock_memory.main:app",
+        "--app-dir",
+        "src",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8200"
+      ]
+    },
+    {
+      "name": "mock-knowledge",
+      "cwd": ".",
+      "command": [
+        "uv",
+        "run",
+        "--directory",
+        "services/mock-knowledge",
+        "uvicorn",
+        "mock_knowledge.main:app",
+        "--app-dir",
+        "src",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8300"
+      ]
+    },
+    {
+      "name": "worker",
+      "cwd": ".",
+      "command": [
+        "uv",
+        "run",
+        "--directory",
+        "services/worker",
+        "python",
+        "scripts/worker.py"
+      ]
+    }
+  ],
+  "infrastructure": {
+    "composeFile": "deploy/local/compose.yaml"
+  }
+}

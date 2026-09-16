@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/observability/error-envelope-v1.schema.json",
+  "title": "ErrorEnvelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "error"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message", "status", "request_id", "run_id", "retryable"],
+      "properties": {
+        "code": { "type": "string", "pattern": "^[a-z][a-z0-9_.-]{2,95}$" },
+        "message": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "status": { "type": "integer", "minimum": 400, "maximum": 599 },
+        "request_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{7,95}$" },
+        "run_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{7,95}$" },
+        "retryable": { "type": "boolean" },
+        "details": { "type": "object", "additionalProperties": true }
+      }
+    }
+  }
+}

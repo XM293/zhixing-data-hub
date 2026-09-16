@@ -1,0 +1,14 @@
+[mcp_servers.zhixing_enterprise]
+command = "uv"
+args = ["run", "--directory", "mcp/enterprise-gateway", "python", "-m", "zhixing_mcp.server"]
+cwd = "D:\\722\\codex-tools\\zhixing-data-hub"
+enabled = true
+required = false
+startup_timeout_sec = 20
+tool_timeout_sec = 30
+enabled_tools = ["read_policy", "search_knowledge", "get_metric", "query_commerce_facts", "query_customer_360"]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.zhixing_enterprise.env]
+ZHIXING_API_URL = "http://127.0.0.1:8000"
+ZHIXING_MCP_CLIENT_ID = "codex-project"

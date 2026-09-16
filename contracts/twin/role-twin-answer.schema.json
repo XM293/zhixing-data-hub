@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/twin/role-twin-answer.schema.json",
+  "title": "Evidence-grounded role twin answer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "twin",
+    "question",
+    "answer",
+    "evidence",
+    "metric_context",
+    "memory_context",
+    "execution_mode",
+    "provider",
+    "model",
+    "duration_ms",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": { "const": 3 },
+    "run_id": { "type": "string" },
+    "twin": { "type": "object" },
+    "question": { "type": "string" },
+    "answer": { "type": "object" },
+    "evidence": { "type": "array" },
+    "metric_context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "label",
+          "unit",
+          "scope_key",
+          "definition_version",
+          "date_from",
+          "date_to",
+          "latest_value",
+          "period_change_rate",
+          "minimum",
+          "maximum",
+          "points"
+        ],
+        "properties": {
+          "key": { "type": "string" },
+          "label": { "type": "string" },
+          "unit": { "type": "string" },
+          "scope_key": { "type": "string" },
+          "definition_version": { "type": "string" },
+          "date_from": { "type": ["string", "null"], "format": "date-time" },
+          "date_to": { "type": ["string", "null"], "format": "date-time" },
+          "latest_value": { "type": ["number", "null"] },
+          "period_change_rate": { "type": ["number", "null"] },
+          "minimum": { "type": ["number", "null"] },
+          "maximum": { "type": ["number", "null"] },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["as_of", "value", "change_rate"],
+              "properties": {
+                "as_of": { "type": "string", "format": "date-time" },
+                "value": { "type": "number" },
+                "change_rate": { "type": ["number", "null"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "memory_context": { "type": "array" },
+    "execution_mode": { "enum": ["model", "evidence-fallback"] },
+    "provider": { "type": "string" },
+    "model": { "type": "string" },
+    "duration_ms": { "type": "integer", "minimum": 0 },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

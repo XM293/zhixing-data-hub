@@ -1,0 +1,43 @@
+# Local runtime and generated artifacts
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+node_modules/
+.next/
+.playwright-cli/
+.venv/
+.uv-cache/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+coverage/
+.coverage
+services/api/var/
+# Earlier verification commands resolved a repository-relative SQLite path from services/api.
+services/api/services/api/var/
+*.db-shm
+*.db-wal
+
+# Local process files
+*.pid
+*.log
+
+# Reference repositories are local research material, not product source code.
+# Keep the catalog and lock file, ignore cloned repositories two levels below.
+references/open-source/*/*/
+
+# Build outputs & test run intermediates
+output/
+outputs/
+.artifacts/
+.tmp/
+services/api/.tmp/
+*.pdf
+

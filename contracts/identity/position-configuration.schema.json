@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/identity/position-configuration.schema.json",
+  "title": "Governed Identity Position Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "client_request_key", "name", "position_level", "org_key", "reason"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "client_request_key": { "type": "string", "minLength": 8, "maxLength": 160 },
+    "position_key": { "type": "string", "minLength": 2, "maxLength": 120, "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "expected_version": { "type": "integer", "minimum": 1 },
+    "name": { "type": "string", "minLength": 2, "maxLength": 160 },
+    "position_level": { "type": "string", "minLength": 2, "maxLength": 48 },
+    "org_key": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "status": { "enum": ["active", "suspended"] },
+    "reason": { "type": "string", "minLength": 3, "maxLength": 500 }
+  }
+}

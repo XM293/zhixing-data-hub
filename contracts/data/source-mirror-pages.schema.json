@@ -1,0 +1,119 @@
+{
+  "$defs": {
+    "MirrorPageView": {
+      "properties": {
+        "raw_manifest_id": {
+          "title": "Raw Manifest Id",
+          "type": "string"
+        },
+        "resource_key": {
+          "title": "Resource Key",
+          "type": "string"
+        },
+        "acquisition_run_id": {
+          "title": "Acquisition Run Id",
+          "type": "string"
+        },
+        "projection_run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Projection Run Id"
+        },
+        "projection_status": {
+          "title": "Projection Status",
+          "type": "string"
+        },
+        "mapping_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mapping Version"
+        },
+        "schema_status": {
+          "title": "Schema Status",
+          "type": "string"
+        },
+        "fetched_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fetched At"
+        },
+        "row_count": {
+          "title": "Row Count",
+          "type": "integer"
+        },
+        "records_written": {
+          "title": "Records Written",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "raw_manifest_id",
+        "resource_key",
+        "acquisition_run_id",
+        "projection_run_id",
+        "projection_status",
+        "mapping_version",
+        "schema_status",
+        "fetched_at",
+        "row_count",
+        "records_written"
+      ],
+      "title": "MirrorPageView",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/MirrorPageView"
+      },
+      "title": "Items",
+      "type": "array"
+    },
+    "total": {
+      "title": "Total",
+      "type": "integer"
+    },
+    "offset": {
+      "title": "Offset",
+      "type": "integer"
+    },
+    "limit": {
+      "title": "Limit",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "items",
+    "total",
+    "offset",
+    "limit"
+  ],
+  "title": "MirrorPageList",
+  "type": "object"
+}

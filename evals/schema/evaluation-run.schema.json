@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/evals/schema/evaluation-run.schema.json",
+  "title": "Persisted evaluation run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "suite_key", "suite_version", "status", "summary", "items"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "run_id": { "type": "string" },
+    "suite_key": { "type": "string" },
+    "suite_version": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["running", "completed", "failed"] },
+    "summary": {
+      "type": "object",
+      "required": ["total", "passed", "failed", "review_required", "errors"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "review_required": { "type": "integer", "minimum": 0 },
+        "errors": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["case_key", "case_version", "actor_snapshot", "case_snapshot", "outcome", "checks"],
+        "properties": {
+          "case_key": { "type": "string" },
+          "case_version": { "type": "integer" },
+          "actor_snapshot": { "type": "object" },
+          "case_snapshot": { "type": "object" },
+          "agent_run_id": { "type": ["string", "null"] },
+          "outcome": { "enum": ["passed", "failed", "review_required", "error"] },
+          "checks": { "type": "array", "items": { "type": "object" } },
+          "error_types": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

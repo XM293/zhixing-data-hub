@@ -1,0 +1,257 @@
+{
+  "$defs": {
+    "DataSourceView": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "system_type": {
+          "title": "System Type",
+          "type": "string"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "connection_status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Connection Status"
+        },
+        "source_schema_version": {
+          "title": "Source Schema Version",
+          "type": "string"
+        },
+        "mapping_version": {
+          "title": "Mapping Version",
+          "type": "string"
+        },
+        "last_sync_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Sync At"
+        },
+        "source_record_count": {
+          "title": "Source Record Count",
+          "type": "integer"
+        },
+        "sync_run_count": {
+          "title": "Sync Run Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "key",
+        "name",
+        "system_type",
+        "status",
+        "source_schema_version",
+        "mapping_version",
+        "last_sync_at",
+        "source_record_count",
+        "sync_run_count"
+      ],
+      "title": "DataSourceView",
+      "type": "object"
+    },
+    "SyncRunView": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "source_key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Key"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "scenario": {
+          "title": "Scenario",
+          "type": "string"
+        },
+        "volume_profile": {
+          "title": "Volume Profile",
+          "type": "string"
+        },
+        "records_read": {
+          "title": "Records Read",
+          "type": "integer"
+        },
+        "records_written": {
+          "title": "Records Written",
+          "type": "integer"
+        },
+        "warning": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Warning"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Error"
+        },
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        },
+        "finished_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Finished At"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "scenario",
+        "volume_profile",
+        "records_read",
+        "records_written",
+        "warning",
+        "error",
+        "started_at",
+        "finished_at"
+      ],
+      "title": "SyncRunView",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "enterprise_id": {
+      "title": "Enterprise Id",
+      "type": "string"
+    },
+    "enterprise_name": {
+      "title": "Enterprise Name",
+      "type": "string"
+    },
+    "scope_context": {
+      "additionalProperties": true,
+      "title": "Scope Context",
+      "type": "object"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/DataSourceView"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "source_record_count": {
+      "title": "Source Record Count",
+      "type": "integer"
+    },
+    "resource_count": {
+      "title": "Resource Count",
+      "type": "integer"
+    },
+    "enabled_resource_count": {
+      "title": "Enabled Resource Count",
+      "type": "integer"
+    },
+    "pending_resource_count": {
+      "title": "Pending Resource Count",
+      "type": "integer"
+    },
+    "latest_sync": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SyncRunView"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "generated_at": {
+      "format": "date-time",
+      "title": "Generated At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "enterprise_id",
+    "enterprise_name",
+    "scope_context",
+    "sources",
+    "source_record_count",
+    "resource_count",
+    "enabled_resource_count",
+    "pending_resource_count",
+    "latest_sync",
+    "generated_at"
+  ],
+  "title": "SourceOperationsView",
+  "type": "object"
+}

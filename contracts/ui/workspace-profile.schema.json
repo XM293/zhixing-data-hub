@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.example/contracts/ui/workspace-profile.schema.json",
+  "title": "Workspace Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "key",
+    "label",
+    "audience",
+    "default_route",
+    "navigation_keys",
+    "metric_keys",
+    "attention_query_keys",
+    "quick_action_keys",
+    "scene_key",
+    "layout_version",
+    "delivery_state"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "key": {
+      "enum": ["executive", "manager", "operator", "service", "finance", "people", "data-governance", "platform-ops", "ai-ops"]
+    },
+    "label": { "type": "string", "minLength": 1 },
+    "audience": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "default_route": { "type": "string", "pattern": "^/console(?:/.*)?$" },
+    "navigation_keys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "metric_keys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "attention_query_keys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "quick_action_keys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "scene_key": { "type": ["string", "null"] },
+    "layout_version": { "type": "integer", "minimum": 1 },
+    "delivery_state": { "enum": ["prototype", "implemented", "unavailable"] }
+  }
+}

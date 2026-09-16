@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/customer-operations/customer-operation-plan.schema.json",
+  "title": "Governed customer operation plan",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "scope_key": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "customer_key": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "objective": { "type": "string", "minLength": 8, "maxLength": 1000 },
+    "client_request_key": { "type": "string", "minLength": 8, "maxLength": 160 },
+    "headline": { "type": "string" },
+    "summary": { "type": "string" },
+    "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+    "diagnoses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": { "type": "string", "enum": ["fact", "inference", "risk"] },
+          "severity": { "type": "string", "enum": ["low", "medium", "high"] },
+          "text": { "type": "string" },
+          "evidence_refs": { "type": "array", "items": { "type": "string", "pattern": "^E[1-9][0-9]*$" } }
+        },
+        "required": ["kind", "severity", "text", "evidence_refs"]
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": { "type": "string" },
+          "action": { "type": "string" },
+          "owner_role": { "type": "string" },
+          "priority": { "type": "string", "enum": ["normal", "high", "urgent"] },
+          "action_type": {
+            "type": "string",
+            "enum": ["manual_review", "service_handoff", "content_preparation", "audience_analysis"]
+          },
+          "evidence_refs": { "type": "array", "items": { "type": "string", "pattern": "^E[1-9][0-9]*$" } },
+          "success_metric": { "type": "string" },
+          "stop_condition": { "type": "string" },
+          "requires_human_approval": { "const": true },
+          "external_write_allowed": { "const": false }
+        },
+        "required": [
+          "title",
+          "action",
+          "owner_role",
+          "priority",
+          "action_type",
+          "evidence_refs",
+          "success_metric",
+          "stop_condition",
+          "requires_human_approval",
+          "external_write_allowed"
+        ]
+      }
+    },
+    "unknowns": { "type": "array", "items": { "type": "string" } },
+    "prohibited_actions": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+  },
+  "required": [
+    "scope_key",
+    "customer_key",
+    "objective",
+    "client_request_key",
+    "headline",
+    "summary",
+    "confidence",
+    "diagnoses",
+    "steps",
+    "unknowns",
+    "prohibited_actions"
+  ]
+}

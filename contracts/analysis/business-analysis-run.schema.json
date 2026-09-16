@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhixing.local/contracts/analysis/business-analysis-run.schema.json",
+  "title": "BusinessAnalysisRun",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "enterprise_id",
+    "analysis_type",
+    "scope",
+    "window_days",
+    "status",
+    "risk_level",
+    "execution_mode",
+    "metric_snapshot",
+    "findings",
+    "recommendations",
+    "unknowns",
+    "evidence_snapshot",
+    "actor_context",
+    "idempotency_key",
+    "created_at",
+    "completed_at"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 8, "maxLength": 64 },
+    "enterprise_id": { "type": "string", "minLength": 3, "maxLength": 64 },
+    "analysis_type": { "enum": ["store-review", "enterprise-review"] },
+    "scope": { "$ref": "#/$defs/scope" },
+    "window_days": { "type": "integer", "minimum": 1, "maximum": 365 },
+    "status": { "enum": ["completed", "failed"] },
+    "risk_level": { "enum": ["healthy", "watch", "high", "critical"] },
+    "provider": { "type": "string", "maxLength": 64 },
+    "model": { "type": "string", "maxLength": 100 },
+    "execution_mode": { "enum": ["model", "evidence-fallback"] },
+    "fallback_reason": { "type": ["string", "null"], "maxLength": 1000 },
+    "headline": { "type": "string", "minLength": 2, "maxLength": 300 },
+    "summary": { "type": "string", "minLength": 2, "maxLength": 4000 },
+    "metric_snapshot": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/metric" }
+    },
+    "commerce_fact_snapshot": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/commerceFact" }
+    },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/recommendation" }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 1000 }
+    },
+    "evidence_snapshot": { "$ref": "#/$defs/evidenceSnapshot" },
+    "actor_context": { "type": "object" },
+    "idempotency_key": { "type": "string", "minLength": 8, "maxLength": 160 },
+    "request_id": { "type": "string", "minLength": 8, "maxLength": 96 },
+    "run_id": { "type": "string", "minLength": 8, "maxLength": 96 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "key", "label"],
+      "properties": {
+        "type": { "enum": ["enterprise", "store"] },
+        "key": { "type": "string", "minLength": 2, "maxLength": 160 },
+        "label": { "type": "string", "minLength": 2, "maxLength": 200 }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "unit", "latest_value", "period_change_rate", "minimum", "maximum", "status", "status_reason", "evidence_ref", "points"],
+      "properties": {
+        "key": { "type": "string", "minLength": 2, "maxLength": 100 },
+        "label": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "unit": { "type": "string", "maxLength": 32 },
+        "latest_value": { "type": "number" },
+        "period_change_rate": { "type": ["number", "null"] },
+        "minimum": { "type": "number" },
+        "maximum": { "type": "number" },
+        "status": { "enum": ["healthy", "watch", "high", "critical"] },
+        "status_reason": { "type": "string", "minLength": 2, "maxLength": 500 },
+        "evidence_ref": { "type": "string", "pattern": "^E[1-9][0-9]*$" },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["as_of", "value"],
+            "properties": {
+              "as_of": { "type": "string", "format": "date-time" },
+              "value": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "commerceFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "domain", "label", "evidence_ref", "value", "unit", "status", "detail", "related_keys", "source_keys", "sync_run_ids"],
+      "properties": {
+        "key": { "type": "string", "minLength": 3, "maxLength": 240 },
+        "domain": { "enum": ["orders", "refunds", "inventory", "advertising", "exception"] },
+        "label": { "type": "string", "minLength": 1, "maxLength": 240 },
+        "evidence_ref": { "type": "string", "pattern": "^E[1-9][0-9]*$" },
+        "value": { "type": "number" },
+        "unit": { "type": "string", "maxLength": 32 },
+        "status": { "enum": ["healthy", "watch", "high", "critical"] },
+        "detail": { "type": "string", "minLength": 2, "maxLength": 1200 },
+        "related_keys": { "type": "array", "items": { "type": "string", "maxLength": 200 } },
+        "source_keys": { "type": "array", "items": { "type": "string", "maxLength": 160 } },
+        "sync_run_ids": { "type": "array", "items": { "type": "string", "maxLength": 160 } }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "severity", "text", "evidence_refs"],
+      "properties": {
+        "kind": { "enum": ["fact", "inference", "risk"] },
+        "severity": { "enum": ["healthy", "watch", "high", "critical"] },
+        "text": { "type": "string", "minLength": 2, "maxLength": 1200 },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^E[1-9][0-9]*$" }
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "action", "owner_role", "priority", "evidence_refs", "success_metric", "stop_condition"],
+      "properties": {
+        "title": { "type": "string", "minLength": 2, "maxLength": 200 },
+        "action": { "type": "string", "minLength": 2, "maxLength": 1200 },
+        "owner_role": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "priority": { "enum": ["normal", "high", "urgent"] },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^E[1-9][0-9]*$" }
+        },
+        "success_metric": { "type": "string", "maxLength": 500 },
+        "stop_condition": { "type": "string", "maxLength": 500 }
+      }
+    },
+    "evidenceSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "key", "content_hash", "item_count", "frozen_at"],
+      "properties": {
+        "id": { "type": "string", "minLength": 8, "maxLength": 64 },
+        "key": { "type": "string", "minLength": 8, "maxLength": 120 },
+        "content_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "item_count": { "type": "integer", "minimum": 1 },
+        "frozen_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}
