@@ -15,7 +15,8 @@ import {
   Minus,
   RefreshCcw,
   SearchX,
-  TriangleAlert
+  TriangleAlert,
+  X
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -406,5 +407,79 @@ export function InlineLink({ href, children }: { href: string; children: React.R
       {children}
       <ArrowRight aria-hidden="true" size={15} />
     </Link>
+  );
+}
+
+export function CyberDrawer({
+  isOpen,
+  onClose,
+  title,
+  children,
+  footer
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+  footer?: React.ReactNode;
+}) {
+  if (!isOpen) return null;
+  return (
+    <>
+      <div className="cyber-drawer-backdrop" onClick={onClose} />
+      <aside className="cyber-drawer">
+        <div className="cyber-drawer-header">
+          <h3>{title}</h3>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="关闭抽屉"
+            style={{
+              background: "transparent",
+              border: "none",
+              color: "#94a3b8",
+              cursor: "pointer",
+              padding: "4px",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <X size={18} />
+          </button>
+        </div>
+        <div className="cyber-drawer-body">{children}</div>
+        {footer ? <div className="cyber-drawer-footer">{footer}</div> : null}
+      </aside>
+    </>
+  );
+}
+
+export function FinancialKpiCard({
+  label,
+  value,
+  badgeText,
+  badgeTone = "green",
+  hint,
+  cardTone = "blue"
+}: {
+  label: string;
+  value: string;
+  badgeText?: string;
+  badgeTone?: "green" | "gold" | "purple";
+  hint?: string;
+  cardTone?: "blue" | "green" | "gold" | "purple";
+}) {
+  return (
+    <div className={`financial-kpi-card tone-${cardTone}`}>
+      <div className="financial-kpi-header">
+        <span className="financial-kpi-label">{label}</span>
+        {badgeText ? (
+          <span className={`financial-kpi-badge ${badgeTone}`}>{badgeText}</span>
+        ) : null}
+      </div>
+      <div className="financial-kpi-value">{value}</div>
+      {hint ? <div className="financial-kpi-hint">{hint}</div> : null}
+    </div>
   );
 }

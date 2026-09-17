@@ -249,23 +249,137 @@ export function TwinAssistantPage() {
   );
 }
 
-function AnswerSection({ icon, label, items }: { icon: React.ReactNode; label: string; items: string[] }) {
-  return <section className="twin-answer-section"><h3>{icon}{label}</h3><ul>{items.map((item, index) => <li key={`${label}-${index}`}>{item}</li>)}</ul></section>;
+function AnswerSection({
+  icon,
+  label,
+  type,
+  items,
+  evidence
+}: {
+  icon: React.ReactNode;
+  label: string;
+  type: "summary" | "facts" | "actions" | "caveats";
+  items: string[];
+  evidence?: TwinAnswerResponse["evidence"];
+}) {
+  return (
+    <section className="twin-answer-section" style={{ marginTop: "0.6rem" }}>
+      <div className={`section-title ${type}`} style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.82rem", fontWeight: 600 }}>
+        {icon}
+        <span>{label}</span>
+      </div>
+      <ul style={{ margin: "0.3rem 0 0 0", paddingLeft: "1.2rem", display: "grid", gap: "0.35rem" }}>
+        {items.map((item, index) => (
+          <li key={`${label}-${index}`} style={{ lineHeight: 1.5, color: "#cbd5e1", fontSize: "0.86rem" }}>
+            {item}
+            {type === "facts" && evidence && evidence[index] ? (
+              <span className="evidence-tag" title={`${evidence[index].document_title} - ${evidence[index].locator}`}>
+                E{index + 1}
+              </span>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 }
 
-function ConversationAnswer({ answer, feedback, feedbackSubmitting, isLatest, onCorrection, onHandoff, onHelpful, roleId }: { answer: TwinAnswerResponse; feedback: AgentRunFeedbackResponse | null; feedbackSubmitting: boolean; isLatest: boolean; onCorrection: () => void; onHandoff: () => void; onHelpful: () => void; roleId: string }) {
+function ConversationAnswer({
+  answer,
+  feedback,
+  feedbackSubmitting,
+  isLatest,
+  onCorrection,
+  onHandoff,
+  onHelpful,
+  roleId
+}: {
+  answer: TwinAnswerResponse;
+  feedback: AgentRunFeedbackResponse | null;
+  feedbackSubmitting: boolean;
+  isLatest: boolean;
+  onCorrection: () => void;
+  onHandoff: () => void;
+  onHelpful: () => void;
+  roleId: string;
+}) {
   const confidenceLabel = answer.answer.confidence === "high" ? "高" : answer.answer.confidence === "medium" ? "中" : "低";
-  return <div className="message assistant-message twin-answer-message">
-    <span><Bot aria-hidden="true" size={15} />{answer.twin.display_name}</span>
-    <p className="twin-answer-summary">{answer.answer.summary}</p>
-    {answer.answer.facts.length ? <AnswerSection icon={<CheckCircle2 size={15} />} items={answer.answer.facts} label="可核验事实" /> : null}
-    {answer.answer.actions.length ? <AnswerSection icon={<Sparkles size={15} />} items={answer.answer.actions} label="建议动作" /> : null}
-    {answer.answer.caveats.length ? <AnswerSection icon={<CircleAlert size={15} />} items={answer.answer.caveats} label="限制与未知" /> : null}
-    <div className="answer-tags"><StatusBadge value={{ label: answer.execution_mode === "model" ? "模型综合" : "证据降级", tone: answer.execution_mode === "model" ? "positive" : "warning" }} /><StatusBadge value={{ label: `置信度 ${confidenceLabel}`, tone: answer.answer.confidence === "high" ? "positive" : "info" }} /><span>{formatTime(answer.created_at)}</span></div>
-    {isLatest ? <div className="twin-feedback-actions"><span>回答反馈</span><button disabled={feedbackSubmitting} onClick={onHelpful} type="button"><ThumbsUp size={14} />有帮助</button><button disabled={feedbackSubmitting} onClick={onCorrection} type="button"><MessageSquareWarning size={14} />需要纠正</button><button className="handoff" disabled={feedbackSubmitting} onClick={onHandoff} type="button"><ShieldAlert size={14} />转人工</button></div> : null}
-    {isLatest && feedback && !feedback.handoff_case ? <div className="twin-feedback-receipt"><ClipboardCheck size={15} /><span>反馈已写入本次 AgentRun。</span></div> : null}
-    {isLatest && feedback?.handoff_case ? <div className={`twin-handoff-status ${feedback.handoff_case.status}`}><div><ShieldAlert size={16} /><strong>{feedback.handoff_case.status === "open" ? "已进入人工接管队列" : feedback.handoff_case.status === "in_review" ? "负责人正在处理" : "人工处理已完成"}</strong></div><p>{feedback.handoff_case.resolution_summary ?? `优先级：${feedback.handoff_case.priority === "urgent" ? "紧急" : feedback.handoff_case.priority === "high" ? "高" : "普通"}`}</p>{["ceo", "manager", "admin", "service"].includes(roleId) ? <Link href="/console/twins/feedback">查看反馈工单</Link> : null}</div> : null}
-  </div>;
+  return (
+    <div
+      className="message assistant-message twin-answer-message"
+      style={{
+        background: "rgba(17, 24, 39, 0.8)",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
+        borderRadius: "12px",
+        padding: "1.15rem",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.25)"
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.06)", paddingBottom: "0.5rem", marginBottom: "0.65rem" }}>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", color: "#60a5fa", fontWeight: 600 }}>
+          <Bot aria-hidden="true" size={16} />
+          {answer.twin.display_name}
+        </span>
+        <div style={{ display: "flex", gap: "0.4rem" }}>
+          <span style={{ fontSize: "0.72rem", background: "rgba(59, 130, 246, 0.15)", color: "#60a5fa", padding: "2px 6px", borderRadius: "4px" }}>
+            {answer.model ?? "gpt-6-astra"}
+          </span>
+          <span style={{ fontSize: "0.72rem", background: "rgba(16, 185, 129, 0.15)", color: "#34d399", padding: "2px 6px", borderRadius: "4px" }}>
+            置信度 {confidenceLabel}
+          </span>
+        </div>
+      </div>
+
+      <p className="twin-answer-summary" style={{ fontSize: "0.92rem", lineHeight: 1.6, color: "#f8fafc", background: "rgba(59, 130, 246, 0.06)", padding: "0.65rem 0.85rem", borderRadius: "8px", borderLeft: "3px solid #3b82f6", margin: "0 0 0.65rem 0" }}>
+        {answer.answer.summary}
+      </p>
+
+      {answer.answer.facts.length ? (
+        <AnswerSection
+          icon={<CheckCircle2 size={14} style={{ color: "#34d399" }} />}
+          items={answer.answer.facts}
+          label="可核验核心事实"
+          type="facts"
+          evidence={answer.evidence}
+        />
+      ) : null}
+
+      {answer.answer.actions.length ? (
+        <AnswerSection
+          icon={<Sparkles size={14} style={{ color: "#a78bfa" }} />}
+          items={answer.answer.actions}
+          label="建议决策与行动"
+          type="actions"
+        />
+      ) : null}
+
+      {answer.answer.caveats.length ? (
+        <AnswerSection
+          icon={<CircleAlert size={14} style={{ color: "#fbbf24" }} />}
+          items={answer.answer.caveats}
+          label="边界说明与风险警示"
+          type="caveats"
+        />
+      ) : null}
+
+      <div className="answer-tags" style={{ marginTop: "0.85rem", paddingTop: "0.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+          <StatusBadge value={{ label: answer.execution_mode === "model" ? "模型综合研判" : "证据式降级", tone: answer.execution_mode === "model" ? "positive" : "warning" }} />
+          <span style={{ fontSize: "0.74rem", color: "#64748b" }}>{formatTime(answer.created_at)}</span>
+        </div>
+        {isLatest ? (
+          <div className="twin-feedback-actions" style={{ display: "flex", gap: "0.35rem" }}>
+            <button disabled={feedbackSubmitting} onClick={onHelpful} type="button" style={{ padding: "3px 8px", fontSize: "0.75rem" }}><ThumbsUp size={13} /> 有帮助</button>
+            <button disabled={feedbackSubmitting} onClick={onCorrection} type="button" style={{ padding: "3px 8px", fontSize: "0.75rem" }}><MessageSquareWarning size={13} /> 需纠错</button>
+            <button className="handoff" disabled={feedbackSubmitting} onClick={onHandoff} type="button" style={{ padding: "3px 8px", fontSize: "0.75rem" }}><ShieldAlert size={13} /> 转人工</button>
+          </div>
+        ) : null}
+      </div>
+
+      {isLatest && feedback && !feedback.handoff_case ? <div className="twin-feedback-receipt"><ClipboardCheck size={15} /><span>反馈已写入本次 AgentRun 审计台账。</span></div> : null}
+      {isLatest && feedback?.handoff_case ? <div className={`twin-handoff-status ${feedback.handoff_case.status}`}><div><ShieldAlert size={16} /><strong>{feedback.handoff_case.status === "open" ? "已进入人工接管队列" : feedback.handoff_case.status === "in_review" ? "负责人正在处理" : "人工处理已完成"}</strong></div><p>{feedback.handoff_case.resolution_summary ?? `优先级：${feedback.handoff_case.priority === "urgent" ? "紧急" : feedback.handoff_case.priority === "high" ? "高" : "普通"}`}</p>{["ceo", "manager", "admin", "service"].includes(roleId) ? <Link href="/console/twins/feedback">查看反馈工单</Link> : null}</div> : null}
+    </div>
+  );
 }
 
 function AgentFeedbackDialog({ mode, runId, roleId, onClose, onCompleted }: { mode: "correction" | "handoff"; runId: string; roleId: string; onClose: () => void; onCompleted: (payload: AgentRunFeedbackResponse) => void }) {

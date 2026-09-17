@@ -7856,3 +7856,248 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
   .data-source-actions label,
   .data-source-actions .button { flex: 1 1 180px; }
 }
+
+/* ==========================================================================
+   Cyber Command UI Design System (v2.0)
+   ========================================================================== */
+
+:root {
+  --cyber-bg: #090d16;
+  --cyber-surface: #111827;
+  --cyber-glass: rgba(17, 24, 39, 0.82);
+  --cyber-border: rgba(255, 255, 255, 0.08);
+  --cyber-border-active: rgba(59, 130, 246, 0.4);
+  --cyber-glow-blue: 0 0 16px rgba(59, 130, 246, 0.25);
+  --cyber-glow-green: 0 0 16px rgba(16, 185, 129, 0.25);
+  --cyber-glow-gold: 0 0 16px rgba(245, 158, 11, 0.25);
+  --font-financial-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Financial KPI 4-Card Grid */
+.financial-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.financial-kpi-card {
+  position: relative;
+  background: var(--cyber-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--cyber-border);
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.financial-kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+}
+
+.financial-kpi-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), var(--cyber-glow-blue);
+  transform: translateY(-2px);
+}
+
+.financial-kpi-card.tone-gold::before {
+  background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+}
+.financial-kpi-card.tone-green::before {
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+}
+.financial-kpi-card.tone-purple::before {
+  background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+}
+
+.financial-kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.financial-kpi-label {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.financial-kpi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.financial-kpi-badge.green {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.financial-kpi-badge.gold {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  animation: pulse-border 2.5s infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.3); }
+  50% { box-shadow: 0 0 10px 2px rgba(245, 158, 11, 0.25); }
+}
+
+.financial-kpi-value {
+  font-family: var(--font-financial-mono);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.financial-kpi-hint {
+  font-size: 0.76rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Slide-out Cyber Drawer */
+.cyber-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.cyber-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(520px, 94vw);
+  background: #0f172a;
+  border-left: 1px solid var(--cyber-border);
+  box-shadow: -12px 0 36px rgba(0, 0, 0, 0.5);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cyber-drawer-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--cyber-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cyber-drawer-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.cyber-drawer-body {
+  padding: 1.5rem;
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.cyber-drawer-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--cyber-border);
+  background: rgba(15, 23, 42, 0.9);
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+/* Reconciliation Highlight Rows */
+.reconciliation-warning-row {
+  background: rgba(245, 158, 11, 0.07) !important;
+}
+.reconciliation-warning-row:hover {
+  background: rgba(245, 158, 11, 0.12) !important;
+}
+
+/* Structured AI Twin Decision Card */
+.twin-decision-card {
+  background: rgba(17, 24, 39, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.twin-decision-card .section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.twin-decision-card .section-title.summary { color: #60a5fa; }
+.twin-decision-card .section-title.facts { color: #34d399; }
+.twin-decision-card .section-title.actions { color: #a78bfa; }
+.twin-decision-card .section-title.caveats { color: #fbbf24; }
+
+.evidence-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.15rem 0.45rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 4px;
+  color: #34d399;
+  font-size: 0.74rem;
+  font-family: var(--font-financial-mono);
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 0.3rem;
+  transition: all 0.15s ease;
+}
+
+.evidence-tag:hover {
+  background: rgba(16, 185, 129, 0.3);
+  box-shadow: var(--cyber-glow-green);
+}

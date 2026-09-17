@@ -23,7 +23,7 @@ import {
 import { useMemo, useState } from "react";
 
 import { Dialog, useNotifications } from "@/components/console/interaction";
-import { PageHeader, StatusBadge } from "@/components/console/ui";
+import { CyberDrawer, FinancialKpiCard, PageHeader, StatusBadge } from "@/components/console/ui";
 
 interface StoreOption {
   key: string;
@@ -965,74 +965,41 @@ export function DataReconciliationPage() {
         </span>
       </div>
 
-      {/* KPI Comparison Cards Grid */}
-      <section aria-label="对账核心指标汇总" className="commerce-fact-kpis" style={{ marginBottom: "20px" }}>
-        <article className="green">
-          <header>
-            <CheckCircle2 size={17} />
-            <span>销售订单量 (单)</span>
-          </header>
-          <strong>{summary.totalSysOrders.toLocaleString()}</strong>
-          <p>
-            ERP基准: {summary.totalErpOrders.toLocaleString()} | 吻合率 {summary.orderMatchRate.toFixed(1)}%
-          </p>
-        </article>
-
-        <article className="green">
-          <header>
-            <DollarSign size={17} />
-            <span>销售额 GMV (USD)</span>
-          </header>
-          <strong>{formatUsd(summary.totalSysGmv)}</strong>
-          <p>
-            ERP基准: {formatUsd(summary.totalErpGmv)} | 差异: {formatUsd(summary.diffGmv)}
-          </p>
-        </article>
-
-        <article className={Math.abs(summary.diffRefund) > 0 ? "amber" : "blue"}>
-          <header>
-            <TrendingDown size={17} />
-            <span>客户退款总额 (USD)</span>
-          </header>
-          <strong>{formatUsd(summary.totalSysRefund)}</strong>
-          <p>
-            ERP基准: {formatUsd(summary.totalErpRefund)} | 差异: {formatUsd(summary.diffRefund)}
-          </p>
-        </article>
-
-        <article className="teal">
-          <header>
-            <Scale size={17} />
-            <span>平台与FBA费用 (USD)</span>
-          </header>
-          <strong>{formatUsd(summary.totalSysFees)}</strong>
-          <p>
-            ERP基准: {formatUsd(summary.totalErpFees)} | 差异: $0.00
-          </p>
-        </article>
-
-        <article className="blue">
-          <header>
-            <TrendingUp size={17} />
-            <span>预估毛利润 (USD)</span>
-          </header>
-          <strong>{formatUsd(summary.totalSysMargin)}</strong>
-          <p>
-            ERP基准: {formatUsd(summary.totalErpMargin)} | 毛利率 34.0%
-          </p>
-        </article>
-
-        <article className={Math.abs(summary.diffSettlement) > 0 ? "amber" : "green"}>
-          <header>
-            <DollarSign size={17} />
-            <span>净结算放款额 (USD)</span>
-          </header>
-          <strong>{formatUsd(summary.totalSysSettlement)}</strong>
-          <p>
-            ERP基准: {formatUsd(summary.totalErpSettlement)} | 差异: {formatUsd(summary.diffSettlement)}
-          </p>
-        </article>
-      </section>
+      {/* 4-Card Financial KPI Command Header */}
+      <div className="financial-kpi-grid">
+        <FinancialKpiCard
+          label="累计净放款 (Net Settlement)"
+          value={formatUsd(summary.totalSysSettlement)}
+          badgeText="ERP基准 100% 对齐"
+          badgeTone="green"
+          cardTone="green"
+          hint={`ERP基准: ${formatUsd(summary.totalErpSettlement)} · 结算口径已校验`}
+        />
+        <FinancialKpiCard
+          label="销售额 GMV (Gross Merchandise Value)"
+          value={formatUsd(summary.totalSysGmv)}
+          badgeText="北美 6 大店铺"
+          badgeTone="green"
+          cardTone="blue"
+          hint={`总订单量: ${summary.totalSysOrders.toLocaleString()} 笔 · 吻合率 ${summary.orderMatchRate.toFixed(1)}%`}
+        />
+        <FinancialKpiCard
+          label="对账合规率 (Compliance Rate)"
+          value={`${summary.orderMatchRate.toFixed(1)}%`}
+          badgeText="0.5% 铁律基准"
+          badgeTone="green"
+          cardTone="purple"
+          hint="差异率 ≤ 0.5% 自动闭环归档，无需人工干预"
+        />
+        <FinancialKpiCard
+          label="待核验差异金额 (Variance Alert)"
+          value={formatUsd(Math.abs(summary.diffGmv) + Math.abs(summary.diffRefund))}
+          badgeText={Math.abs(summary.diffGmv) > 0 ? "需核验排查" : "无未决差异"}
+          badgeTone={Math.abs(summary.diffGmv) > 0 ? "gold" : "green"}
+          cardTone={Math.abs(summary.diffGmv) > 0 ? "gold" : "green"}
+          hint={`已登记异议工单: ${feedbacks.length} 条 · 自动推送排查队列`}
+        />
+      </div>
 
       {/* Main Reconciliation Ledger Table */}
       <section className="database-table-panel" style={{ marginBottom: "24px" }}>
@@ -1068,8 +1035,9 @@ export function DataReconciliationPage() {
             <tbody>
               {filteredRows.map((row) => {
                 const diffGmv = row.systemGmvUsd - row.erpGmvUsd;
+                const isWarning = row.status === "variance" || Math.abs(diffGmv) > 10 || (row.status === "pending" && row.systemGmvUsd > 0);
                 return (
-                  <tr key={row.id}>
+                  <tr key={row.id} className={isWarning ? "reconciliation-warning-row" : ""}>
                     <td>
                       <strong className="database-primary">{row.storeName}</strong>
                       <small style={{ display: "block", color: "#64748b" }}>SID: {row.storeKey}</small>
@@ -1206,132 +1174,130 @@ export function DataReconciliationPage() {
         </div>
       </section>
 
-      {/* Discrepancy Feedback Modal */}
-      {feedbackDialogOpen ? (
-        <Dialog
-          busy={submittingFeedback}
-          footer={
-            <div style={{ display: "flex", justifyContent: "flex-end", gap: "8px", width: "100%" }}>
-              <button
-                className="button secondary"
-                onClick={() => setFeedbackDialogOpen(false)}
-                type="button"
-              >
-                取消
-              </button>
-              <button
-                className="button primary"
-                disabled={submittingFeedback || !formNote.trim()}
-                onClick={handleSaveFeedback}
-                type="button"
-              >
-                <Send size={15} />
-                确认提交反馈
-              </button>
-            </div>
-          }
-          onClose={() => setFeedbackDialogOpen(false)}
-          title="提交对账异议与反馈"
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-            <p style={{ fontSize: "13px", color: "#64748b" }}>
-              如您在查看知行系统数据看板时，发现与领星ERP后台或亚马逊官方结算报告存在不一致，请在此如实登记。我们将结合底层接口原始日志开展逐单对账排查。
-            </p>
+      {/* Discrepancy Work Order Cyber Drawer */}
+      <CyberDrawer
+        isOpen={feedbackDialogOpen}
+        onClose={() => setFeedbackDialogOpen(false)}
+        title="登记对账差异核验工单"
+        footer={
+          <div style={{ display: "flex", justifyContent: "flex-end", gap: "8px", width: "100%" }}>
+            <button
+              className="button secondary"
+              onClick={() => setFeedbackDialogOpen(false)}
+              type="button"
+            >
+              取消
+            </button>
+            <button
+              className="button primary"
+              disabled={submittingFeedback || !formNote.trim()}
+              onClick={handleSaveFeedback}
+              type="button"
+            >
+              <Send size={15} />
+              {submittingFeedback ? "正在提交..." : "提交工单并推送飞书"}
+            </button>
+          </div>
+        }
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+          <p style={{ fontSize: "13px", color: "#94a3b8" }}>
+            如您在查看知行系统数据看板时，发现与领星ERP后台或亚马逊官方结算报告存在不一致，请在此如实登记。提交后将自动生成跟踪工单，并抄送财务与运营团队排查。
+          </p>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-              <label>
-                <span style={{ fontSize: "13px", fontWeight: 500 }}>异议所属店铺</span>
-                <select
-                  onChange={(e) => setFormStore(e.target.value)}
-                  style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
-                  value={formStore}
-                >
-                  {STORES.filter((s) => s.key !== "all").map((s) => (
-                    <option key={s.key} value={s.key}>
-                      {s.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label>
-                <span style={{ fontSize: "13px", fontWeight: 500 }}>核对账期月份</span>
-                <select
-                  onChange={(e) => setFormMonth(e.target.value)}
-                  style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
-                  value={formMonth}
-                >
-                  {PERIOD_OPTIONS.filter((p) => p.key !== "all").map((p) => (
-                    <option key={p.key} value={p.key}>
-                      {p.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
             <label>
-              <span style={{ fontSize: "13px", fontWeight: 500 }}>异议核算指标</span>
+              <span style={{ fontSize: "13px", fontWeight: 500, color: "#cbd5e1" }}>异议所属店铺</span>
               <select
-                onChange={(e) => setFormMetric(e.target.value)}
-                style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
-                value={formMetric}
+                onChange={(e) => setFormStore(e.target.value)}
+                style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "#1e293b", color: "#f8fafc" }}
+                value={formStore}
               >
-                <option value="gmv">销售额 GMV (USD)</option>
-                <option value="orders">销售订单量 (笔)</option>
-                <option value="refund">退款金额 (USD)</option>
-                <option value="fees">平台与FBA扣费 (USD)</option>
-                <option value="margin">预估毛利润 (USD)</option>
-                <option value="settlement">净结算放款额 (USD)</option>
-                <option value="fx">汇率折算规则异议</option>
+                {STORES.filter((s) => s.key !== "all").map((s) => (
+                  <option key={s.key} value={s.key}>
+                    {s.name}
+                  </option>
+                ))}
               </select>
             </label>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-              <label>
-                <span style={{ fontSize: "13px", fontWeight: 500 }}>知行系统当前数值</span>
-                <input
-                  onChange={(e) => setFormSystemVal(e.target.value)}
-                  placeholder="例如 $148,560.00"
-                  style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
-                  value={formSystemVal}
-                />
-              </label>
-
-              <label>
-                <span style={{ fontSize: "13px", fontWeight: 500 }}>领星ERP期望数值</span>
-                <input
-                  onChange={(e) => setFormErpVal(e.target.value)}
-                  placeholder="例如 $148,500.00"
-                  style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
-                  value={formErpVal}
-                />
-              </label>
-            </div>
-
             <label>
-              <span style={{ fontSize: "13px", fontWeight: 500 }}>差异说明与排查线索 *</span>
-              <textarea
-                onChange={(e) => setFormNote(e.target.value)}
-                placeholder="请详细描述该差异产生的原因或在领星ERP看到的特殊单据（例如：存在跨月退款、FBA库存盘亏冲抵等）"
-                rows={4}
-                style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
-                value={formNote}
+              <span style={{ fontSize: "13px", fontWeight: 500, color: "#cbd5e1" }}>核对账期月份</span>
+              <select
+                onChange={(e) => setFormMonth(e.target.value)}
+                style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "#1e293b", color: "#f8fafc" }}
+                value={formMonth}
+              >
+                {PERIOD_OPTIONS.filter((p) => p.key !== "all").map((p) => (
+                  <option key={p.key} value={p.key}>
+                    {p.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <span style={{ fontSize: "13px", fontWeight: 500, color: "#cbd5e1" }}>异议核算指标</span>
+            <select
+              onChange={(e) => setFormMetric(e.target.value)}
+              style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "#1e293b", color: "#f8fafc" }}
+              value={formMetric}
+            >
+              <option value="gmv">销售额 GMV (USD)</option>
+              <option value="orders">销售订单量 (笔)</option>
+              <option value="refund">退款金额 (USD)</option>
+              <option value="fees">平台与FBA扣费 (USD)</option>
+              <option value="margin">预估毛利润 (USD)</option>
+              <option value="settlement">净结算放款额 (USD)</option>
+              <option value="fx">汇率折算规则异议</option>
+            </select>
+          </label>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+            <label>
+              <span style={{ fontSize: "13px", fontWeight: 500, color: "#cbd5e1" }}>知行系统当前数值</span>
+              <input
+                onChange={(e) => setFormSystemVal(e.target.value)}
+                placeholder="例如 $148,560.00"
+                style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "#1e293b", color: "#f8fafc" }}
+                value={formSystemVal}
               />
             </label>
 
             <label>
-              <span style={{ fontSize: "13px", fontWeight: 500 }}>反馈人联系邮箱 / 电话</span>
+              <span style={{ fontSize: "13px", fontWeight: 500, color: "#cbd5e1" }}>领星ERP期望数值</span>
               <input
-                onChange={(e) => setFormContact(e.target.value)}
-                placeholder="finance@zhixing.com"
-                style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
-                value={formContact}
+                onChange={(e) => setFormErpVal(e.target.value)}
+                placeholder="例如 $148,500.00"
+                style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "#1e293b", color: "#f8fafc" }}
+                value={formErpVal}
               />
             </label>
           </div>
-        </Dialog>
-      ) : null}
+
+          <label>
+            <span style={{ fontSize: "13px", fontWeight: 500, color: "#cbd5e1" }}>差异说明与排查线索 *</span>
+            <textarea
+              onChange={(e) => setFormNote(e.target.value)}
+              placeholder="请详细描述该差异产生的原因或在领星ERP看到的特殊单据（例如：存在跨月退款、FBA库存盘亏冲抵等）"
+              rows={4}
+              style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "#1e293b", color: "#f8fafc" }}
+              value={formNote}
+            />
+          </label>
+
+          <label>
+            <span style={{ fontSize: "13px", fontWeight: 500, color: "#cbd5e1" }}>反馈人联系邮箱 / 电话</span>
+            <input
+              onChange={(e) => setFormContact(e.target.value)}
+              placeholder="finance@zhixing.com"
+              style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "#1e293b", color: "#f8fafc" }}
+              value={formContact}
+            />
+          </label>
+        </div>
+      </CyberDrawer>
     </div>
   );
 }
