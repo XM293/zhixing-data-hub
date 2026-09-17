@@ -4,7 +4,8 @@ import asyncio
 import json
 import os
 import shutil
-from collections.abc import AsyncIterator, Awaitable, Callable, Mapping
+import sys
+from collections.abc import AsyncIterator, Awaitable, Callable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import cast
@@ -533,9 +534,10 @@ class _JsonRpcConnection:
             return
         environment = os.environ.copy()
         environment.update(self.environment)
+        cmd = _resolve_subprocess_command(self.settings.command)
         try:
             self.process = await asyncio.create_subprocess_exec(
-                *self.settings.command,
+                *cmd,
                 stdin=asyncio.subprocess.PIPE,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
@@ -676,11 +678,23 @@ class _JsonRpcConnection:
             await self.notification_handler(method, cast(JsonObject, safe_params))
 
 
+def _resolve_subprocess_command(command_parts: Sequence[str]) -> list[str]:
+    cmd = list(command_parts)
+    if not cmd:
+        return cmd
+    binary = shutil.which(cmd[0]) or cmd[0]
+    cmd[0] = binary
+    if sys.platform == "win32" and binary.lower().endswith((".cmd", ".bat")):
+        comspec = os.environ.get("COMSPEC", "cmd.exe")
+        return [comspec, "/c"] + cmd
+    return cmd
+
+
 async def _command_version(command: str) -> str | None:
     try:
+        cmd = _resolve_subprocess_command([command, "--version"])
         process = await asyncio.create_subprocess_exec(
-            command,
-            "--version",
+            *cmd,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
