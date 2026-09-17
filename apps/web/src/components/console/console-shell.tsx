@@ -4,7 +4,9 @@ import {
   Bell,
   LogOut,
   LoaderCircle,
+  Maximize2,
   Menu,
+  Minimize2,
   Search,
   Sparkles,
   X
@@ -15,7 +17,8 @@ import { useEffect, useMemo, useState } from "react";
 
 import { LoginScreen } from "@/components/auth/login-screen";
 import { InteractionProvider, useNotifications } from "@/components/console/interaction";
-import { CenterNavigation } from "@/components/navigation/center-navigation";
+import { CenterNavigation, FIVE_BUSINESS_CENTERS } from "@/components/navigation/center-navigation";
+import { TagsView } from "@/components/navigation/tags-view";
 import { ExperienceProvider, useExperience } from "@/demo/experience-provider";
 import { projectNavigation, sectionForPath } from "@/lib/navigation";
 import {
@@ -41,6 +44,18 @@ function ConsoleShell({ children }: { children: React.ReactNode }) {
   const { allowedSectionKeys, can, centerCatalog, identity, identityError, identityLoading, sessionActive, sessionBusy, startSession, endSession, toast, dismissToast, scopeOptions, scopeContext, switchScope, switchEnterprise } = useExperience();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = () => {
+    if (typeof document === "undefined") return;
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen().catch(() => {});
+      setIsFullscreen(false);
+    }
+  };
   const isTwinHome = pathname === "/console" || pathname === "/console/spatial";
   const isTwinScene = isTwinHome && scopeContext?.scope_level === "enterprise";
   const isCockpit = pathname === "/console/cockpit";
@@ -70,6 +85,15 @@ function ConsoleShell({ children }: { children: React.ReactNode }) {
   const usesDatabaseView = isTwinHome || isCockpit || isDatabaseDataCenter || isDatabaseKnowledge || isDatabaseTwins || isDatabaseMeetings || isDatabaseActions || isDatabaseAdmin || isDatabaseAssistant || isDatabaseAnalysis || isDatabaseCustomerService;
   const section = sectionForPath(pathname);
   const currentItem = section.items.find((item) => pathname === item.href);
+  const breadcrumbInfo = useMemo(() => {
+    for (const center of FIVE_BUSINESS_CENTERS) {
+      const item = center.items.find((i) => i.matches(pathname));
+      if (item) {
+        return { center: center.label, item: item.label };
+      }
+    }
+    return { center: isTwinHome ? "企业数字孪生" : section.shortLabel, item: currentItem?.label || "控制台" };
+  }, [pathname, isTwinHome, section.shortLabel, currentItem?.label]);
   const visibleNavigation = useMemo(
     () => projectNavigation(allowedSectionKeys, identity?.navigation),
     [allowedSectionKeys, identity?.navigation]
@@ -156,13 +180,9 @@ function ConsoleShell({ children }: { children: React.ReactNode }) {
               <Menu size={20} />
             </button>
             <div className="breadcrumb">
-              <span>{isTwinHome ? "企业数字孪生" : section.shortLabel}</span>
-              {currentItem && currentItem.key !== "home" ? (
-                <>
-                  <span aria-hidden="true">/</span>
-                  <strong>{currentItem.label}</strong>
-                </>
-              ) : null}
+              <span>{breadcrumbInfo.center}</span>
+              <span aria-hidden="true">/</span>
+              <strong>{breadcrumbInfo.item}</strong>
             </div>
           </div>
 
@@ -238,6 +258,15 @@ function ConsoleShell({ children }: { children: React.ReactNode }) {
               </>
             ) : null}
             <button
+              aria-label={isFullscreen ? "退出全屏" : "全屏模式"}
+              className="icon-button"
+              onClick={toggleFullscreen}
+              title={isFullscreen ? "退出全屏" : "全屏模式"}
+              type="button"
+            >
+              {isFullscreen ? <Minimize2 size={17} /> : <Maximize2 size={17} />}
+            </button>
+            <button
               aria-label="全局搜索"
               className="icon-button"
               onClick={() => setSearchOpen((open) => !open)}
@@ -263,6 +292,8 @@ function ConsoleShell({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </header>
+
+        <TagsView />
 
         {searchOpen ? (
           <GlobalSearch
