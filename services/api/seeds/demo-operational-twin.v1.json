@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "seed_key": "demo-operational-twin",
-  "version": "1.30.0",
+  "version": "1.31.0",
   "mode": "idempotent-upsert",
   "entrypoint": "zhixing_api.seed:seed_database",
   "environments": ["development", "test"],

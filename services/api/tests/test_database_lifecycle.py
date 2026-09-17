@@ -256,7 +256,7 @@ def test_empty_database_upgrade_seed_and_rebuild_are_repeatable(tmp_path: Path) 
     first = seed_database(database, settings)
     second = seed_database(database, settings)
     assert first.seed_key == "demo-operational-twin"
-    assert first.version == "1.30.0"
+    assert first.version == "1.31.0"
     assert first.checksum == second.checksum
     with database.session() as session:
         assert session.scalar(select(func.count(SeedVersion.seed_key))) == 1

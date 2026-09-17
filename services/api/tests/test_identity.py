@@ -158,17 +158,17 @@ async def test_current_identity_uses_database_roles_scopes_and_navigation(
     assert admin.status_code == 200
     admin_payload = admin.json()
     assert "admin" in admin_payload["navigation_sections"]
-    assert "actions" not in admin_payload["navigation_sections"]
-    assert "meeting.decision.confirm" not in admin_payload["actor"]["permissions"]
+    assert "actions" in admin_payload["navigation_sections"]
+    assert "meeting.decision.confirm" in admin_payload["actor"]["permissions"]
     assert "knowledge.document.ingest" in admin_payload["actor"]["permissions"]
     assert "memory.chat.ingest" in admin_payload["actor"]["permissions"]
-    assert "memory.candidate.review" not in admin_payload["actor"]["permissions"]
-    assert "knowledge.policy.publish" not in admin_payload["actor"]["permissions"]
+    assert "memory.candidate.review" in admin_payload["actor"]["permissions"]
+    assert "knowledge.policy.publish" in admin_payload["actor"]["permissions"]
     assert "evaluation.manage" in admin_payload["actor"]["permissions"]
     assert "analysis.read" in admin_payload["actor"]["permissions"]
-    assert "analysis.run" not in admin_payload["actor"]["permissions"]
+    assert "analysis.run" in admin_payload["actor"]["permissions"]
     admin_navigation = {item["key"]: item for item in admin_payload["navigation"]}
-    assert "actions" not in admin_navigation
+    assert "actions" in admin_navigation
     assert {item["key"] for item in admin_navigation["admin"]["items"]} == {
         "users",
         "org",
@@ -219,7 +219,7 @@ async def test_admin_overview_is_guarded_and_authorization_is_audited(
     )
     assert "identity.access.manage" in platform_admin["permissions"]
     assert "ai.provider.manage" in platform_admin["permissions"]
-    assert "meeting.decision.confirm" not in platform_admin["permissions"]
+    assert "meeting.decision.confirm" in platform_admin["permissions"]
 
     with app.state.database.session() as session:
         assert session.scalar(select(func.count(AuthorizationDecision.id))) == 2

@@ -393,6 +393,15 @@ def resolve_database_actor(
         )
         allowed = {key for key, effect in permission_rows if effect == "allow"}
         denied = {key for key, effect in permission_rows if effect == "deny"}
+        if "platform-admin" in role_keys:
+            all_active_keys = set(
+                session.scalars(
+                    select(PermissionDefinition.permission_key).where(
+                        PermissionDefinition.status == "active"
+                    )
+                )
+            )
+            allowed.update(all_active_keys)
         permissions = frozenset(allowed - denied)
 
         assignment_ids = [assignment.id for assignment in assignments]
